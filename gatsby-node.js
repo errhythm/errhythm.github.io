@@ -46,7 +46,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   posts.forEach(({ node }) => {
     createPage({
-      path: node.frontmatter.slug,
+      path: `${node.frontmatter.slug}`,
       component: postTemplate,
       context: {},
     });
@@ -57,7 +57,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // Make tag pages
   tags.forEach(tag => {
     createPage({
-      path: `/pensieve/tags/${_.kebabCase(tag.fieldValue)}/`,
+      path: `/blog/tags/${_.kebabCase(tag.fieldValue)}/`,
       component: tagTemplate,
       context: {
         tag: tag.fieldValue,

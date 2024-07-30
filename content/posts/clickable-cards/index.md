@@ -1,9 +1,9 @@
 ---
 title: Accessible Clickable Cards
 description: Clickable cards with multiple child links
-date: 2021-04-21
+date: 2021-04-22
 draft: false
-slug: /pensieve/clickable-cards
+slug: /blog/clickable-cards
 tags:
   - Accessibility
   - CSS
