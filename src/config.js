@@ -1,26 +1,22 @@
 module.exports = {
-  email: 'brittany.chiang@gmail.com',
+  email: 'errhythm.me@gmail.com',
 
   socialMedia: [
     {
       name: 'GitHub',
-      url: 'https://github.com/bchiang7',
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/bchiang7',
+      url: 'https://github.com/errhythm',
     },
     {
       name: 'Twitter',
-      url: 'https://twitter.com/bchiang7',
+      url: 'https://twitter.com/errhythm',
     },
     {
       name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/bchiang7',
+      url: 'https://www.linkedin.com/in/errhythm',
     },
     {
-      name: 'Codepen',
-      url: 'https://codepen.io/bchiang7',
+      name: 'Orcid',
+      url: 'https://orcid.org/0000-0002-4641-508X',
     },
   ],
 
@@ -32,6 +28,10 @@ module.exports = {
     {
       name: 'Experience',
       url: '/#jobs',
+    },
+    {
+      name: 'Education',
+      url: '/#education',
     },
     {
       name: 'Work',

@@ -86,7 +86,7 @@ const Footer = () => {
       </StyledSocialLinks>
 
       <StyledCredit tabindex="-1">
-  <div>© {year} Ehsanur Rahman Rhythm. All rights reserved. Designed by{' '}<a href="https://github.com/bchiang7">Brittany Chiang</a></div>
+  <div>© {year} Ehsanur Rahman Rhythm. All rights reserved. Designed by{''}<a href="https://github.com/bchiang7">Brittany Chiang</a></div>
   </StyledCredit>
     </StyledFooter>
   );
