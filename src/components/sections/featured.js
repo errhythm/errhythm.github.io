@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { kebabCase } from 'lodash';
 import styled from 'styled-components';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
@@ -365,7 +366,7 @@ const Featured = () => {
                     <p className="project-overline">Featured Project</p>
 
                     <h3 className="project-title">
-                      <a href={external}>{title}</a>
+                      <Link to={`/projects/${kebabCase(title)}`}>{title}</Link>
                     </h3>
 
                     <div

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import { graphql } from 'gatsby';
+import { Link, graphql } from 'gatsby';
+import { kebabCase } from 'lodash';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
@@ -129,7 +130,7 @@ const StyledTableContainer = styled.div`
   }
 `;
 
-const ArchivePage = ({ location, data }) => {
+const ProjectsPage = ({ location, data }) => {
   const projects = data.allMarkdownRemark.edges;
   const revealTitle = useRef(null);
   const revealTable = useRef(null);
@@ -148,11 +149,11 @@ const ArchivePage = ({ location, data }) => {
 
   return (
     <Layout location={location}>
-      <Helmet title="Archive" />
+      <Helmet title="Projects" />
 
       <main>
         <header ref={revealTitle}>
-          <h1 className="big-heading">Archive</h1>
+          <h1 className="big-heading">Projects</h1>
           <p className="subtitle">A big list of things I’ve worked on</p>
         </header>
 
@@ -170,21 +171,15 @@ const ArchivePage = ({ location, data }) => {
             <tbody>
               {projects.length > 0 &&
                 projects.map(({ node }, i) => {
-                  const {
-                    date,
-                    github,
-                    external,
-                    ios,
-                    android,
-                    title,
-                    tech,
-                    company,
-                  } = node.frontmatter;
+                  const { date, github, external, ios, android, title, tech, company } =
+                    node.frontmatter;
                   return (
                     <tr key={i} ref={el => (revealProjects.current[i] = el)}>
                       <td className="overline year">{`${new Date(date).getFullYear()}`}</td>
 
-                      <td className="title">{title}</td>
+                      <td className="title">
+                        <Link to={`/projects/${kebabCase(title)}`}>{title}</Link>
+                      </td>
 
                       <td className="company hide-on-mobile">
                         {company ? <span>{company}</span> : <span>—</span>}
@@ -235,12 +230,12 @@ const ArchivePage = ({ location, data }) => {
     </Layout>
   );
 };
-ArchivePage.propTypes = {
+ProjectsPage.propTypes = {
   location: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
 };
 
-export default ArchivePage;
+export default ProjectsPage;
 
 export const pageQuery = graphql`
   {

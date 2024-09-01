@@ -82,25 +82,39 @@ const StyledTableContainer = styled.div`
         }
       }
 
-      &.title {
-        padding-top: 15px;
-        padding-right: 20px;
-        color: var(--lightest-slate);
-        font-size: var(--fz-xl);
-        font-weight: 600;
-        line-height: 1.25;
-      }
-
       &.conference,
       &.doi,
       &.url,
-      &.abstract,
-      &.authors {
+      &.abstract {
         font-size: var(--fz-lg);
         white-space: nowrap;
       }
     }
+    .title {
+      padding-top: 15px;
+      padding-right: 20px;
+      color: var(--lightest-slate);
+      font-size: var(--fz-xl);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .authors-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      font-size: var(--fz-md);
+    }
   }
+`;
+
+const AuthorAvatar = styled.img`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  vertical-align: middle;
 `;
 
 const PublicationsPage = ({ location, data }) => {
@@ -127,49 +141,68 @@ const PublicationsPage = ({ location, data }) => {
       <main>
         <header ref={revealTitle}>
           <h1 className="big-heading">Publications</h1>
-          <p className="subtitle">A big list of things I’ve worked on</p>
+          <p className="subtitle">A big list of researches I’ve worked on</p>
         </header>
 
         <StyledTableContainer ref={revealTable}>
           <table>
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Title</th>
+                <th style={{ width: '550px' }}>Title</th>
+                <th style={{ width: '350px' }}>Authors</th>
                 <th>Conference</th>
-                <th>DOI</th>
-                <th>Abstract</th>
-                <th>Authors</th>
-                <th>URL</th>
+                <th>Year</th>
               </tr>
             </thead>
             <tbody>
               {publications.map(({ node }, i) => {
-                const { date, title, conference, doi, url, github, abstract, authors } =
-                  node.frontmatter;
+                const { date, title, conference, doi, url, github, authors } = node.frontmatter;
                 return (
                   <tr key={i} ref={el => (revealPublications.current[i] = el)}>
-                    <td className="year">{date}</td>
-                    <td className="title">{title}</td>
-                    <td className="conference">{conference}</td>
-                    <td className="doi">{doi}</td>
-                    <td className="abstract">{abstract}</td>
+                    <td className="title">
+                      <a href={url} target="_blank" rel="noopener noreferrer">
+                        {title}
+                      </a>
+                    </td>
                     <td className="authors">
                       {authors.map((author, index) => (
-                        <div key={index}>
+                        <span key={index}>
+                          {author.avatar && (
+                            <AuthorAvatar
+                              src={author.avatar}
+                              alt={`${author.name}'s avatar`}
+                              css={`
+                                @media (max-width: 768px) {
+                                  display: none;
+                                }
+                              `}
+                            />
+                          )}
                           <a href={author.url} target="_blank" rel="noopener noreferrer">
-                            {author.name}
+                            {author.name === 'Ehsanur Rahman Rhythm' ? (
+                              <strong>{author.name}</strong>
+                            ) : (
+                              author.name
+                            )}
                           </a>
-                        </div>
+                          {index < authors.length - 1 && <span>, </span>}
+                        </span>
                       ))}
                     </td>
+                    <td className="conference">{conference}</td>
+                    <td className="year">{new Date(date).getFullYear()}</td>
                     <td className="links">
                       <div>
-                        {url && (
-                          <a href={url} aria-label="External Link" style={{ marginRight: '10px' }}>
-                            <Icon name="External" />
-                          </a>
-                        )}
+                        {url ||
+                          (doi && (
+                            <a
+                              href={url || `https://doi.org/${doi}`}
+                              aria-label="External Link"
+                              style={{ marginRight: '10px' }}
+                            >
+                              <Icon name="External" />
+                            </a>
+                          ))}
                         {github && (
                           <a href={github} aria-label="GitHub Link">
                             <Icon name="GitHub" />
@@ -214,6 +247,9 @@ export const pageQuery = graphql`
             authors {
               name
               url
+              affiliation
+              avatar
+              email
             }
           }
           html

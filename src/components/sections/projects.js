@@ -6,6 +6,7 @@ import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import { kebabCase } from 'lodash'; // Add this import
 
 const StyledProjectsSection = styled.section`
   display: flex;
@@ -214,6 +215,7 @@ const Projects = () => {
   const projectInner = node => {
     const { frontmatter, html } = node;
     const { github, external, title, tech } = frontmatter;
+    const slug = `/projects/${kebabCase(title)}`;
 
     return (
       <div className="project-inner">
@@ -234,7 +236,8 @@ const Projects = () => {
                   aria-label="External Link"
                   className="external"
                   target="_blank"
-                  rel="noreferrer">
+                  rel="noreferrer"
+                >
                   <Icon name="External" />
                 </a>
               )}
@@ -242,9 +245,7 @@ const Projects = () => {
           </div>
 
           <h3 className="project-title">
-            <a href={external} target="_blank" rel="noreferrer">
-              {title}
-            </a>
+            <Link to={slug}>{title}</Link>
           </h3>
 
           <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
@@ -267,7 +268,7 @@ const Projects = () => {
     <StyledProjectsSection>
       <h2 ref={revealTitle}>Other Noteworthy Projects</h2>
 
-      <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
+      <Link className="inline-link archive-link" to="/projects" ref={revealArchiveLink}>
         view the archive
       </Link>
 
@@ -287,13 +288,15 @@ const Projects = () => {
                   key={i}
                   classNames="fadeup"
                   timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
-                  exit={false}>
+                  exit={false}
+                >
                   <StyledProject
                     key={i}
                     ref={el => (revealProjects.current[i] = el)}
                     style={{
                       transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
-                    }}>
+                    }}
+                  >
                     {projectInner(node)}
                   </StyledProject>
                 </CSSTransition>

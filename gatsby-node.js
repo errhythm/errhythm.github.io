@@ -11,6 +11,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const postTemplate = path.resolve(`src/templates/post.js`);
   const tagTemplate = path.resolve('src/templates/tag.js');
+  const projectTemplate = path.resolve(`src/templates/project.js`);
 
   const result = await graphql(`
     {
@@ -64,6 +65,58 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       },
     });
   });
+
+  const projectsResult = await graphql(`
+    {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/projects/" } }
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (projectsResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
+
+  const projects = projectsResult.data.allMarkdownRemark.edges;
+
+  projects.forEach(({ node }) => {
+    const slug = `/projects/${_.kebabCase(node.frontmatter.title)}`;
+    createPage({
+      path: slug,
+      component: projectTemplate,
+      context: {
+        slug: slug,
+      },
+    });
+  });
+};
+
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions;
+
+  if (
+    node.internal.type === `MarkdownRemark` &&
+    node.fileAbsolutePath.includes('/content/projects/')
+  ) {
+    const slug = `/projects/${_.kebabCase(node.frontmatter.title)}`;
+    createNodeField({
+      name: `slug`,
+      node,
+      value: slug,
+    });
+  }
 };
 
 // https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig
