@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
 import { Icon } from '@components/icons';
 import { socialMedia } from '@config';
@@ -47,7 +46,7 @@ const StyledCredit = styled.div`
   line-height: 1;
 
   a {
-    padding: 10px;
+    padding: 10px 0px;
   }
 
   .github-stats {
@@ -86,11 +85,13 @@ const Footer = () => {
       </StyledSocialLinks>
 
       <StyledCredit tabindex="-1">
-  <div>© {year} Ehsanur Rahman Rhythm. All rights reserved. Designed by{''}<a href="https://github.com/bchiang7">Brittany Chiang</a></div>
-  </StyledCredit>
+        <div>
+          © {year} Ehsanur Rahman Rhythm. All rights reserved. Designed by {''}
+          <a href="https://github.com/bchiang7">Brittany Chiang</a>.
+        </div>
+      </StyledCredit>
     </StyledFooter>
   );
 };
-
 
 export default Footer;

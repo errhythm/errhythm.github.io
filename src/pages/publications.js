@@ -75,6 +75,7 @@ const StyledTableContainer = styled.div`
     td {
       &.year {
         padding-right: 20px;
+        font-size: var(--fz-lg);
 
         @media (max-width: 768px) {
           padding-right: 10px;
