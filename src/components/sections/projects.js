@@ -6,7 +6,7 @@ import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
-import { kebabCase } from 'lodash'; // Add this import
+import { kebabCase } from 'lodash';
 
 const StyledProjectsSection = styled.section`
   display: flex;

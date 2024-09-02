@@ -94,16 +94,18 @@ const StyledTableContainer = styled.div`
       padding-top: 15px;
       padding-right: 20px;
       color: var(--lightest-slate);
-      font-size: var(--fz-xl);
+      font-size: var(--fz-lg);
       font-weight: 600;
       line-height: 1.25;
     }
 
-    .authors-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
+    .authors {
       font-size: var(--fz-md);
+    }
+    .icon-large {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
     }
   }
 `;
@@ -148,8 +150,8 @@ const PublicationsPage = ({ location, data }) => {
           <table>
             <thead>
               <tr>
-                <th style={{ width: '550px' }}>Title</th>
-                <th style={{ width: '350px' }}>Authors</th>
+                <th style={{ width: '500px' }}>Title</th>
+                <th style={{ width: '400px' }}>Authors</th>
                 <th>Conference</th>
                 <th>Year</th>
               </tr>
@@ -160,7 +162,11 @@ const PublicationsPage = ({ location, data }) => {
                 return (
                   <tr key={i} ref={el => (revealPublications.current[i] = el)}>
                     <td className="title">
-                      <a href={url} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={url || `https://doi.org/${doi}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {title}
                       </a>
                     </td>
@@ -193,19 +199,18 @@ const PublicationsPage = ({ location, data }) => {
                     <td className="year">{new Date(date).getFullYear()}</td>
                     <td className="links">
                       <div>
-                        {url ||
-                          (doi && (
-                            <a
-                              href={url || `https://doi.org/${doi}`}
-                              aria-label="External Link"
-                              style={{ marginRight: '10px' }}
-                            >
-                              <Icon name="External" />
-                            </a>
-                          ))}
+                        {url || doi ? (
+                          <a
+                            href={url || `https://doi.org/${doi}`}
+                            aria-label="External Link"
+                            className="icon-large"
+                          >
+                            <Icon name="External" className="icon-large" />
+                          </a>
+                        ) : null}
                         {github && (
-                          <a href={github} aria-label="GitHub Link">
-                            <Icon name="GitHub" />
+                          <a href={github} aria-label="GitHub Link" className="icon-large">
+                            <Icon name="GitHub" className="icon-large" />
                           </a>
                         )}
                       </div>
@@ -244,6 +249,7 @@ export const pageQuery = graphql`
             url
             github
             abstract
+            featured
             authors {
               name
               url

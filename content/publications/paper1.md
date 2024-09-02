@@ -4,8 +4,9 @@ title: 'Integrating Algolia Search with WordPress Multisite'
 conference: 'ESCI2023'
 doi: '10.1023123123'
 url: ''
-github: 'github.com/#'
+github: 'https://github.com/#'
 abstract: 'ABCDsdsdsadsd'
+featured: true
 authors:
   - name: 'Ehsanur Rahman Rhythm'
     url: 'https://errhythm.me'
