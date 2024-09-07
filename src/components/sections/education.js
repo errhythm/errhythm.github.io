@@ -250,7 +250,7 @@ const Education = () => {
         <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
           {educationData &&
             educationData.map(({ node }, i) => {
-              const { degree, company } = node.frontmatter;
+              const { degree } = node.frontmatter;
               return (
                 <StyledTabButton
                   key={i}
@@ -261,8 +261,9 @@ const Education = () => {
                   role="tab"
                   tabIndex={activeTabId === i ? '0' : '-1'}
                   aria-selected={activeTabId === i ? true : false}
-                  aria-controls={`panel-${i}`}>
-                  <span>{degree} @ {company}</span>
+                  aria-controls={`panel-${i}`}
+                >
+                  <span>{degree}</span>
                 </StyledTabButton>
               );
             })}
@@ -283,7 +284,8 @@ const Education = () => {
                     tabIndex={activeTabId === i ? '0' : '-1'}
                     aria-labelledby={`tab-${i}`}
                     aria-hidden={activeTabId !== i}
-                    hidden={activeTabId !== i}>
+                    hidden={activeTabId !== i}
+                  >
                     <h3>
                       <span>{title}</span>
                       <p className="company">

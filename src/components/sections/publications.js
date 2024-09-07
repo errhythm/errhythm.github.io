@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { Icon } from '@components/icons';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledPublicationsSection = styled.section`
@@ -134,15 +134,6 @@ const StyledTableContainer = styled.div`
   }
 `;
 
-const AuthorAvatar = styled.img`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  vertical-align: middle;
-`;
-
 const Publications = () => {
   const data = useStaticQuery(graphql`
     {
@@ -159,12 +150,10 @@ const Publications = () => {
               doi
               url
               github
-              abstract
               authors {
                 name
                 url
                 affiliation
-                avatar
                 email
               }
             }
@@ -187,6 +176,7 @@ const Publications = () => {
     }
 
     sr.reveal(revealTitle.current, srConfig());
+
     sr.reveal(revealTable.current, srConfig(200, 0));
     revealPublications.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 10)));
   }, []);
@@ -201,13 +191,18 @@ const Publications = () => {
       <header ref={revealTitle}>
         <h2 className="numbered-heading">Publications</h2>
       </header>
+      <Link className="inline-link archive-link" to="/publications">
+        view the archive
+      </Link>
 
       <StyledTableContainer ref={revealTable}>
         <table>
           <thead>
             <tr>
               <th style={{ width: '550px' }}>Title</th>
-              <th style={{ width: '350px' }}>Authors</th>
+              <th style={{ width: '350px' }} className="hide-on-mobile">
+                Authors
+              </th>
               <th>Conference</th>
               <th>Year</th>
             </tr>
@@ -225,24 +220,19 @@ const Publications = () => {
                   <td className="authors hide-on-mobile">
                     {authors.map((author, index) => (
                       <span key={index}>
-                        {author.avatar && (
-                          <AuthorAvatar
-                            src={author.avatar}
-                            alt={`${author.name}'s avatar`}
-                            css={`
-                              @media (max-width: 768px) {
-                                display: none;
-                              }
-                            `}
-                          />
+                        {author.url ? (
+                          <a href={author.url} target="_blank" rel="noopener noreferrer">
+                            {author.name === 'Ehsanur Rahman Rhythm' ? (
+                              <strong>{author.name}</strong>
+                            ) : (
+                              author.name
+                            )}
+                          </a>
+                        ) : author.name === 'Ehsanur Rahman Rhythm' ? (
+                          <strong>{author.name}</strong>
+                        ) : (
+                          author.name
                         )}
-                        <a href={author.url} target="_blank" rel="noopener noreferrer">
-                          {author.name === 'Ehsanur Rahman Rhythm' ? (
-                            <strong>{author.name}</strong>
-                          ) : (
-                            author.name
-                          )}
-                        </a>
                         {index < authors.length - 1 && <span>, </span>}
                       </span>
                     ))}

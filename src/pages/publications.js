@@ -111,15 +111,6 @@ const StyledTableContainer = styled.div`
   }
 `;
 
-const AuthorAvatar = styled.img`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  vertical-align: middle;
-`;
-
 const PublicationsPage = ({ location, data }) => {
   const publications = data.allMarkdownRemark.edges;
   const revealTitle = useRef(null);
@@ -174,24 +165,27 @@ const PublicationsPage = ({ location, data }) => {
                     <td className="authors">
                       {authors.map((author, index) => (
                         <span key={index}>
-                          {author.avatar && (
-                            <AuthorAvatar
-                              src={author.avatar}
-                              alt={`${author.name}'s avatar`}
-                              css={`
-                                @media (max-width: 768px) {
-                                  display: none;
-                                }
-                              `}
-                            />
+                          {author.url ? (
+                            <a href={author.url} target="_blank" rel="noopener noreferrer">
+                              {author.name === 'Ehsanur Rahman Rhythm' ? (
+                                <strong>{author.name}</strong>
+                              ) : (
+                                author.name
+                              )}
+                            </a>
+                          ) : author.email ? (
+                            <a href={`mailto:${author.email}`}>
+                              {author.name === 'Ehsanur Rahman Rhythm' ? (
+                                <strong>{author.name}</strong>
+                              ) : (
+                                author.name
+                              )}
+                            </a>
+                          ) : author.name === 'Ehsanur Rahman Rhythm' ? (
+                            <strong>{author.name}</strong>
+                          ) : (
+                            author.name
                           )}
-                          <a href={author.url} target="_blank" rel="noopener noreferrer">
-                            {author.name === 'Ehsanur Rahman Rhythm' ? (
-                              <strong>{author.name}</strong>
-                            ) : (
-                              author.name
-                            )}
-                          </a>
                           {index < authors.length - 1 && <span>, </span>}
                         </span>
                       ))}
@@ -249,13 +243,11 @@ export const pageQuery = graphql`
             doi
             url
             github
-            abstract
             featured
             authors {
               name
               url
               affiliation
-              avatar
               email
             }
           }

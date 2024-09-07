@@ -46,11 +46,35 @@ const Layout = ({ children, location }) => {
     handleExternalLinks();
   }, [isLoading]);
 
+  useEffect(() => {
+    const spotlight = document.getElementById('cursor-spotlight');
+
+    const handleMouseMove = e => {
+      const x = e.clientX;
+      const y = e.clientY;
+
+      spotlight.style.background = `radial-gradient(
+        600px at ${x}px ${y}px,
+        rgba(29, 78, 216, 0.15),
+        transparent 80%
+      )`;
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
     <>
       <Head />
-
       <div id="root">
+        <div
+          id="cursor-spotlight"
+          className="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
+        ></div>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
 
