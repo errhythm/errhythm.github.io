@@ -14,9 +14,11 @@
   </a>
 </p>
 
-Initial design and development by [bchiang7](https://github.com/bchiang7). Further development and enhancements by [errhythm](https://github.com/errhythm).
 
 ![demo](static/og.png)
+
+
+Initial design and development by [bchiang7](https://github.com/bchiang7). Further development and enhancements by [errhythm](https://github.com/errhythm).
 
 ## 🚨 Forking this repo (please read!)
 
