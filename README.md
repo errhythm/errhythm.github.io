@@ -1,21 +1,23 @@
 # Portfolio
 
-made by [bchiang7](https://github.com/bchiang7)
+Initial design and development by [bchiang7](https://github.com/bchiang7). Further development and enhancements by [errhythm](https://github.com/errhythm).
 
 ![demo](https://github.com/dev-ahmedhany/dev-ahmedhany.github.io/raw/master/src/images/logo.png)
 ![demo](https://github.com/dev-ahmedhany/dev-ahmedhany.github.io/raw/master/static/og.png)
 
 ## 🚨 Forking this repo (please read!)
 
-Many people have contacted me asking me if they can use this code for their own website, and the answer to that question is usually **yes, with attribution**.
+Many people have contacted me asking me if they can use this code for their own website, and the answer to that question is usually **yes, with attribution**. If you are using my forked version of this repo, please give the credit to both [bchiang7](https://github.com/bchiang7) and [errhythm](https://github.com/errhythm).
 
-I value keeping my site open source, but as you all know, _**plagiarism is bad**_. It's always disheartening whenever I find that someone has copied my site without giving me credit. I spent a non-trivial amount of effort building and designing this iteration of my website, and I am proud of it! All I ask of you all is to not claim this effort as your own.
+> I value keeping my site open source, but as you all know, _**plagiarism is bad**_. It's always disheartening whenever I find that someone has copied my site without giving me credit. I spent a non-trivial amount of effort building and designing this iteration of my website, and I am proud of it! All I ask of you all is to not claim this effort as your own.
 
-Please also note that I did not build this site with the intention of it being a starter theme, so if you have questions about implementation, please refer to the [Gatsby docs](https://www.gatsbyjs.org/docs/).
+> Please also note that I did not build this site with the intention of it being a starter theme, so if you have questions about implementation, please refer to the [Gatsby docs](https://www.gatsbyjs.org/docs/).
+
+— [bchiang7](https://github.com/bchiang7)
 
 ### TL;DR
 
-Yes, you can fork this repo. Please give me proper credit by linking back to [brittanychiang.com](https://brittanychiang.com). Thanks!
+Yes, you can fork this repo. Please give me proper credit by keeping the original attribution in the footer. Thanks!
 
 ## 🛠 Installation & Set Up
 
