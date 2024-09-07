@@ -1,4 +1,15 @@
-# Portfolio
+<h1 align="center">
+  errhythm.me - v2
+</h1>
+
+<p align="center">
+  The second iteration of <a href="https://errhythm.me" target="_blank">errhythm.me</a> built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://www.netlify.com/" target="_blank">Netlify</a>
+</p>
+<p align="center">
+  <a href="https://app.netlify.com/sites/errhythm/deploys" target="_blank">
+    <img src="https://api.netlify.com/api/v1/badges/13388b91-ee2c-4479-9064-28f7edd3c7c4/deploy-status" alt="Netlify Status" />
+  </a>
+</p>
 
 Initial design and development by [bchiang7](https://github.com/bchiang7). Further development and enhancements by [errhythm](https://github.com/errhythm).
 
