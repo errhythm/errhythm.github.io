@@ -197,7 +197,7 @@ const Publications = () => {
   const publicationsToShow = showMore ? publications : firstThree;
 
   return (
-    <StyledPublicationsSection>
+    <StyledPublicationsSection id="publications">
       <header ref={revealTitle}>
         <h2 className="numbered-heading">Publications</h2>
       </header>
