@@ -1,3 +1,6 @@
+<div align="center">
+  <img alt="Logo" src="src/images/logo.png" width="100" />
+</div>
 <h1 align="center">
   errhythm.me - v2
 </h1>
@@ -13,8 +16,7 @@
 
 Initial design and development by [bchiang7](https://github.com/bchiang7). Further development and enhancements by [errhythm](https://github.com/errhythm).
 
-![demo](https://github.com/dev-ahmedhany/dev-ahmedhany.github.io/raw/master/src/images/logo.png)
-![demo](https://github.com/dev-ahmedhany/dev-ahmedhany.github.io/raw/master/static/og.png)
+![demo](static/og.png)
 
 ## 🚨 Forking this repo (please read!)
 
