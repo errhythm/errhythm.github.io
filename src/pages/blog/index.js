@@ -152,11 +152,7 @@ const blogPage = ({ location, data }) => {
       <StyledMainContainer>
         <header>
           <h1 className="big-heading">blog</h1>
-          <p className="subtitle">
-            <a href="https://www.wizardingworld.com/writing-by-jk-rowling/blog">
-              a collection of memories
-            </a>
-          </p>
+          <p className="subtitle">a collection of thoughts and ideas</p>
         </header>
 
         <StyledGrid>
@@ -164,8 +160,8 @@ const blogPage = ({ location, data }) => {
             posts.map(({ node }, i) => {
               const { frontmatter } = node;
               const { title, description, slug, date, tags } = frontmatter;
+              const prefix = '/blog/';
               const formattedDate = new Date(date).toLocaleDateString();
-
               return (
                 <StyledPost key={i}>
                   <div className="post__inner">
@@ -174,11 +170,10 @@ const blogPage = ({ location, data }) => {
                         <IconBookmark />
                       </div>
                       <h5 className="post__title">
-                        <Link to={slug}>{title}</Link>
+                        <Link to={`${prefix}${slug}`}>{title}</Link>
                       </h5>
                       <p className="post__desc">{description}</p>
                     </header>
-
                     <footer>
                       <span className="post__date">{formattedDate}</span>
                       <ul className="post__tags">
@@ -211,7 +206,10 @@ export default blogPage;
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/posts/" }, frontmatter: { draft: { ne: true } } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/posts/" }
+        frontmatter: { draft: { ne: true } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

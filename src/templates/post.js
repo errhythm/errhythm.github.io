@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { graphql, Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import styled from 'styled-components';
 import { Layout } from '@components';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import styled, { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  figure img, .gatsby-resp-image-wrapper {
+    opacity: 0.01;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+`;
 
 const StyledPostContainer = styled.main`
   max-width: 1000px;
@@ -48,14 +57,155 @@ const StyledPostContent = styled.div`
     background-color: transparent;
     padding: 0;
   }
+
+  figure {
+    margin: 2em 0;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 30px -15px var(--navy-shadow);
+      transition: var(--transition);
+
+      &[alt=''],
+      &:not([alt]) {
+        -webkit-filter: none !important;
+        filter: none !important;
+      }
+    }
+
+    &:hover {
+      img {
+        box-shadow: 0 20px 30px -15px var(--navy-shadow);
+        transform: translateY(-5px);
+      }
+    }
+
+    figcaption {
+      margin-top: 1em;
+      text-align: center;
+      color: var(--light-slate);
+      font-style: italic;
+      font-size: var(--fz-sm);
+    }
+  }
+
+  .gatsby-resp-image-wrapper {
+    margin: 2em 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+    transition: var(--transition);
+
+    &:hover {
+      box-shadow: 0 20px 30px -15px var(--navy-shadow);
+      transform: translateY(-5px);
+    }
+  }
+`;
+
+const StyledFeaturedImage = styled.div`
+  margin: 50px auto;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--green);
+    transition: var(--transition);
+    opacity: 0.1;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(20px);
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &:hover {
+    &::before {
+      top: 10px;
+      left: 10px;
+      opacity: 0.2;
+    }
+
+    img {
+      box-shadow: 0 20px 30px -15px var(--navy-shadow);
+      transform: translateY(-5px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin: 40px auto;
+  }
 `;
 
 const PostTemplate = ({ data, location }) => {
-  const { frontmatter, html } = data.markdownRemark;
-  const { title, date, tags } = frontmatter;
+  const post = data.markdownRemark;
+  const { frontmatter, html } = post;
+  const { title, date, tags, image } = frontmatter;
+  const [setElements, entries] = useIntersectionObserver({
+    threshold: 0.25,
+    rootMargin: '0px 0px -100px 0px',
+  });
+
+  const contentRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    if (contentRef.current && imageRef.current) {
+      const images = contentRef.current.querySelectorAll('figure img, .gatsby-resp-image-wrapper');
+      setElements([imageRef.current, ...images]);
+    }
+  }, [setElements]);
+
+  useEffect(() => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, [entries]);
+
+  const processedContent = html.replace(
+    /<p><img(.*?)alt="(.*?)"(.*?)><\/p>/g,
+    (match, p1, p2, p3) => {
+      if (p2.trim() !== '') {
+        return `<figure><img${p1}alt="${p2}"${p3}><figcaption>${p2}</figcaption></figure>`;
+      } else {
+        return `<figure><img${p1}alt="${p2}"${p3}></figure>`;
+      }
+    },
+  );
 
   return (
     <Layout location={location}>
+      <GlobalStyle />
       <Helmet title={title} />
 
       <StyledPostContainer>
@@ -85,7 +235,16 @@ const PostTemplate = ({ data, location }) => {
           </p>
         </StyledPostHeader>
 
-        <StyledPostContent dangerouslySetInnerHTML={{ __html: html }} />
+        {image && (
+          <StyledFeaturedImage>
+            <img src={image} alt={title} ref={imageRef} />
+          </StyledFeaturedImage>
+        )}
+
+        <StyledPostContent
+          ref={contentRef}
+          dangerouslySetInnerHTML={{ __html: processedContent }}
+        />
       </StyledPostContainer>
     </Layout>
   );
@@ -99,13 +258,14 @@ PostTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $path } }) {
+  query ($slug: String!) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
         description
         date
+        image
         slug
         tags
       }
