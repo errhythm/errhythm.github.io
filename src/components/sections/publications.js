@@ -131,6 +131,27 @@ const StyledTableContainer = styled.div`
     .link-icons {
       width: 50px;
     }
+
+    .publication-title {
+      cursor: pointer;
+    }
+
+    .publication-abstract {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+      opacity: 0;
+      margin-top: 10px;
+      font-size: var(--fz-sm);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    .publication-abstract.expanded {
+      max-height: 1000px; // Adjust this value based on your content
+      opacity: 1;
+      transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
+    }
   }
 `;
 
@@ -169,6 +190,15 @@ const Publications = () => {
   const revealTable = useRef(null);
   const revealPublications = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const [expandedAbstracts, setExpandedAbstracts] = useState([]);
+
+  const toggleAbstract = index => {
+    setExpandedAbstracts(prevState => {
+      const newState = [...prevState];
+      newState[index] = !newState[index];
+      return newState;
+    });
+  };
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -180,6 +210,12 @@ const Publications = () => {
     sr.reveal(revealTable.current, srConfig(200, 0));
     revealPublications.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 10)));
   }, []);
+
+  const handleKeyDown = (event, index) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      toggleAbstract(index);
+    }
+  };
 
   const GRID_LIMIT = 3;
   const publications = data.allMarkdownRemark.edges;
@@ -209,13 +245,25 @@ const Publications = () => {
           </thead>
           <tbody>
             {publicationsToShow.map(({ node }, i) => {
+              const html = node.html.replace(/<[^>]*>/g, '');
               const { date, title, conference, doi, url, github, authors } = node.frontmatter;
               return (
                 <tr key={i} ref={el => (revealPublications.current[i] = el)}>
                   <td className="title">
-                    <a href={url} target="_blank" rel="noopener noreferrer">
+                    <div
+                      className="publication-title"
+                      onClick={() => toggleAbstract(i)}
+                      onKeyDown={event => handleKeyDown(event, i)}
+                      role="button"
+                      tabIndex={0}
+                    >
                       {title}
-                    </a>
+                    </div>
+                    <div
+                      className={`publication-abstract ${expandedAbstracts[i] ? 'expanded' : ''}`}
+                    >
+                      <p dangerouslySetInnerHTML={{ __html: html }} />
+                    </div>
                   </td>
                   <td className="authors hide-on-mobile">
                     {authors.map((author, index) => (

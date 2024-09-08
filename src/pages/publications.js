@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
@@ -108,6 +108,25 @@ const StyledTableContainer = styled.div`
       height: 24px;
       margin-right: 10px;
     }
+
+    .publication-title {
+      cursor: pointer;
+    }
+
+    .publication-abstract {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+      margin-top: 10px;
+      font-size: var(--fz-sm);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    .publication-abstract.expanded {
+      max-height: 1000px;
+      transition: max-height 0.7s ease-in;
+    }
   }
 `;
 
@@ -117,6 +136,7 @@ const PublicationsPage = ({ location, data }) => {
   const revealTable = useRef(null);
   const revealPublications = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const [expandedAbstracts, setExpandedAbstracts] = useState([]);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -127,6 +147,20 @@ const PublicationsPage = ({ location, data }) => {
     sr.reveal(revealTable.current, srConfig(200, 0));
     revealPublications.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 10)));
   }, []);
+
+  const toggleAbstract = index => {
+    setExpandedAbstracts(prevState => {
+      const newState = [...prevState];
+      newState[index] = !newState[index];
+      return newState;
+    });
+  };
+
+  const handleKeyDown = (event, index) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      toggleAbstract(index);
+    }
+  };
 
   return (
     <Layout location={location}>
@@ -150,17 +184,25 @@ const PublicationsPage = ({ location, data }) => {
             </thead>
             <tbody>
               {publications.map(({ node }, i) => {
+                const html = node.html.replace(/<[^>]*>/g, '');
                 const { date, title, conference, doi, url, github, authors } = node.frontmatter;
                 return (
                   <tr key={i} ref={el => (revealPublications.current[i] = el)}>
                     <td className="title">
-                      <a
-                        href={url || `https://doi.org/${doi}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <div
+                        className="publication-title"
+                        onClick={() => toggleAbstract(i)}
+                        onKeyDown={event => handleKeyDown(event, i)}
+                        role="button"
+                        tabIndex={0}
                       >
                         {title}
-                      </a>
+                      </div>
+                      <div
+                        className={`publication-abstract ${expandedAbstracts[i] ? 'expanded' : ''}`}
+                      >
+                        <p dangerouslySetInnerHTML={{ __html: html }} />
+                      </div>
                     </td>
                     <td className="authors">
                       {authors.map((author, index) => (
