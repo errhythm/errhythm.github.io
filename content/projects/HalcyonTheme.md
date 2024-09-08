@@ -12,6 +12,13 @@ tech:
   - Hyper
 showInProjects: false
 featured: true
+featuredCover: 'https://assets.lummi.ai/assets/QmQ2h1MtLphdS8AN7E74F1T4RYD2k58ABdNcNp4r6D74Wg?auto=format&w=1500'
+featuredMessage: '<p>A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more.
+Available on <a href="https://marketplace.visualstudio.com/items?itemName=brittanychiang.halcyon-vscode">Visual Studio Marketplace</a>,
+<a href="https://packagecontrol.io/packages/Halcyon%20Theme">Package Control</a>,
+<a href="https://atom.io/themes/halcyon-syntax">Atom Package Manager</a>,
+and <a href="https://www.npmjs.com/package/hyper-halcyon-theme">npm</a>.</p>'
+cta: 'https://www.newline.co/courses/build-a-spotify-connected-app'
 ---
 
 A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=brittanychiang.halcyon-vscode), [Package Control](https://packagecontrol.io/packages/Halcyon%20Theme), [Atom Package Manager](https://atom.io/themes/halcyon-syntax), and [npm](https://www.npmjs.com/package/hyper-halcyon-theme).

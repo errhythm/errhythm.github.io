@@ -16,6 +16,14 @@ const StyledPublicationsSection = styled.section`
     font-size: clamp(24px, 5vw, var(--fz-heading));
   }
 
+  .archive-link {
+    font-family: var(--font-mono);
+    font-size: var(--fz-sm);
+    &:after {
+      bottom: 0.1em;
+    }
+  }
+
   .publications-grid {
     ${({ theme }) => theme.mixins.resetList};
     display: grid;
@@ -228,7 +236,7 @@ const Publications = () => {
         <h2 className="numbered-heading">Publications</h2>
       </header>
       <Link className="inline-link archive-link" to="/publications">
-        view the archive
+        view the list
       </Link>
 
       <StyledTableContainer ref={revealTable}>
