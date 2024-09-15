@@ -66,6 +66,45 @@ const StyledCredit = styled.div`
   }
 `;
 
+const TimeCapsuleLink = styled.a`
+  text-decoration: none;
+  position: relative;
+  opacity: 0.8;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &::before {
+    content: '⏳';
+    display: none;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    animation: clockRotate 2s linear infinite;
+  }
+
+  @keyframes clockRotate {
+    0% {
+      transform: translateX(-50%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(-50%) rotate(360deg);
+    }
+  }
+
+  &:hover::before {
+    display: block;
+  }
+`;
+
 const Footer = () => {
   const data = new Date();
   const year = data.getFullYear();
@@ -87,7 +126,11 @@ const Footer = () => {
       <StyledCredit tabindex="-1">
         <div>
           © {year} Ehsanur Rahman Rhythm. All rights reserved. Designed by {''}
-          <a href="https://github.com/bchiang7">Brittany Chiang</a>.
+          <a href="https://github.com/bchiang7">Brittany Chiang</a>. {' '}
+          <br />
+          <TimeCapsuleLink href="https://timecapsule.errhythm.me/" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.8em' }}>
+            Visit my old website!
+          </TimeCapsuleLink>
         </div>
       </StyledCredit>
     </StyledFooter>
