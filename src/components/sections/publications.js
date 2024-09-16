@@ -202,9 +202,9 @@ const Publications = () => {
 
   const toggleAbstract = index => {
     setExpandedAbstracts(prevState => {
-      const newState = [...prevState];
-      newState[index] = !newState[index];
-      return newState;
+      const newState = Array(publications.length).fill(false); // Create an array with all false values
+      newState[index] = !prevState[index]; // Toggle the clicked index
+      return newState; // Return the updated state
     });
   };
 

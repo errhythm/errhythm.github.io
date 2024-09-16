@@ -150,9 +150,9 @@ const PublicationsPage = ({ location, data }) => {
 
   const toggleAbstract = index => {
     setExpandedAbstracts(prevState => {
-      const newState = [...prevState];
-      newState[index] = !newState[index];
-      return newState;
+      const newState = Array(publications.length).fill(false); // Create an array with all false values
+      newState[index] = !prevState[index]; // Toggle the clicked index
+      return newState; // Return the updated state
     });
   };
 
@@ -257,6 +257,18 @@ const PublicationsPage = ({ location, data }) => {
               })}
             </tbody>
           </table>
+          <div style={{
+            margin: '40px 0',
+            padding: '20px',
+            color: 'var(--slate)',
+            textAlign: 'left',
+            fontSize: '14px',
+            lineHeight: '1.5',
+          }}>
+            <p>
+              The * (asterisk) denotes equal contribution by both authors to the research.
+            </p>
+          </div>
         </StyledTableContainer>
       </main>
     </Layout>
