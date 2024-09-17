@@ -141,7 +141,9 @@ const PublicationsPage = ({ location, data }) => {
   const [expandedAbstracts, setExpandedAbstracts] = useState([]);
 
   const sanitizeHtml = html => {
-    if (typeof html !== 'string') return '';
+    if (typeof html !== 'string') {
+      return '';
+    }
     return html.replace(/<[^>]*>/g, '');
   };
 
@@ -180,7 +182,9 @@ const PublicationsPage = ({ location, data }) => {
         <StyledTableContainer>
           {uniqueTypes.map((type, index) => (
             <React.Fragment key={index}>
-              <h3 style={{ marginBottom: '30px', marginTop: index === 0 ? '0' : '40px' }}>{type}s</h3>
+              <h3 style={{ marginBottom: '30px', marginTop: index === 0 ? '0' : '40px' }}>
+                {type}s
+              </h3>
               <table>
                 <thead>
                   <tr>
@@ -191,93 +195,94 @@ const PublicationsPage = ({ location, data }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {publications.filter(({ node }) => node.frontmatter.type === type).map(({ node }, i) => {
-                    const sanitizedHtml = sanitizeHtml(node.html);
-                    const { date, title, conference, doi, url, github, authors } = node.frontmatter;
-                    return (
-                      <tr key={i} ref={el => (revealPublications.current[i] = el)}>
-                        <td className="title">
-                          <div
-                            className="publication-title"
-                            onClick={() => toggleAbstract(i)}
-                            onKeyDown={event => handleKeyDown(event, i)}
-                            role="button"
-                            tabIndex={0}
-                          >
-                            {title}
-                          </div>
-                          <div
-                            className={`publication-abstract ${expandedAbstracts[i] ? 'expanded' : ''}`}
-                          >
-                            <p>{sanitizedHtml}</p>
-                          </div>
-                        </td>
-                        <td className="authors">
-                          {authors.map((author, index) => (
-                            <span key={index}>
-                              {author.url ? (
-                                <a href={author.url} target="_blank" rel="noopener noreferrer">
-                                  {author.name === 'Ehsanur Rahman Rhythm' ? (
-                                    <strong>{author.name}</strong>
-                                  ) : (
-                                    author.name
-                                  )}
+                  {publications
+                    .filter(({ node }) => node.frontmatter.type === type)
+                    .map(({ node }, i) => {
+                      const sanitizedHtml = sanitizeHtml(node.html);
+                      const { date, title, conference, doi, url, github, authors } =
+                        node.frontmatter;
+                      return (
+                        <tr key={i} ref={el => (revealPublications.current[i] = el)}>
+                          <td className="title">
+                            <div
+                              className="publication-title"
+                              onClick={() => toggleAbstract(i)}
+                              onKeyDown={event => handleKeyDown(event, i)}
+                              role="button"
+                              tabIndex={0}>
+                              {title}
+                            </div>
+                            <div
+                              className={`publication-abstract ${
+                                expandedAbstracts[i] ? 'expanded' : ''
+                              }`}>
+                              <p>{sanitizedHtml}</p>
+                            </div>
+                          </td>
+                          <td className="authors">
+                            {authors.map((author, index) => (
+                              <span key={index}>
+                                {author.url ? (
+                                  <a href={author.url} target="_blank" rel="noopener noreferrer">
+                                    {author.name === 'Ehsanur Rahman Rhythm' ? (
+                                      <strong>{author.name}</strong>
+                                    ) : (
+                                      author.name
+                                    )}
+                                  </a>
+                                ) : author.email ? (
+                                  <a href={`mailto:${author.email}`}>
+                                    {author.name === 'Ehsanur Rahman Rhythm' ? (
+                                      <strong>{author.name}</strong>
+                                    ) : (
+                                      author.name
+                                    )}
+                                  </a>
+                                ) : author.name === 'Ehsanur Rahman Rhythm' ? (
+                                  <strong>{author.name}</strong>
+                                ) : (
+                                  author.name
+                                )}
+                                {index < authors.length - 1 && <span>, </span>}
+                              </span>
+                            ))}
+                          </td>
+                          <td className="conference">{conference}</td>
+                          <td className="year">{new Date(date).getFullYear()}</td>
+                          <td className="links">
+                            <div>
+                              {url || doi ? (
+                                <a
+                                  href={url || `https://doi.org/${doi}`}
+                                  aria-label="External Link"
+                                  className="icon-large">
+                                  <Icon name="External" className="icon-large" />
                                 </a>
-                              ) : author.email ? (
-                                <a href={`mailto:${author.email}`}>
-                                  {author.name === 'Ehsanur Rahman Rhythm' ? (
-                                    <strong>{author.name}</strong>
-                                  ) : (
-                                    author.name
-                                  )}
+                              ) : null}
+                              {github && (
+                                <a href={github} aria-label="GitHub Link" className="icon-large">
+                                  <Icon name="GitHub" className="icon-large" />
                                 </a>
-                              ) : author.name === 'Ehsanur Rahman Rhythm' ? (
-                                <strong>{author.name}</strong>
-                              ) : (
-                                author.name
                               )}
-                              {index < authors.length - 1 && <span>, </span>}
-                            </span>
-                          ))}
-                        </td>
-                        <td className="conference">{conference}</td>
-                        <td className="year">{new Date(date).getFullYear()}</td>
-                        <td className="links">
-                          <div>
-                            {url || doi ? (
-                              <a
-                                href={url || `https://doi.org/${doi}`}
-                                aria-label="External Link"
-                                className="icon-large"
-                              >
-                                <Icon name="External" className="icon-large" />
-                              </a>
-                            ) : null}
-                            {github && (
-                              <a href={github} aria-label="GitHub Link" className="icon-large">
-                                <Icon name="GitHub" className="icon-large" />
-                              </a>
-                            )}
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
                 </tbody>
               </table>
             </React.Fragment>
           ))}
-          <div style={{
-            margin: '40px 0',
-            padding: '20px',
-            color: 'var(--slate)',
-            textAlign: 'left',
-            fontSize: '14px',
-            lineHeight: '1.5',
-          }}>
-            <p>
-              The * (asterisk) denotes equal contribution by both authors to the research.
-            </p>
+          <div
+            style={{
+              margin: '40px 0',
+              padding: '20px',
+              color: 'var(--slate)',
+              textAlign: 'left',
+              fontSize: '14px',
+              lineHeight: '1.5',
+            }}>
+            <p>The * (asterisk) denotes equal contribution by both authors to the research.</p>
           </div>
         </StyledTableContainer>
       </main>
