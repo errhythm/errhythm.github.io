@@ -33,7 +33,7 @@
   "dependencies": {
     "animejs": "^3.1.0",
     "babel-plugin-styled-components": "^2.1.4",
-    "gatsby": "^3.4.1",
+    "gatsby": "^3.15.0",
     "gatsby-plugin-google-gtag": "^4.25.0",
     "gatsby-plugin-image": "^1.4.0",
     "gatsby-plugin-manifest": "^3.4.0",
