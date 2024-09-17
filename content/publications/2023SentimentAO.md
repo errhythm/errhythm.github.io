@@ -1,6 +1,7 @@
 ---
 date: '2023-03-01'
 title: 'Sentiment Analysis of Restaurant Reviews from Bangladeshi Food Delivery Apps'
+type: 'Conference Paper'
 conference: 'ESCI'
 doi: '10.1109/ESCI56872.2023.10100214'
 url: ''

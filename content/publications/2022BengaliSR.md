@@ -1,6 +1,7 @@
 ---
 date: '2022-09-14'
 title: 'Bengali Speech Recognition: An Overview'
+type: 'Conference Paper'
 conference: 'IICAIET'
 doi: '10.1109/IICAIET55139.2022.9936819'
 url: ''

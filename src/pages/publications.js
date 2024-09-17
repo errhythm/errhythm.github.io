@@ -132,6 +132,8 @@ const StyledTableContainer = styled.div`
 
 const PublicationsPage = ({ location, data }) => {
   const publications = data.allMarkdownRemark.edges;
+  const publicationsType = publications.map(({ node }) => node.frontmatter.type);
+  const uniqueTypes = [...new Set(publicationsType)];
   const revealTitle = useRef(null);
   const revealTable = useRef(null);
   const revealPublications = useRef([]);
@@ -150,9 +152,9 @@ const PublicationsPage = ({ location, data }) => {
 
   const toggleAbstract = index => {
     setExpandedAbstracts(prevState => {
-      const newState = Array(publications.length).fill(false); // Create an array with all false values
-      newState[index] = !prevState[index]; // Toggle the clicked index
-      return newState; // Return the updated state
+      const newState = Array(publications.length).fill(false);
+      newState[index] = !prevState[index];
+      return newState;
     });
   };
 
@@ -165,98 +167,101 @@ const PublicationsPage = ({ location, data }) => {
   return (
     <Layout location={location}>
       <Helmet title="Publications" />
-
       <main>
         <header ref={revealTitle}>
           <h1 className="big-heading">Publications</h1>
           <p className="subtitle">A big list of researches I’ve worked on</p>
         </header>
-
-        <StyledTableContainer ref={revealTable}>
-          <table>
-            <thead>
-              <tr>
-                <th style={{ width: '500px' }}>Title</th>
-                <th style={{ width: '400px' }}>Authors</th>
-                <th>Conference</th>
-                <th>Year</th>
-              </tr>
-            </thead>
-            <tbody>
-              {publications.map(({ node }, i) => {
-                const html = node.html.replace(/<[^>]*>/g, '');
-                const { date, title, conference, doi, url, github, authors } = node.frontmatter;
-                return (
-                  <tr key={i} ref={el => (revealPublications.current[i] = el)}>
-                    <td className="title">
-                      <div
-                        className="publication-title"
-                        onClick={() => toggleAbstract(i)}
-                        onKeyDown={event => handleKeyDown(event, i)}
-                        role="button"
-                        tabIndex={0}
-                      >
-                        {title}
-                      </div>
-                      <div
-                        className={`publication-abstract ${expandedAbstracts[i] ? 'expanded' : ''}`}
-                      >
-                        <p dangerouslySetInnerHTML={{ __html: html }} />
-                      </div>
-                    </td>
-                    <td className="authors">
-                      {authors.map((author, index) => (
-                        <span key={index}>
-                          {author.url ? (
-                            <a href={author.url} target="_blank" rel="noopener noreferrer">
-                              {author.name === 'Ehsanur Rahman Rhythm' ? (
-                                <strong>{author.name}</strong>
-                              ) : (
-                                author.name
-                              )}
-                            </a>
-                          ) : author.email ? (
-                            <a href={`mailto:${author.email}`}>
-                              {author.name === 'Ehsanur Rahman Rhythm' ? (
-                                <strong>{author.name}</strong>
-                              ) : (
-                                author.name
-                              )}
-                            </a>
-                          ) : author.name === 'Ehsanur Rahman Rhythm' ? (
-                            <strong>{author.name}</strong>
-                          ) : (
-                            author.name
-                          )}
-                          {index < authors.length - 1 && <span>, </span>}
-                        </span>
-                      ))}
-                    </td>
-                    <td className="conference">{conference}</td>
-                    <td className="year">{new Date(date).getFullYear()}</td>
-                    <td className="links">
-                      <div>
-                        {url || doi ? (
-                          <a
-                            href={url || `https://doi.org/${doi}`}
-                            aria-label="External Link"
-                            className="icon-large"
-                          >
-                            <Icon name="External" className="icon-large" />
-                          </a>
-                        ) : null}
-                        {github && (
-                          <a href={github} aria-label="GitHub Link" className="icon-large">
-                            <Icon name="GitHub" className="icon-large" />
-                          </a>
-                        )}
-                      </div>
-                    </td>
+        <StyledTableContainer>
+          {uniqueTypes.map((type, index) => (
+            <React.Fragment key={index}>
+              <h3 style={{ marginBottom: '30px', marginTop: index === 0 ? '0' : '40px' }}>{type}s</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th style={{ width: '500px' }}>Title</th>
+                    <th style={{ width: '400px' }}>Authors</th>
+                    <th>Venue</th>
+                    <th>Year</th>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                </thead>
+                <tbody>
+                  {publications.filter(({ node }) => node.frontmatter.type === type).map(({ node }, i) => {
+                    const html = node.html.replace(/<[^>]*>/g, '');
+                    const { date, title, conference, doi, url, github, authors } = node.frontmatter;
+                    return (
+                      <tr key={i} ref={el => (revealPublications.current[i] = el)}>
+                        <td className="title">
+                          <div
+                            className="publication-title"
+                            onClick={() => toggleAbstract(i)}
+                            onKeyDown={event => handleKeyDown(event, i)}
+                            role="button"
+                            tabIndex={0}
+                          >
+                            {title}
+                          </div>
+                          <div
+                            className={`publication-abstract ${expandedAbstracts[i] ? 'expanded' : ''}`}
+                          >
+                            <p dangerouslySetInnerHTML={{ __html: html }} />
+                          </div>
+                        </td>
+                        <td className="authors">
+                          {authors.map((author, index) => (
+                            <span key={index}>
+                              {author.url ? (
+                                <a href={author.url} target="_blank" rel="noopener noreferrer">
+                                  {author.name === 'Ehsanur Rahman Rhythm' ? (
+                                    <strong>{author.name}</strong>
+                                  ) : (
+                                    author.name
+                                  )}
+                                </a>
+                              ) : author.email ? (
+                                <a href={`mailto:${author.email}`}>
+                                  {author.name === 'Ehsanur Rahman Rhythm' ? (
+                                    <strong>{author.name}</strong>
+                                  ) : (
+                                    author.name
+                                  )}
+                                </a>
+                              ) : author.name === 'Ehsanur Rahman Rhythm' ? (
+                                <strong>{author.name}</strong>
+                              ) : (
+                                author.name
+                              )}
+                              {index < authors.length - 1 && <span>, </span>}
+                            </span>
+                          ))}
+                        </td>
+                        <td className="conference">{conference}</td>
+                        <td className="year">{new Date(date).getFullYear()}</td>
+                        <td className="links">
+                          <div>
+                            {url || doi ? (
+                              <a
+                                href={url || `https://doi.org/${doi}`}
+                                aria-label="External Link"
+                                className="icon-large"
+                              >
+                                <Icon name="External" className="icon-large" />
+                              </a>
+                            ) : null}
+                            {github && (
+                              <a href={github} aria-label="GitHub Link" className="icon-large">
+                                <Icon name="GitHub" className="icon-large" />
+                              </a>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </React.Fragment>
+          ))}
           <div style={{
             margin: '40px 0',
             padding: '20px',
@@ -298,6 +303,7 @@ export const pageQuery = graphql`
             url
             github
             featured
+            type
             authors {
               name
               url

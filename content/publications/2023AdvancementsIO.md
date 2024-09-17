@@ -1,6 +1,7 @@
 ---
 date: '2023-10-11'
 title: 'Advancements in Optical Character Recognition for Bangla Scripts'
+type: 'Conference Paper'
 conference: 'ASYU'
 doi: '10.1109/ASYU58738.2023.10296550'
 url: ''

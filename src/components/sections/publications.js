@@ -200,6 +200,12 @@ const Publications = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
   const [expandedAbstracts, setExpandedAbstracts] = useState([]);
 
+  const GRID_LIMIT = 3;
+  const publications = data.allMarkdownRemark.edges;
+  const firstThree = publications.slice(0, GRID_LIMIT);
+  const publicationsToShow = showMore ? publications : firstThree;
+
+
   const toggleAbstract = index => {
     setExpandedAbstracts(prevState => {
       const newState = Array(publications.length).fill(false); // Create an array with all false values
@@ -225,11 +231,6 @@ const Publications = () => {
     }
   };
 
-  const GRID_LIMIT = 3;
-  const publications = data.allMarkdownRemark.edges;
-  const firstThree = publications.slice(0, GRID_LIMIT);
-  const publicationsToShow = showMore ? publications : firstThree;
-
   return (
     <StyledPublicationsSection id="publications">
       <header ref={revealTitle}>
@@ -247,7 +248,7 @@ const Publications = () => {
               <th style={{ width: '350px' }} className="hide-on-mobile">
                 Authors
               </th>
-              <th>Conference</th>
+              <th>Venue</th>
               <th>Year</th>
             </tr>
           </thead>

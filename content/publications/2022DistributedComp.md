@@ -1,7 +1,8 @@
 ---
 date: '2022-12-17'
 title: 'Distributed Computing for Big Data Analytics: Challenges and Opportunities'
-conference: 'ResearchGate Preprint'
+type: 'Preprint'
+conference: 'ResearchGate'
 doi: '10.13140/RG.2.2.12511.53927/1'
 url: ''
 featured: false

@@ -125,7 +125,7 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['PHP', 'Laravel', 'JavaScript (ES6+)', 'React', 'Node.js', 'WordPress'];
+  const skills = ['React.js', 'Express.js', 'Astro.js', 'Vanilla JavaScript', 'PHP', 'Laravel', 'WordPress'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -143,14 +143,14 @@ const About = () => {
             </p>
 
             <p>
-            Currently, I’m focused on enhancing digital experiences and delivering innovative solutions at{' '}<a href="https://www.rhystart/" target="_blank" rel="noreferrer">RhyStart Technologies</a>. My main goal is to build accessible, human-centered products that meet and exceed user expectations.
+            Currently, I'm focused on enhancing digital experiences and delivering innovative solutions at{' '}<a href="https://www.rhystart/" target="_blank" rel="noreferrer">RhyStart Technologies</a>. My main goal is to build accessible, human-centered products that meet and exceed user expectations.
             </p>
 
             <p>
             In addition to my work in web development, I have also published research in the fields of natural language processing (NLP) and data science. These {' '}<a href='https://orcid.org/0000-0002-4641-508X' target="_blank" rel="noreferrer">publications</a> reflect my commitment to advancing technology and contributing to the academic community.
             </p>
 
-            <p>Here are a few technologies I’ve been working with recently:</p>
+            <p>Here are a few technologies I've been working with recently:</p>
           </div>
 
           <ul className="skills-list">
