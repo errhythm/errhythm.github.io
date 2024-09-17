@@ -141,8 +141,8 @@ const PublicationsPage = ({ location, data }) => {
   const [expandedAbstracts, setExpandedAbstracts] = useState([]);
 
   const sanitizeHtml = html => {
-    const doc = new DOMParser().parseFromString(html, 'text/html');
-    return doc.body.textContent || '';
+    if (typeof html !== 'string') return '';
+    return html.replace(/<[^>]*>/g, '');
   };
 
   useEffect(() => {
