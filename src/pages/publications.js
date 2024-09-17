@@ -140,9 +140,9 @@ const PublicationsPage = ({ location, data }) => {
   const prefersReducedMotion = usePrefersReducedMotion();
   const [expandedAbstracts, setExpandedAbstracts] = useState([]);
 
-  const sanitizeHtml = (html) => {
+  const sanitizeHtml = html => {
     const doc = new DOMParser().parseFromString(html, 'text/html');
-    return doc.body.textContent || "";
+    return doc.body.textContent || '';
   };
 
   useEffect(() => {
