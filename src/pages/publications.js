@@ -140,6 +140,11 @@ const PublicationsPage = ({ location, data }) => {
   const prefersReducedMotion = usePrefersReducedMotion();
   const [expandedAbstracts, setExpandedAbstracts] = useState([]);
 
+  const sanitizeHtml = (html) => {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || "";
+  };
+
   useEffect(() => {
     if (prefersReducedMotion) {
       return;
@@ -187,7 +192,7 @@ const PublicationsPage = ({ location, data }) => {
                 </thead>
                 <tbody>
                   {publications.filter(({ node }) => node.frontmatter.type === type).map(({ node }, i) => {
-                    const html = node.html.replace(/<[^>]*>/g, '');
+                    const sanitizedHtml = sanitizeHtml(node.html);
                     const { date, title, conference, doi, url, github, authors } = node.frontmatter;
                     return (
                       <tr key={i} ref={el => (revealPublications.current[i] = el)}>
@@ -204,7 +209,7 @@ const PublicationsPage = ({ location, data }) => {
                           <div
                             className={`publication-abstract ${expandedAbstracts[i] ? 'expanded' : ''}`}
                           >
-                            <p dangerouslySetInnerHTML={{ __html: html }} />
+                            <p>{sanitizedHtml}</p>
                           </div>
                         </td>
                         <td className="authors">
