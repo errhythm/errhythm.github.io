@@ -125,7 +125,15 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['React.js', 'Express.js', 'Astro.js', 'Vanilla JavaScript', 'PHP', 'Laravel', 'WordPress'];
+  const skills = [
+    'React.js',
+    'Express.js',
+    'Astro.js',
+    'Vanilla JavaScript',
+    'PHP',
+    'Laravel',
+    'WordPress',
+  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -135,19 +143,36 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-            Hello! My name is Ehsanur Rahman Rhythm, and I enjoy creating things that live on the internet. My journey in web development started during my time at Brac University, where I developed a passion for building user-friendly and dynamic web applications.
+              Hello! My name is Ehsanur Rahman Rhythm, and I enjoy creating things that live on the
+              internet. My journey in web development started during my time at Brac University,
+              where I developed a passion for building user-friendly and dynamic web applications.
             </p>
 
             <p>
-              Fast-forward to today, I have over four years of experience working with various technologies, including PHP, Laravel, and WordPress. I’ve had the privilege of working on a range of projects, from developing a digital database management system for the{' '}<a href="https://mfacademy.gov.bd/" target="_blank" rel="noreferrer">Marine Fisheries Academy</a> to creating high-traffic educational websites and news portals.
+              Fast-forward to today, I have over four years of experience working with various
+              technologies, including PHP, Laravel, and WordPress. I’ve had the privilege of working
+              on a range of projects, from developing a digital database management system for the{' '}
+              <a href="https://mfacademy.gov.bd/" target="_blank" rel="noreferrer">
+                Marine Fisheries Academy
+              </a>{' '}
+              to creating high-traffic educational websites and news portals.
             </p>
 
             <p>
-            Currently, I'm focused on enhancing digital experiences and delivering innovative solutions at{' '}<a href="https://www.rhystart/" target="_blank" rel="noreferrer">RhyStart Technologies</a>. My main goal is to build accessible, human-centered products that meet and exceed user expectations.
+              Currently, I'm focused on enhancing digital experiences and delivering innovative
+              solutions at{' '}
+              <a href="https://www.rhystart/" target="_blank" rel="noreferrer">
+                RhyStart Technologies
+              </a>
+              . My main goal is to build accessible, human-centered products that meet and exceed
+              user expectations.
             </p>
 
             <p>
-            In addition to my work in web development, I have also published research in the fields of natural language processing (NLP) and data science. These {' '}<a href='https://orcid.org/0000-0002-4641-508X' target="_blank" rel="noreferrer">publications</a> reflect my commitment to advancing technology and contributing to the academic community.
+              In addition to my work in web development, I have also published research in the
+              fields of natural language processing (NLP) and data science. These{' '}
+              <a href="#publications">publications</a> reflect my commitment to advancing technology
+              and contributing to the academic community.
             </p>
 
             <p>Here are a few technologies I've been working with recently:</p>
