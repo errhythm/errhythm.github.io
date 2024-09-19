@@ -147,7 +147,9 @@ const StyledTableContainer = styled.div`
     .publication-abstract {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+      transition:
+        max-height 0.3s ease-out,
+        opacity 0.3s ease-out;
       opacity: 0;
       margin-top: 10px;
       font-size: var(--fz-sm);
@@ -158,7 +160,9 @@ const StyledTableContainer = styled.div`
     .publication-abstract.expanded {
       max-height: 1000px; // Adjust this value based on your content
       opacity: 1;
-      transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
+      transition:
+        max-height 0.5s ease-in,
+        opacity 0.5s ease-in;
     }
   }
 `;
@@ -167,8 +171,11 @@ const Publications = () => {
   const data = useStaticQuery(graphql`
     {
       allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/publications/" }, frontmatter: { featured: { eq: true } } }
-        sort: { fields: [frontmatter___date], order: DESC }
+        filter: {
+          fileAbsolutePath: { regex: "/content/publications/" }
+          frontmatter: { featured: { eq: true } }
+        }
+        sort: { frontmatter: { date: DESC } }
       ) {
         edges {
           node {
@@ -204,7 +211,6 @@ const Publications = () => {
   const publications = data.allMarkdownRemark.edges;
   const firstThree = publications.slice(0, GRID_LIMIT);
   const publicationsToShow = showMore ? publications : firstThree;
-
 
   const toggleAbstract = index => {
     setExpandedAbstracts(prevState => {
@@ -264,13 +270,11 @@ const Publications = () => {
                       onClick={() => toggleAbstract(i)}
                       onKeyDown={event => handleKeyDown(event, i)}
                       role="button"
-                      tabIndex={0}
-                    >
+                      tabIndex={0}>
                       {title}
                     </div>
                     <div
-                      className={`publication-abstract ${expandedAbstracts[i] ? 'expanded' : ''}`}
-                    >
+                      className={`publication-abstract ${expandedAbstracts[i] ? 'expanded' : ''}`}>
                       <p dangerouslySetInnerHTML={{ __html: html }} />
                     </div>
                   </td>
@@ -305,8 +309,7 @@ const Publications = () => {
                             aria-label="External Link"
                             style={{ marginRight: '10px' }}
                             target="_blank"
-                            rel="noopener noreferrer"
-                          >
+                            rel="noopener noreferrer">
                             <Icon name="External" />
                           </a>
                         ))}
@@ -315,8 +318,7 @@ const Publications = () => {
                           href={github}
                           aria-label="GitHub Link"
                           target="_blank"
-                          rel="noopener noreferrer"
-                        >
+                          rel="noopener noreferrer">
                           <Icon name="GitHub" />
                         </a>
                       )}

@@ -311,7 +311,7 @@ const Featured = () => {
           fileAbsolutePath: { regex: "/content/projects/" }
           frontmatter: { featured: { eq: true } }
         }
-        sort: { fields: [frontmatter___date], order: ASC }
+        sort: { frontmatter: { date: ASC } }
       ) {
         edges {
           node {
