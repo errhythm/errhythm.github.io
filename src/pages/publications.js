@@ -195,7 +195,23 @@ const StyledCardContainer = styled.div`
 const PublicationsPage = ({ location, data }) => {
   const publications = data.allMarkdownRemark.edges;
   const publicationsType = publications.map(({ node }) => node.frontmatter.type);
-  const uniqueTypes = [...new Set(publicationsType)];
+
+  const publicationTypeOrder = ['Thesis', 'Journal', 'Conference Paper', 'Preprint'];
+
+  const sortPublicationTypes = types =>
+    types.sort((a, b) => {
+      const indexA = publicationTypeOrder.indexOf(a);
+      const indexB = publicationTypeOrder.indexOf(b);
+      if (indexA === -1) {
+        return 1;
+      }
+      if (indexB === -1) {
+        return -1;
+      }
+      return indexA - indexB;
+    });
+
+  const uniqueTypes = sortPublicationTypes([...new Set(publicationsType)]);
   const revealTitle = useRef(null);
   const revealTable = useRef(null);
   const revealPublications = useRef([]);
