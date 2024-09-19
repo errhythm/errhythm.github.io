@@ -294,7 +294,7 @@ const Publications = () => {
   const [expandedAbstracts, setExpandedAbstracts] = useState([]);
   const isMobile = useMediaQuery('(max-width: 768px)');
 
-  const GRID_LIMIT = 3;
+  const GRID_LIMIT = 4;
   const publications = data.allMarkdownRemark.edges;
   const firstThree = publications.slice(0, GRID_LIMIT);
   const publicationsToShow = showMore ? publications : firstThree;

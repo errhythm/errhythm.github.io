@@ -169,7 +169,7 @@ const Education = () => {
     query {
       education: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/content/education/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
       ) {
         edges {
           node {
@@ -261,8 +261,7 @@ const Education = () => {
                   role="tab"
                   tabIndex={activeTabId === i ? '0' : '-1'}
                   aria-selected={activeTabId === i ? true : false}
-                  aria-controls={`panel-${i}`}
-                >
+                  aria-controls={`panel-${i}`}>
                   <span>{degree}</span>
                 </StyledTabButton>
               );
@@ -284,8 +283,7 @@ const Education = () => {
                     tabIndex={activeTabId === i ? '0' : '-1'}
                     aria-labelledby={`tab-${i}`}
                     aria-hidden={activeTabId !== i}
-                    hidden={activeTabId !== i}
-                  >
+                    hidden={activeTabId !== i}>
                     <h3>
                       <span>{title}</span>
                       <p className="company">
