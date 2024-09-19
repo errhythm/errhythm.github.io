@@ -6,7 +6,7 @@ import sr from '@utils/sr';
 import { Icon } from '@components/icons';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { usePrefersReducedMotion, useMediaQuery } from '@hooks';
-import DOMPurify from 'dompurify';
+import DOMPurify from 'isomorphic-dompurify';
 
 const StyledPublicationsSection = styled.section`
   display: flex;
@@ -302,9 +302,9 @@ const Publications = () => {
 
   const toggleAbstract = index => {
     setExpandedAbstracts(prevState => {
-      const newState = Array(publications.length).fill(false); // Create an array with all false values
-      newState[index] = !prevState[index]; // Toggle the clicked index
-      return newState; // Return the updated state
+      const newState = Array(publications.length).fill(false);
+      newState[index] = !prevState[index];
+      return newState;
     });
   };
 

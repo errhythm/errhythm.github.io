@@ -8,7 +8,7 @@ import sr from '@utils/sr';
 import { Layout } from '@components';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion, useMediaQuery } from '@hooks';
-import DOMPurify from 'dompurify';
+import DOMPurify from 'isomorphic-dompurify';
 
 const StyledTableContainer = styled.div`
   margin: 100px -20px;

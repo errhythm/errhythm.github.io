@@ -33,7 +33,6 @@
   "dependencies": {
     "animejs": "^3.2.2",
     "babel-plugin-styled-components": "^2.1.4",
-    "dompurify": "^3.1.6",
     "gatsby": "^5.13.7",
     "gatsby-plugin-google-gtag": "^5.13.1",
     "gatsby-plugin-image": "^3.13.1",
@@ -51,6 +50,7 @@
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-remark": "^6.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
+    "isomorphic-dompurify": "^2.15.0",
     "lodash": "^4.17.21",
     "prismjs": "^1.29.0",
     "prop-types": "^15.8.1",
