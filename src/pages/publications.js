@@ -152,6 +152,7 @@ const StyledCardContainer = styled.div`
     font-weight: 600;
     color: var(--lightest-slate);
     margin-bottom: 10px;
+    cursor: pointer;
   }
 
   .card-authors {
@@ -173,6 +174,22 @@ const StyledCardContainer = styled.div`
     height: 24px;
     margin-right: 10px;
   }
+
+  .card-abstract {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    margin-top: 10px;
+    font-size: var(--fz-sm);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .card-abstract.expanded {
+    max-height: 1000px;
+    transition: max-height 0.7s ease-in;
+    padding-bottom: 5%;
+  }
 `;
 
 const PublicationsPage = ({ location, data }) => {
@@ -183,7 +200,7 @@ const PublicationsPage = ({ location, data }) => {
   const revealTable = useRef(null);
   const revealPublications = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
-  const [expandedAbstracts, setExpandedAbstracts] = useState([]);
+  const [expandedAbstractIndex, setExpandedAbstractIndex] = useState(null);
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   const sanitizeHtml = html => {
@@ -204,11 +221,7 @@ const PublicationsPage = ({ location, data }) => {
   }, []);
 
   const toggleAbstract = index => {
-    setExpandedAbstracts(prevState => {
-      const newState = Array(publications.length).fill(false);
-      newState[index] = !prevState[index];
-      return newState;
-    });
+    setExpandedAbstractIndex(prevIndex => (prevIndex === index ? null : index));
   };
 
   const handleKeyDown = (event, index) => {
@@ -260,7 +273,7 @@ const PublicationsPage = ({ location, data }) => {
                             </div>
                             <div
                               className={`publication-abstract ${
-                                expandedAbstracts[i] ? 'expanded' : ''
+                                expandedAbstractIndex === i ? 'expanded' : ''
                               }`}>
                               <p>{sanitizedHtml}</p>
                             </div>
@@ -324,9 +337,21 @@ const PublicationsPage = ({ location, data }) => {
                     .map(({ node }, i) => {
                       const { date, title, conference, doi, url, github, authors } =
                         node.frontmatter;
+                      const sanitizedHtml = sanitizeHtml(node.html);
                       return (
                         <div key={i} className="publication-card">
-                          <div className="card-title">{title}</div>
+                          <div
+                            className="card-title"
+                            onClick={() => toggleAbstract(i)}
+                            onKeyDown={event => handleKeyDown(event, i)}
+                            role="button"
+                            tabIndex={0}>
+                            {title}
+                          </div>
+                          <div
+                            className={`card-abstract ${expandedAbstractIndex === i ? 'expanded' : ''}`}>
+                            <p>{sanitizedHtml}</p>
+                          </div>
                           <div className="card-authors">
                             {authors.map((author, index) => (
                               <span key={index}>
