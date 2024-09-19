@@ -126,9 +126,13 @@ const Footer = () => {
       <StyledCredit tabindex="-1">
         <div>
           © {year} Ehsanur Rahman Rhythm. All rights reserved. Designed by {''}
-          <a href="https://github.com/bchiang7">Brittany Chiang</a>. {' '}
-          <br />
-          <TimeCapsuleLink href="https://timecapsule.errhythm.me/" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.8em' }}>
+          <a href="https://github.com/bchiang7">Brittany Chiang</a>, enhanced by {''}
+          <a href="https://github.com/errhythm">me</a>. <br />
+          <TimeCapsuleLink
+            href="https://timecapsule.errhythm.me/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontSize: '0.8em' }}>
             Visit my old website!
           </TimeCapsuleLink>
         </div>

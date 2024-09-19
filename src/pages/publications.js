@@ -7,13 +7,16 @@ import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { Layout } from '@components';
 import { Icon } from '@components/icons';
-import { usePrefersReducedMotion } from '@hooks';
+import { usePrefersReducedMotion, useMediaQuery } from '@hooks';
 
 const StyledTableContainer = styled.div`
   margin: 100px -20px;
 
   @media (max-width: 768px) {
     margin: 50px -10px;
+    table {
+      display: none;
+    }
   }
 
   table {
@@ -130,6 +133,48 @@ const StyledTableContainer = styled.div`
   }
 `;
 
+const StyledCardContainer = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+
+  .publication-card {
+    background-color: var(--light-navy);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-size: var(--fz-lg);
+    font-weight: 600;
+    color: var(--lightest-slate);
+    margin-bottom: 10px;
+  }
+
+  .card-authors {
+    font-size: var(--fz-md);
+    margin-bottom: 10px;
+  }
+
+  .card-details {
+    font-size: var(--fz-sm);
+    color: var(--slate);
+  }
+
+  .card-links {
+    margin-top: 10px;
+  }
+
+  .icon-large {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+`;
+
 const PublicationsPage = ({ location, data }) => {
   const publications = data.allMarkdownRemark.edges;
   const publicationsType = publications.map(({ node }) => node.frontmatter.type);
@@ -139,6 +184,7 @@ const PublicationsPage = ({ location, data }) => {
   const revealPublications = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
   const [expandedAbstracts, setExpandedAbstracts] = useState([]);
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const sanitizeHtml = html => {
     if (typeof html !== 'string') {
@@ -177,7 +223,7 @@ const PublicationsPage = ({ location, data }) => {
       <main>
         <header ref={revealTitle}>
           <h1 className="big-heading">Publications</h1>
-          <p className="subtitle">A big list of researches I’ve worked on</p>
+          <p className="subtitle">A big list of researches I've worked on</p>
         </header>
         <StyledTableContainer>
           {uniqueTypes.map((type, index) => (
@@ -271,6 +317,68 @@ const PublicationsPage = ({ location, data }) => {
                     })}
                 </tbody>
               </table>
+              {isMobile && (
+                <StyledCardContainer>
+                  {publications
+                    .filter(({ node }) => node.frontmatter.type === type)
+                    .map(({ node }, i) => {
+                      const { date, title, conference, doi, url, github, authors } =
+                        node.frontmatter;
+                      return (
+                        <div key={i} className="publication-card">
+                          <div className="card-title">{title}</div>
+                          <div className="card-authors">
+                            {authors.map((author, index) => (
+                              <span key={index}>
+                                {author.url ? (
+                                  <a href={author.url} target="_blank" rel="noopener noreferrer">
+                                    {author.name === 'Ehsanur Rahman Rhythm' ? (
+                                      <strong>{author.name}</strong>
+                                    ) : (
+                                      author.name
+                                    )}
+                                  </a>
+                                ) : author.email ? (
+                                  <a href={`mailto:${author.email}`}>
+                                    {author.name === 'Ehsanur Rahman Rhythm' ? (
+                                      <strong>{author.name}</strong>
+                                    ) : (
+                                      author.name
+                                    )}
+                                  </a>
+                                ) : author.name === 'Ehsanur Rahman Rhythm' ? (
+                                  <strong>{author.name}</strong>
+                                ) : (
+                                  author.name
+                                )}
+                                {index < authors.length - 1 && <span>, </span>}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="card-details">
+                            <div>{conference}</div>
+                            <div>{new Date(date).getFullYear()}</div>
+                          </div>
+                          <div className="card-links">
+                            {url || doi ? (
+                              <a
+                                href={url || `https://doi.org/${doi}`}
+                                aria-label="External Link"
+                                className="icon-large">
+                                <Icon name="External" />
+                              </a>
+                            ) : null}
+                            {github && (
+                              <a href={github} aria-label="GitHub Link" className="icon-large">
+                                <Icon name="GitHub" />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                </StyledCardContainer>
+              )}
             </React.Fragment>
           ))}
           <div
