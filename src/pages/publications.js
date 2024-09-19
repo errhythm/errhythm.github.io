@@ -8,6 +8,7 @@ import sr from '@utils/sr';
 import { Layout } from '@components';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion, useMediaQuery } from '@hooks';
+import DOMPurify from 'isomorphic-dompurify';
 
 const StyledTableContainer = styled.div`
   margin: 100px -20px;
@@ -223,7 +224,7 @@ const PublicationsPage = ({ location, data }) => {
     if (typeof html !== 'string') {
       return '';
     }
-    return html.replace(/<[^>]*>/g, '');
+    return DOMPurify.sanitize(html, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
   };
 
   useEffect(() => {
