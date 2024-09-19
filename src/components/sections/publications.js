@@ -6,6 +6,7 @@ import sr from '@utils/sr';
 import { Icon } from '@components/icons';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { usePrefersReducedMotion, useMediaQuery } from '@hooks';
+import DOMPurify from 'dompurify';
 
 const StyledPublicationsSection = styled.section`
   display: flex;
@@ -348,7 +349,10 @@ const Publications = () => {
             </thead>
             <tbody>
               {publicationsToShow.map(({ node }, i) => {
-                const html = node.html.replace(/<[^>]*>/g, '');
+                const sanitizedHtml = DOMPurify.sanitize(node.html, {
+                  ALLOWED_TAGS: [],
+                  ALLOWED_ATTR: [],
+                });
                 const { date, title, conference, doi, url, github, authors } = node.frontmatter;
                 return (
                   <tr key={i} ref={el => (revealPublications.current[i] = el)}>
@@ -363,7 +367,7 @@ const Publications = () => {
                       </div>
                       <div
                         className={`publication-abstract ${expandedAbstracts[i] ? 'expanded' : ''}`}>
-                        <p dangerouslySetInnerHTML={{ __html: html }} />
+                        <p dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
                       </div>
                     </td>
                     <td className="authors hide-on-mobile">
@@ -423,7 +427,10 @@ const Publications = () => {
       {isMobile && (
         <StyledCardContainer ref={revealTable}>
           {publicationsToShow.map(({ node }, i) => {
-            const html = node.html.replace(/<[^>]*>/g, '');
+            const sanitizedHtml = DOMPurify.sanitize(node.html, {
+              ALLOWED_TAGS: [],
+              ALLOWED_ATTR: [],
+            });
             const { date, title, conference, doi, url, github, authors } = node.frontmatter;
             return (
               <div
@@ -439,7 +446,7 @@ const Publications = () => {
                   {title}
                 </div>
                 <div className={`card-abstract ${expandedAbstracts[i] ? 'expanded' : ''}`}>
-                  <p dangerouslySetInnerHTML={{ __html: html }} />
+                  <p dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
                 </div>
                 <div className="card-authors">
                   {authors.map((author, index) => (
