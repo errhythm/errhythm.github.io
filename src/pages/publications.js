@@ -242,7 +242,7 @@ const PublicationsPage = ({ location, data }) => {
           {uniqueTypes.map((type, index) => (
             <React.Fragment key={index}>
               <h3 style={{ marginBottom: '30px', marginTop: index === 0 ? '0' : '40px' }}>
-                {type}s
+                {type === 'Thesis' ? 'Theses' : `${type}s`}
               </h3>
               <table>
                 <thead>
