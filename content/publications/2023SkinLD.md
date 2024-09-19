@@ -1,32 +1,30 @@
 ---
 date: '2023-12-13'
-title: 'Genre Classification: A Machine Learning Based Comparative Study of Classical Bengali Literature'
+title: 'Skin Lesion Detection and Classification Using Machine Learning: A Comprehensive Approach for Accurate Diagnosis and Treatment'
 type: 'Conference Paper'
 conference: 'ICCIT'
-doi: '10.1109/ICCIT60459.2023.10441603'
+doi: '10.1109/ICCIT60459.2023.10441420'
 url: ''
 featured: false
 authors:
-  - name: 'Asadullah Al Galib'
+  - name: 'H M Layes Delower'
     affiliation: 'Brac University'
-  - name: 'Maisha Mostofa Prima'
+  - name: 'Tasin Mohammad'
     affiliation: 'Brac University'
-  - name: 'Satabdi Rani Debi'
+  - name: 'Shifath Jahan Prity'
     affiliation: 'Brac University'
-  - name: 'MD Muntasir Mahadi'
+  - name: 'Maliha Binta Islam'
     affiliation: 'Brac University'
-  - name: 'Nayema Ahmed'
+  - name: 'Mohammod Tahseen Mansoor'
     affiliation: 'Brac University'
   - name: 'Ehsanur Rahman Rhythm'
     url: 'https://errhythm.me'
     affiliation: 'Brac University'
     email: 'errhythm.me@gmail.com'
-  - name: 'Adib Muhammad Amit'
-    affiliation: 'Brac University'
   - name: 'Annajiat Alim Rasel'
     url: 'http://annajiat.googlepages.com'
     affiliation: 'Brac University'
     email: 'annajiat@gmail.com'
 ---
 
-Bengali literature, specifically classical Bengali literature has been a source of inspiration, a spark for paradigm-shifting revolutions, and the sole sustaining source of cultural thirst for hundreds of millions of people over many generations. Unfortunately, very few attempts have been made to analyze this never-ending collection of literary works from the luminary figures of Bengali literature. The availability of high-quality research-ready datasets comprising all the authenticated literary works has been a key obstacle in conducting NLP research, utilizing the most recent advancements in deep learning and large language models. Identifying the genre of a given text snippet is a key step in analyzing a vast collection of works comprising different styles, themes, and motivations from classical authors. From classifying previously unexplored archival documents to identifying and suggesting similar literary works for modern recommender engines, genre classification opens the door for many downstream and specialized use cases. In this project, we initiate an ambitious goal of compiling a comprehensive dataset of literary works from classical authors and eventually extending the collection to contemporary writers as well. We explore both classical methods such as Naive Bayes as well as LSTM and recent transformer-based models to classify genre from short text snippets. We concluded that fine-tuning pre-trained BERT models produced much higher accuracy than both classical and LSTM models.
+Cutaneous abnormalities, commonly known as skin lesions, form a broad spectrum of skin irregularities that necessitates proper identification and immediate treatment. A significant development in the utilization of machine learning approaches for analyzing medical imagery has been observed recently - particularly its effectiveness in the automatic detection and categorization of skin lesions. This academic study discusses an extensive technique for recognizing and categorizing skin lesions using machine learning protocols. The key cornerstone is the HAM10000 dataset, which comprises 10,000 images portraying discolored skin conditions varying in types and patient demographics. Our analysis examines the efficiency of Decision Trees, Support Vector Machines (SVMs), Random Forests, and K-Nearest Neighbors (KNN) in detecting and classifying such tensions on the dermis. Stringent evaluation procedures involving Accuracy, Precision, Recall rate, along with F1-score have been employed to measure these algorithms’ efficacy alongside their possible influence within clinical settings. Overall model performance was strong, with Support Vector Machines (SVMs) acquiring the highest accuracy of 94.8%, while Decision Tree gave an accuracy of 94.3%, Random Forest coming to a close third with an accuracy of 94.1%, and finally K-Nearest Neighbors (KNN), which gave us an accuracy of 93.7%. The presented methodology contributes meaningfully to progress in dermatology by generating precise diagnostic instruments that are beneficial for both healthcare professionals as well as patients suffering from these anomalies. This inquiry underscores how machine learning could elevate health outcomes by improving early recognition processes and enabling personalized therapeutics directed at treating skin lesions effectively.
