@@ -6,7 +6,7 @@ conference: 'COMNETSAT'
 doi: '10.1109/COMNETSAT59769.2023.10420692'
 url: ''
 github: ''
-featured: true
+featured: false
 authors:
   - name: 'Sara Jerin Prithila'
     affiliation: 'Brac University'

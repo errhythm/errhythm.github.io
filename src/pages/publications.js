@@ -217,7 +217,7 @@ const PublicationsPage = ({ location, data }) => {
   const revealTable = useRef(null);
   const revealPublications = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
-  const [expandedAbstractIndex, setExpandedAbstractIndex] = useState(null);
+  const [expandedAbstracts, setExpandedAbstracts] = useState({});
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   const sanitizeHtml = html => {
@@ -237,13 +237,22 @@ const PublicationsPage = ({ location, data }) => {
     revealPublications.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 10)));
   }, []);
 
-  const toggleAbstract = index => {
-    setExpandedAbstractIndex(prevIndex => (prevIndex === index ? null : index));
+  const toggleAbstract = (type, index) => {
+    setExpandedAbstracts(prevState => {
+      const newState = { ...prevState };
+      for (const key in newState) {
+        if (key !== type) {
+          newState[key] = null;
+        }
+      }
+      newState[type] = prevState[type] === index ? null : index;
+      return newState;
+    });
   };
 
-  const handleKeyDown = (event, index) => {
+  const handleKeyDown = (event, type, index) => {
     if (event.key === 'Enter' || event.key === ' ') {
-      toggleAbstract(index);
+      toggleAbstract(type, index);
     }
   };
 
@@ -256,9 +265,9 @@ const PublicationsPage = ({ location, data }) => {
           <p className="subtitle">A big list of researches I've worked on</p>
         </header>
         <StyledTableContainer>
-          {uniqueTypes.map((type, index) => (
-            <React.Fragment key={index}>
-              <h3 style={{ marginBottom: '30px', marginTop: index === 0 ? '0' : '40px' }}>
+          {uniqueTypes.map((type, typeIndex) => (
+            <React.Fragment key={typeIndex}>
+              <h3 style={{ marginBottom: '30px', marginTop: typeIndex === 0 ? '0' : '40px' }}>
                 {type === 'Thesis' ? 'Theses' : `${type}s`}
               </h3>
               <table>
@@ -282,15 +291,15 @@ const PublicationsPage = ({ location, data }) => {
                           <td className="title">
                             <div
                               className="publication-title"
-                              onClick={() => toggleAbstract(i)}
-                              onKeyDown={event => handleKeyDown(event, i)}
+                              onClick={() => toggleAbstract(type, i)}
+                              onKeyDown={event => handleKeyDown(event, type, i)}
                               role="button"
                               tabIndex={0}>
                               {title}
                             </div>
                             <div
                               className={`publication-abstract ${
-                                expandedAbstractIndex === i ? 'expanded' : ''
+                                expandedAbstracts[type] === i ? 'expanded' : ''
                               }`}>
                               <p>{sanitizedHtml}</p>
                             </div>
@@ -359,14 +368,16 @@ const PublicationsPage = ({ location, data }) => {
                         <div key={i} className="publication-card">
                           <div
                             className="card-title"
-                            onClick={() => toggleAbstract(i)}
-                            onKeyDown={event => handleKeyDown(event, i)}
+                            onClick={() => toggleAbstract(type, i)}
+                            onKeyDown={event => handleKeyDown(event, type, i)}
                             role="button"
                             tabIndex={0}>
                             {title}
                           </div>
                           <div
-                            className={`card-abstract ${expandedAbstractIndex === i ? 'expanded' : ''}`}>
+                            className={`card-abstract ${
+                              expandedAbstracts[type] === i ? 'expanded' : ''
+                            }`}>
                             <p>{sanitizedHtml}</p>
                           </div>
                           <div className="card-authors">
