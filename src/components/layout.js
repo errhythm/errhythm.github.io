@@ -12,7 +12,7 @@ const StyledContent = styled.div`
 
 const Layout = ({ children, location }) => {
   const isHome = location.pathname === '/';
-  const [isLoading, setIsLoading] = useState(isHome);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Sets target="_blank" rel="noopener noreferrer" on external links
   const handleExternalLinks = () => {
@@ -67,14 +67,24 @@ const Layout = ({ children, location }) => {
     };
   }, []);
 
+  useEffect(() => {
+    const lastVisit = localStorage.getItem('lastVisit');
+    const currentTime = new Date().getTime();
+    const showLoaderThreshold = 1 * 60 * 60 * 1000; // 1 hour in milliseconds
+
+    if (!lastVisit || currentTime - parseInt(lastVisit) > showLoaderThreshold) {
+      setIsLoading(true);
+      localStorage.setItem('lastVisit', currentTime.toString());
+    }
+  }, []);
+
   return (
     <>
       <Head />
       <div id="root">
         <div
           id="cursor-spotlight"
-          className="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
-        ></div>
+          className="pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"></div>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
 

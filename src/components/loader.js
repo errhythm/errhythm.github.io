@@ -38,10 +38,13 @@ const StyledLoader = styled.div`
 
 const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
 
   const animate = () => {
     const loader = anime.timeline({
-      complete: () => finishLoading(),
+      complete: () => {
+        setIsAnimationComplete(true);
+      },
     });
 
     loader
@@ -80,6 +83,13 @@ const Loader = ({ finishLoading }) => {
     animate();
     return () => clearTimeout(timeout);
   }, []);
+
+  useEffect(() => {
+    if (isAnimationComplete) {
+      const timeout = setTimeout(() => finishLoading(), 10);
+      return () => clearTimeout(timeout);
+    }
+  }, [isAnimationComplete]);
 
   return (
     <StyledLoader className="loader" isMounted={isMounted}>
