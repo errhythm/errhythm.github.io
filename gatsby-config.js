@@ -149,5 +149,23 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-csp`,
+      options: {
+        mergeScriptHashes: false,
+        mergeStyleHashes: false,
+        directives: {
+          'script-src': '\'self\' \'unsafe-inline\' \'unsafe-eval\'',
+          'style-src': '\'self\' \'unsafe-inline\'',
+          'img-src': '\'self\' data: https:',
+          'font-src': '\'self\' data:',
+          'connect-src': '\'self\'',
+          'frame-src': '\'none\'',
+          'object-src': '\'none\'',
+          'base-uri': '\'self\'',
+          'default-src': '\'self\'',
+        },
+      },
+    },
   ],
 };
