@@ -170,7 +170,7 @@ const About = () => {
 
             <p>
               In addition to my work in web development, I have also published research in the
-              fields of natural language processing (NLP) and data science. These{' '}
+              fields of natural language processing (NLP) and data science. These {' '}
               <a href="#publications">publications</a> reflect my commitment to advancing technology
               and contributing to the academic community.
             </p>
