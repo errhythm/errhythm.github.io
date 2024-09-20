@@ -161,7 +161,7 @@ const About = () => {
             <p>
               Currently, I'm focused on enhancing digital experiences and delivering innovative
               solutions at{' '}
-              <a href="https://www.rhystart/" target="_blank" rel="noreferrer">
+              <a href="https://www.rhystart.com/" target="_blank" rel="noreferrer">
                 RhyStart Technologies
               </a>
               . My main goal is to build accessible, human-centered products that meet and exceed
