@@ -4,8 +4,8 @@ module.exports = {
   siteMetadata: {
     title: 'Ehsanur Rahman Rhythm',
     description:
-      'Ehsanur Rahman Rhythm is a front-end web Developer who focuses on the React.js framework, I have a passion for Learning About new tech, To grow my skills I focus on building full projects with serverless functions or Firebase Technology.',
-    siteUrl: 'https://errhythm.github.io', // No trailing slash allowed!
+      'Ehsanur Rahman Rhythm is a front-end web Developer who focuses on the React.js framework, I have a passion for Learning About new tech, To grow my skills I focus on building full projects with Javascript, React.js, Node.js, TailwindCSS, and Next.js.',
+    siteUrl: 'https://errhythm.me', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@errhythm',
   },
