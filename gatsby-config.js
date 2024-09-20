@@ -149,24 +149,5 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-csp`,
-      options: {
-        mergeScriptHashes: true,
-        mergeStyleHashes: false,
-        directives: {
-          'script-src': '\'self\'',
-          'style-src': '\'self\' \'unsafe-inline\'', // We'll keep this for now, but ideally should be replaced with hashes
-          'img-src': '\'self\' data: https:',
-          'font-src': '\'self\' data:',
-          'connect-src': '\'self\'',
-          'frame-src': '\'none\'',
-          'object-src': '\'none\'',
-          'base-uri': '\'self\'',
-          'default-src': '\'self\'',
-          'require-trusted-types-for': '\'script\'',
-        },
-      },
-    },
   ],
 };
