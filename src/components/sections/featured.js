@@ -6,6 +6,7 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -407,7 +408,7 @@ const Featured = () => {
 
                 <div className="project-image">
                   <a href={external ? external : github ? github : '#'}>
-                    <img src={displayImage} alt={title} className="img" />
+                    <GatsbyImage image={getImage(displayImage)} alt={title} className="img" />
                   </a>
                 </div>
               </StyledProject>
