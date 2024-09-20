@@ -152,11 +152,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-csp`,
       options: {
-        mergeScriptHashes: false,
+        mergeScriptHashes: true,
         mergeStyleHashes: false,
         directives: {
-          'script-src': '\'self\' \'unsafe-inline\' \'unsafe-eval\'',
-          'style-src': '\'self\' \'unsafe-inline\'',
+          'script-src': '\'self\'',
+          'style-src': '\'self\' \'unsafe-inline\'', // We'll keep this for now, but ideally should be replaced with hashes
           'img-src': '\'self\' data: https:',
           'font-src': '\'self\' data:',
           'connect-src': '\'self\'',
@@ -164,6 +164,7 @@ module.exports = {
           'object-src': '\'none\'',
           'base-uri': '\'self\'',
           'default-src': '\'self\'',
+          'require-trusted-types-for': '\'script\'',
         },
       },
     },
