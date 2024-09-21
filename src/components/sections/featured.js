@@ -96,6 +96,7 @@ const StyledProject = styled.li`
     position: relative;
     grid-column: 1 / 7;
     grid-row: 1 / -1;
+    max-width: 90%;
 
     @media (max-width: 1080px) {
       grid-column: 1 / 9;
@@ -127,6 +128,8 @@ const StyledProject = styled.li`
   .project-title {
     color: var(--lightest-slate);
     font-size: clamp(24px, 5vw, 28px);
+    line-height: 1.2;
+    word-wrap: break-word;
 
     @media (min-width: 768px) {
       margin: 0 0 20px;
@@ -324,7 +327,11 @@ const Featured = () => {
               external
               cta
               featuredMessage
-              featuredCover
+              featuredCover {
+                childImageSharp {
+                  gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                }
+              }
             }
             html
           }
@@ -357,11 +364,13 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, image, cta, featuredMessage, featuredCover } =
+            const { external, title, tech, github, cta, featuredMessage, featuredCover } =
               frontmatter;
 
+            const featuredCoverImage = getImage(featuredCover);
+
             // Use featuredCover if available, otherwise fall back to image
-            const displayImage = featuredCover || image;
+            const displayImage = featuredCoverImage;
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -375,7 +384,9 @@ const Featured = () => {
 
                     <div
                       className="project-description"
-                      dangerouslySetInnerHTML={{ __html: featuredMessage || html }}
+                      dangerouslySetInnerHTML={{
+                        __html: featuredMessage || (html && `${html.split('</p>')[0]}</p>`),
+                      }}
                     />
 
                     {tech.length && (

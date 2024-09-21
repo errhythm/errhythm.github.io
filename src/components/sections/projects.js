@@ -244,10 +244,13 @@ const Projects = () => {
           </div>
 
           <h3 className="project-title">
-            <Link to={slug}>{title}</Link>
+            <Link to={slug}>{title.length > 100 ? `${title.substring(0, 100)}...` : title}</Link>
           </h3>
 
-          <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
+          <div
+            className="project-description"
+            dangerouslySetInnerHTML={{ __html: `${html.substring(0, 160)}...` }}
+          />
         </header>
 
         <footer>
