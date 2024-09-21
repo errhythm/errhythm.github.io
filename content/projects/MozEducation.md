@@ -13,7 +13,7 @@ tech:
 company: 'RhyStart'
 showInProjects: true
 featured: true
-featuredCover: './images/halcyon.png'
+featuredCover: './images/MozEducation.png'
 ---
 
 Moz Education approached me with a vision: to create an intuitive and visually appealing website that would serve as the cornerstone of their online learning platform. They aimed to offer a user-friendly experience where students could easily explore courses, access resources, and get all the necessary information to make informed educational decisions.
