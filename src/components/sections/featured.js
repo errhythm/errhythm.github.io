@@ -313,9 +313,9 @@ const Featured = () => {
       featured: allMarkdownRemark(
         filter: {
           fileAbsolutePath: { regex: "/content/projects/" }
-          frontmatter: { featured: { eq: true } }
+          frontmatter: { featured: { eq: true }, title: { ne: "Dummy" } }
         }
-        sort: { frontmatter: { date: ASC } }
+        sort: [{ frontmatter: { featuredSort: ASC } }, { frontmatter: { date: ASC } }]
       ) {
         edges {
           node {

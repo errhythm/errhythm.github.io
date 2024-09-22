@@ -209,7 +209,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/content/posts/" }
-        frontmatter: { draft: { ne: true } }
+        frontmatter: { draft: { ne: true }, title: { ne: "Dummy" } }
       }
       sort: { frontmatter: { date: DESC } }
     ) {
