@@ -65,6 +65,93 @@ const StyledProjectContent = styled.div`
     padding: 0;
   }
 
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2em 0;
+    overflow: hidden;
+    background-color: var(--light-navy);
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  th,
+  td {
+    padding: 1em;
+    text-align: left;
+    border-bottom: 1px solid var(--lightest-navy);
+  }
+
+  th {
+    background-color: var(--navy);
+    color: var(--lightest-slate);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:nth-child(even) {
+    background-color: var(--light-navy);
+  }
+
+  tr:hover {
+    background-color: var(--lightest-navy);
+  }
+
+  @media (max-width: 768px) {
+    table {
+      border: 0;
+    }
+
+    table caption {
+      font-size: 1.3em;
+    }
+
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    table tr {
+      border-bottom: 3px solid var(--lightest-navy);
+      display: block;
+      margin-bottom: 0.625em;
+    }
+
+    table td {
+      border-bottom: 1px solid var(--lightest-navy);
+      display: block;
+      font-size: 0.8em;
+      text-align: left;
+      padding: 0.625em;
+      position: relative;
+    }
+
+    table td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.5em;
+      text-transform: uppercase;
+      color: var(--lightest-slate);
+    }
+
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+
   figure {
     margin: 2em 0;
     position: relative;
@@ -251,8 +338,7 @@ const ProjectTemplate = ({ data, location }) => {
                 href={external}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="External Link"
-              >
+                aria-label="External Link">
                 <Icon name="External" />
               </a>
             )}
