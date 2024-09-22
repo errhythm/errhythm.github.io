@@ -3,7 +3,7 @@ date: '2024-01-27'
 title: 'Moz Education - Education Consultancy Platform'
 github: ''
 external: 'https://www.mozeducation.com'
-image: '/images/projects/MozEducation1.png'
+image: '/images/projects/MozEducation.png'
 tech:
   - WordPress
   - PHP
@@ -13,6 +13,7 @@ tech:
 company: 'RhyStart'
 showInProjects: true
 featured: true
+featuredSort: 1
 featuredCover: './images/MozEducation.png'
 ---
 
@@ -45,6 +46,8 @@ Making the site fully responsive was crucial for students accessing it on variou
 ### Challenge: Course Management Complexity
 
 WooCommerce is traditionally used for physical products, so customizing it for digital courses required additional functionality. I integrated specific plugins for course scheduling, digital downloads, and progress tracking to ensure students had an intuitive learning experience, while course administrators could easily manage content.
+
+![Final Website of Moz Education](/images/projects/MozEducation1.png)
 
 The project was completed on time and within budget, and the Moz Education team has expressed their satisfaction with the final product.
 
