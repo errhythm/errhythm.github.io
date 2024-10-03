@@ -53,7 +53,7 @@ nano docker-compose.yml
 ```
 
 With the file saved, run the following command to start the containers:
-```
+```bash
 docker-compose up -d
 ```
 This command will pull the necessary images (WordPress and MySQL) and start the services in detached mode (in the background).
