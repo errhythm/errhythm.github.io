@@ -61,3 +61,47 @@ This command will pull the necessary images (WordPress and MySQL) and start the 
 Once the containers run, open your browser and go to [http://localhost:8000](http://localhost:8000). You should see the WordPress installation page where you can set up your site.
 
 Now that you’ve learned the basics of running WordPress with Docker-Compose, try extending the setup by adding services like Nginx or Redis, or explore Docker’s networking capabilities to improve the performance and reliability of your WordPress site!
+
+
+### How to edit "WP_MEMORY_LIMIT" and other PHP.ini values?
+
+We can do this by adding custom PHP configurations to your WordPress container. Modify your docker-compose.yaml file to address this issue:
+
+```yaml
+version: '3.3'
+
+services:
+  db:
+    # ... (db service remains unchanged)
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_MEMORY_LIMIT', '256M');
+        define('WP_MAX_MEMORY_LIMIT', '256M');
+    volumes:
+      - ./php.ini:/usr/local/etc/php/conf.d/uploads.ini
+volumes:
+    db_data: {}
+```
+
+Now, create a new file named php.ini in the same directory as your docker-compose.yaml file with the following content:
+
+```
+upload_max_filesize = 64M
+post_max_size = 64M
+max_execution_time = 300
+```
+
+We've added a volumes section to the wordpress service to mount a custom php.ini file. The new php.ini file increases the upload_max_filesize, post_max_size, and max_execution_time.
+
