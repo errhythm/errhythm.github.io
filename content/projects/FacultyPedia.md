@@ -3,7 +3,7 @@ date: '2023-05-22'
 title: 'Facultypedia: A Faculty Review and Consultation Platform'
 github: 'https://github.com/errhythm/facultypedia'
 external: 'https://myfacultypedia.errhythm.me'
-image: '/images/projects/MozEducation.png'
+image: '/images/projects/Facultypedia.png'
 tech:
   - Laravel
   - PHP

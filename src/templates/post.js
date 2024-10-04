@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { graphql, Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
@@ -203,10 +203,46 @@ const PostTemplate = ({ data, location }) => {
     },
   );
 
+  // eslint-disable-next-line no-unused-vars
+  const [imageUrl, setImageUrl] = useState('');
+
+  useEffect(() => {
+    const generateToken = async () => {
+      if (title && tags && tags.length > 0 && date) {
+        const key = await crypto.subtle.importKey(
+          'raw',
+          new TextEncoder().encode('rhythm'),
+          { name: 'HMAC', hash: { name: 'SHA-256' } },
+          false,
+          ['sign'],
+        );
+
+        const token = Array.from(
+          new Uint8Array(
+            await crypto.subtle.sign(
+              'HMAC',
+              key,
+              new TextEncoder().encode(JSON.stringify({ title, tag: tags[0], date })),
+            ),
+          ),
+        )
+          .map(b => b.toString(16).padStart(2, '0'))
+          .join('');
+
+        const ogImageUrl = `https://oggy.rhystart.com/api/rhythm?title=${encodeURIComponent(title)}&tag=${encodeURIComponent(tags[0])}&date=${encodeURIComponent(date)}&token=${encodeURIComponent(token)}`;
+        setImageUrl(ogImageUrl);
+      }
+    };
+
+    generateToken();
+  }, [title, tags, date]);
+
   return (
     <Layout location={location}>
       <GlobalStyle />
-      <Helmet title={title} />
+      <Helmet title={title}>
+        <meta property="og:image" content={imageUrl} />
+      </Helmet>
 
       <StyledPostContainer>
         <span className="breadcrumb">

@@ -9,21 +9,19 @@ import { useStaticQuery, graphql } from 'gatsby';
 const Head = ({ title, description, image }) => {
   const { pathname } = useLocation();
 
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            defaultTitle: title
-            defaultDescription: description
-            siteUrl
-            defaultImage: image
-            twitterUsername
-          }
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          defaultTitle: title
+          defaultDescription: description
+          siteUrl
+          defaultImage: image
+          twitterUsername
         }
       }
-    `,
-  );
+    }
+  `);
 
   const { defaultTitle, defaultDescription, siteUrl, defaultImage, twitterUsername } =
     site.siteMetadata;
@@ -31,12 +29,16 @@ const Head = ({ title, description, image }) => {
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
+    image: image || `${siteUrl}${defaultImage}`,
     url: `${siteUrl}${pathname}`,
   };
 
   return (
-    <Helmet title={title} defaultTitle={seo.title} titleTemplate={`%s | ${defaultTitle}`}>
+    <Helmet
+      title={title}
+      defaultTitle={seo.title}
+      titleTemplate={`%s | ${defaultTitle} `}
+      image={image}>
       <html lang="en" />
 
       <meta name="description" content={seo.description} />
@@ -44,7 +46,7 @@ const Head = ({ title, description, image }) => {
 
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
-      <meta property="og:image" content={seo.image} />
+      <meta property="og:image" content={image || seo.image} />
       <meta property="og:url" content={seo.url} />
       <meta property="og:type" content="website" />
 
