@@ -11,7 +11,7 @@ tech:
   - WooCommerce
   - Elementor
 company: 'RhyStart'
-showInProjects: true
+showInProjects: false
 featured: true
 featuredSort: 1
 featuredCover: './images/MozEducation.png'
