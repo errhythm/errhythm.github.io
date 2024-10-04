@@ -242,6 +242,7 @@ const PostTemplate = ({ data, location }) => {
       <GlobalStyle />
       <Helmet title={title}>
         <meta property="og:image" content={imageUrl} />
+        <meta name="twitter:image" content={imageUrl} />
       </Helmet>
 
       <StyledPostContainer>
