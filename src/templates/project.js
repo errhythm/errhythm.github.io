@@ -300,7 +300,11 @@ const ProjectTemplate = ({ data, location }) => {
   return (
     <Layout location={location}>
       <GlobalStyle />
-      <Helmet title={title} />
+      <Helmet title={title}>
+        <meta name="image" content={image} />
+        <meta property="og:image" content={image} />
+        <meta name="twitter:image" content={image} />
+      </Helmet>
 
       <StyledProjectContainer>
         <span className="breadcrumb">
