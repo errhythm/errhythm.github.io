@@ -18,7 +18,7 @@ featuredCover: './images/Pathways.png'
 
 Pathways of Learning is a blog created by Dr. Santosh Sali, an educator and organizational behavior enthusiast. The blog focuses on his insights into business planning, teaching, and his passion for books, including book reviews. 
 
-Dr. Santosh approached me to migrate the blog from Blogger to WordPress, aiming to preserve its minimalist design while incorporating new features such as a "Currently Reading" tab, a reading challenge widget, and a "Post of the Week" section. The goal was to keep the site simple, content-focused, and easy to navigate. In the redesign, the priority was to introduce dynamic functionalities without cluttering the minimalist aesthetic. I implemented a responsive layout across devices using TailwindCSS, ensuring that readers could access content on desktops, tablets, and smartphones with ease. Features like the reading challenge widget and random post function were added to boost engagement, while the "Currently Reading" tab integrated Santosh’s Goodreads account, automatically updating with his latest book selections. The migration involved resolving challenges with content formatting, categorization, and rebuilding the tag cloud to mimic Blogger’s original functionality.
+Dr. Santosh approached me to migrate the blog from Blogger to WordPress, aiming to preserve its minimalist design while incorporating new features such as a "Currently Reading" tab, a reading challenge widget, and a "Post of the Week" section. The goal was to keep the site simple, content-focused, and easy to navigate. In the redesign, the priority was to introduce dynamic functionalities without cluttering the minimalist aesthetic. I implemented a responsive layout across devices using CSS media queries, ensuring that readers could access content on desktops, tablets, and smartphones with ease. Features like the reading challenge widget and random post function were added to boost engagement, while the "Currently Reading" tab integrated Santosh’s Goodreads account, automatically updating with his latest book selections. The migration involved resolving challenges with content formatting, categorization, and rebuilding the tag cloud to mimic Blogger’s original functionality.
 
 ![Main page](/images/projects/Pathways1.png)
 
@@ -42,7 +42,7 @@ Dr. Santosh sought to showcase his current reads on his website, seamlessly conn
 
 ### Challenge: Reading Challenge Widget
 
-Dr. Santosh also requested a widget to showcase his yearly reading goals, which is again linked to Goodreads. Creating this widget posed a challenge, as it needed to be visually appealing and seamlessly integrated with the site’s design. Using TailwindCSS, I designed a simple progress bar that updates dynamically based on his progress toward the goal. This widget fits naturally into the website’s sidebar, contributing to the site’s overall focus on learning and personal growth without overwhelming the visitor.
+Dr. Santosh also requested a widget to showcase his yearly reading goals, which is again linked to Goodreads. Using this widget in the right position posed a challenge, as it needed to be visually appealing and seamlessly integrated with the site’s design. This widget fits naturally into the website’s sidebar, contributing to the site’s overall focus on learning and personal growth without overwhelming the visitor.
 
 ![Reading Challenge Widget](/images/projects/Pathways2.png)
 
