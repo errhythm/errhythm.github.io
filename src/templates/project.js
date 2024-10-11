@@ -2,11 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { Layout } from '@components';
+import { Layout, Testimonial } from '@components';
 import { Icon } from '@components/icons';
 import styled, { createGlobalStyle } from 'styled-components';
-import useIntersectionObserver from '../hooks/useIntersectionObserver';
-import Testimonial from '@components/Testimonial';
+  import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const GlobalStyle = createGlobalStyle`
   figure img, .gatsby-resp-image-wrapper {
