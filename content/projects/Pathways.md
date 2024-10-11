@@ -14,6 +14,12 @@ showInProjects: false
 featured: true
 featuredSort: 3
 featuredCover: './images/Pathways.png'
+testimonial:
+  name: 'Dr. Santosh Sali'
+  company: 'Pathways of Learning'
+  image: '/images/clients/Santosh-Sali.jpg'
+  rating: 5
+  content: 'I recommend Ehsanur. He helped on my blog, "Pathways to Learn". Link below. I wanted three things 1) a Simple plain blog for expressing thoughts, 2) Migrate my posts from blogger 3) Integrate Goodreads data with Wordpress. Ehsanur - completed the work seamlessly. No hassles, no haggling, no bargaining. He values work and completes it as required. I recommend his expertise for such blogs and websites. I am going to use his services again soon. (BlogLink: http://santoshsali.com/ )'
 ---
 
 Dr. Santosh Sali, an organizational behavior enthusiast and educator based in Tokyo, Japan, approached me to redesign his blog Pathways of Learning. A career convert from investment banking’s IT department to academia, Dr. Santosh has a passion for mentoring and teaching business planning, and he regularly shares his insights through his blog. In addition to writing about organizational behavior, he loves to read books and frequently posts book reviews. His goal for the redesign was to move the blog from Blogger to WordPress, maintaining its minimalist design while incorporating new features such as a "Currently Reading" tab, a reading challenge widget, a "Post of the Week" section, and a random post feature. Dr. Santosh wanted the blog to reflect his simple, content-focused vision while allowing him to share his journey in teaching and learning.

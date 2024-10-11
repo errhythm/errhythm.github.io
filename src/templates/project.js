@@ -6,6 +6,7 @@ import { Layout } from '@components';
 import { Icon } from '@components/icons';
 import styled, { createGlobalStyle } from 'styled-components';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import Testimonial from '@components/Testimonial';
 
 const GlobalStyle = createGlobalStyle`
   figure img, .gatsby-resp-image-wrapper {
@@ -260,7 +261,7 @@ const StyledFeaturedImage = styled.div`
 const ProjectTemplate = ({ data, location }) => {
   const project = data.markdownRemark;
   const { frontmatter, html } = project;
-  const { title, date, github, external, tech, image } = frontmatter;
+  const { title, date, github, external, tech, image, testimonial } = frontmatter;
   const [setElements, entries] = useIntersectionObserver({
     threshold: 0.25,
     rootMargin: '0px 0px -100px 0px',
@@ -359,6 +360,16 @@ const ProjectTemplate = ({ data, location }) => {
           ref={contentRef}
           dangerouslySetInnerHTML={{ __html: processedContent }}
         />
+
+        {testimonial && (
+          <Testimonial
+            name={testimonial.name}
+            company={testimonial.company}
+            image={testimonial.image}
+            rating={testimonial.rating}
+            content={testimonial.content}
+          />
+        )}
       </StyledProjectContainer>
     </Layout>
   );
@@ -384,6 +395,13 @@ export const pageQuery = graphql`
         external
         tech
         image
+        testimonial {
+          name
+          company
+          image
+          rating
+          content
+        }
       }
       fields {
         slug

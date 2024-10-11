@@ -15,6 +15,12 @@ featuredMessage: 'Dummy project'
 cta: 'dummy.com'
 ios: 'dummy.com'
 android: 'dummy.com'
+testimonial:
+  name: 'Dummy'
+  company: 'Dummy'
+  image: 'dummy.com'
+  rating: 5
+  content: 'Dummy content'
 ---
 
 Dummy project
