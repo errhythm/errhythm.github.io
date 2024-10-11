@@ -22,7 +22,9 @@ testimonial:
   content: 'I recommend Ehsanur. He helped on my blog, "Pathways to Learn". Link below. I wanted three things 1) a Simple plain blog for expressing thoughts, 2) Migrate my posts from blogger 3) Integrate Goodreads data with Wordpress. Ehsanur - completed the work seamlessly. No hassles, no haggling, no bargaining. He values work and completes it as required. I recommend his expertise for such blogs and websites. I am going to use his services again soon. (BlogLink: http://santoshsali.com/ )'
 ---
 
-Dr. Santosh Sali, an organizational behavior enthusiast and educator based in Tokyo, Japan, approached me to redesign his blog Pathways of Learning. A career convert from investment banking’s IT department to academia, Dr. Santosh has a passion for mentoring and teaching business planning, and he regularly shares his insights through his blog. In addition to writing about organizational behavior, he loves to read books and frequently posts book reviews. His goal for the redesign was to move the blog from Blogger to WordPress, maintaining its minimalist design while incorporating new features such as a "Currently Reading" tab, a reading challenge widget, a "Post of the Week" section, and a random post feature. Dr. Santosh wanted the blog to reflect his simple, content-focused vision while allowing him to share his journey in teaching and learning.
+Pathways of Learning is a blog created by Dr. Santosh Sali, an educator and organizational behavior enthusiast. The blog focuses on his insights into business planning, teaching, and his passion for books, including book reviews. 
+
+Dr. Santosh approached me to migrate the blog from Blogger to WordPress, aiming to preserve its minimalist design while incorporating new features such as a "Currently Reading" tab, a reading challenge widget, and a "Post of the Week" section. The goal was to keep the site simple, content-focused, and easy to navigate. In the redesign, the priority was to introduce dynamic functionalities without cluttering the minimalist aesthetic. I implemented a responsive layout across devices using CSS media queries, ensuring that readers could access content on desktops, tablets, and smartphones with ease. Features like the reading challenge widget and random post function were added to boost engagement, while the "Currently Reading" tab integrated Santosh’s Goodreads account, automatically updating with his latest book selections. The migration involved resolving challenges with content formatting, categorization, and rebuilding the tag cloud to mimic Blogger’s original functionality.
 
 ![Main page](/images/projects/Pathways1.png)
 
@@ -46,7 +48,7 @@ Dr. Santosh sought to showcase his current reads on his website, seamlessly conn
 
 ### Challenge: Reading Challenge Widget
 
-Dr. Santosh also requested a widget to showcase his yearly reading goals, which is again linked to Goodreads. Creating this widget posed a challenge, as it needed to be visually appealing and seamlessly integrated with the site’s design. Using TailwindCSS, I designed a simple progress bar that updates dynamically based on his progress toward the goal. This widget fits naturally into the website’s sidebar, contributing to the site’s overall focus on learning and personal growth without overwhelming the visitor.
+Dr. Santosh also requested a widget to showcase his yearly reading goals, which is again linked to Goodreads. Using this widget in the right position posed a challenge, as it needed to be visually appealing and seamlessly integrated with the site’s design. This widget fits naturally into the website’s sidebar, contributing to the site’s overall focus on learning and personal growth without overwhelming the visitor.
 
 ![Reading Challenge Widget](/images/projects/Pathways2.png)
 
@@ -66,6 +68,6 @@ Dr. Santosh wanted to highlight one blog post each week to showcase either his f
 
 During the migration, replicating Blogger’s Label Cloud feature in WordPress was a key challenge. Blogger’s label cloud automatically adjusts the font size of labels based on the number of posts associated with each tag. However, I had to modify WordPress’s tag cloud functionality to mirror Blogger’s, ensuring that tags with more posts appeared larger and provided a more intuitive navigation experience.
 
-![Reading Challenge Widget](/images/projects/Pathways3.png)
+![Label Cloud](/images/projects/Pathways3.png)
 
 The redesign of Pathways of Learning transformed Dr. Santosh’s blog into a streamlined, functional platform. By moving the site from Blogger to WordPress, adding custom features like the "Currently Reading" tab, reading challenge widget, and the random post function, I ensured that the site met his specific needs while maintaining simplicity. The final result is a minimalist, writing-focused blog that highlights Dr. Santosh's passion for organizational behavior, business planning, and teaching.
