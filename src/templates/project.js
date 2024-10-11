@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import { Layout, Testimonial } from '@components';
 import { Icon } from '@components/icons';
 import styled, { createGlobalStyle } from 'styled-components';
-  import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const GlobalStyle = createGlobalStyle`
   figure img, .gatsby-resp-image-wrapper {
