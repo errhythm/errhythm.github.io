@@ -62,6 +62,6 @@ Dr. Santosh wanted to highlight one blog post each week to showcase either his f
 
 During the migration, replicating Blogger’s Label Cloud feature in WordPress was a key challenge. Blogger’s label cloud automatically adjusts the font size of labels based on the number of posts associated with each tag. However, I had to modify WordPress’s tag cloud functionality to mirror Blogger’s, ensuring that tags with more posts appeared larger and provided a more intuitive navigation experience.
 
-![Reading Challenge Widget](/images/projects/Pathways3.png)
+![Label Cloud](/images/projects/Pathways3.png)
 
 The redesign of Pathways of Learning transformed Dr. Santosh’s blog into a streamlined, functional platform. By moving the site from Blogger to WordPress, adding custom features like the "Currently Reading" tab, reading challenge widget, and the random post function, I ensured that the site met his specific needs while maintaining simplicity. The final result is a minimalist, writing-focused blog that highlights Dr. Santosh's passion for organizational behavior, business planning, and teaching.
