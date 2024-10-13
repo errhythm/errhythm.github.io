@@ -3,19 +3,32 @@ import { ref, onValue, increment, update, get } from 'firebase/database';
 import { database } from '../config/firebase';
 import { debounce } from 'lodash';
 
+const generateUserId = () => Math.random().toString(36).substr(2, 9);
+
 const getUserId = () => {
-  let userId = localStorage.getItem('userId');
-  if (!userId) {
-    userId = Math.random().toString(36).substr(2, 9);
-    localStorage.setItem('userId', userId);
-  }
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    let storedUserId = localStorage.getItem('userId');
+    if (!storedUserId) {
+      storedUserId = generateUserId();
+      localStorage.setItem('userId', storedUserId);
+    }
+    setUserId(storedUserId);
+  }, []);
+
   return userId;
 };
 
 export const useViewCount = (contentType, slug) => {
   const [viewCount, setViewCount] = useState(0);
+  const userId = getUserId();
 
   useEffect(() => {
+    if (!userId) {
+      return;
+    }
+
     const viewsRef = ref(database, `${contentType}/${slug}/views`);
 
     onValue(viewsRef, snapshot => {
@@ -27,14 +40,14 @@ export const useViewCount = (contentType, slug) => {
       update(ref(database), {
         [`${contentType}/${slug}/views`]: increment(1),
       });
-    }, 10000); // Update every 10 seconds at most
+    }, 5000); // Update every 5 seconds at most
 
     updateViewCount();
 
     return () => {
       updateViewCount.cancel();
     };
-  }, [contentType, slug]);
+  }, [contentType, slug, userId]);
 
   return viewCount;
 };
@@ -45,6 +58,10 @@ export const useLikeCount = (contentType, slug) => {
   const userId = getUserId();
 
   useEffect(() => {
+    if (!userId) {
+      return;
+    } // Don't proceed if userId is not available yet
+
     const likesRef = ref(database, `${contentType}/${slug}/likes`);
     const userLikeRef = ref(database, `users/${userId}/likes/${contentType}/${slug}`);
 
@@ -59,6 +76,10 @@ export const useLikeCount = (contentType, slug) => {
   }, [contentType, slug, userId]);
 
   const handleLike = async () => {
+    if (!userId) {
+      return;
+    } // Don't proceed if userId is not available
+
     const userLikeRef = ref(database, `users/${userId}/likes/${contentType}/${slug}`);
 
     const userLikedSnapshot = await get(userLikeRef);
