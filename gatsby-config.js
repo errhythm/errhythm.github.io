@@ -1,4 +1,5 @@
 const config = require('./src/config');
+const adapter = require('gatsby-adapter-netlify');
 
 module.exports = {
   siteMetadata: {
@@ -9,6 +10,10 @@ module.exports = {
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@errhythm',
   },
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: false,
+    imageCDN: false,
+  }),
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
