@@ -244,6 +244,38 @@ const PostTemplate = ({ data, location }) => {
         <meta name="image" content={imageUrl} />
         <meta property="og:image" content={imageUrl} />
         <meta name="twitter:image" content={imageUrl} />
+
+        <script type="application/ld+json">
+          {`
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://errhythm.me/blog/${post.frontmatter.slug}"
+        },
+        "headline": "${post.frontmatter.title}",
+        "description": "${post.frontmatter.description}",
+        "image": "${post.frontmatter.image}",
+        "author": {
+          "@type": "Person",
+          "name": "Ehsanur Rahman Rhythm",
+          "url": "https://errhythm.me"
+        },
+        "datePublished": "${post.frontmatter.date}",
+        "dateModified": "${post.frontmatter.date}",
+        "keywords": "${post.frontmatter.tags.join(', ')}",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Ehsanur Rahman Rhythm",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://errhythm.me/logo.png"
+          }
+        }
+      }
+    `}
+        </script>
       </Helmet>
 
       <StyledPostContainer>

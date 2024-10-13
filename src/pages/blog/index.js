@@ -148,7 +148,47 @@ const blogPage = ({ location, data }) => {
 
   return (
     <Layout location={location}>
-      <Helmet title="blog" />
+      <Helmet>
+        <title>Blog</title>
+        <script type="application/ld+json">
+          {`
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "url": "https://errhythm.me/blog",
+        "name": "Ehsanur Rahman Rhythm's Blog",
+        "description": "A collection of thoughts and ideas",
+        "author": {
+          "@type": "Person",
+          "name": "Ehsanur Rahman Rhythm",
+          "url": "https://errhythm.me"
+        },
+        "blogPost": [
+          ${posts
+      .map(
+        ({ node }) => `
+            {
+              "@type": "BlogPosting",
+              "url": "https://errhythm.me/blog/${node.frontmatter.slug}",
+              "name": "${node.frontmatter.title}",
+              "headline": "${node.frontmatter.title}",
+              "keywords": "${node.frontmatter.tags.join(', ')}",
+              "datePublished": "${node.frontmatter.date}",
+              "description": "${node.frontmatter.description}",
+              "author": {
+                "@type": "Person",
+                "name": "Ehsanur Rahman Rhythm",
+                "url": "https://errhythm.me"
+              }
+            }
+          `,
+      )
+      .join(',')}
+            ]
+          }
+          `}
+        </script>
+      </Helmet>
 
       <StyledMainContainer>
         <header>

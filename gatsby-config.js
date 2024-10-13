@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Ehsanur Rahman Rhythm',
     description:
-      'Ehsanur Rahman Rhythm is a front-end web Developer who focuses on the React.js framework, I have a passion for Learning About new tech, To grow my skills I focus on building full projects with Javascript, React.js, Node.js, TailwindCSS, and Next.js.',
+      'Ehsanur Rahman Rhythm is a front-end developer skilled in React.js, Node.js, and TailwindCSS, passionate about building projects and learning new tech.',
     siteUrl: 'https://errhythm.me', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@errhythm',

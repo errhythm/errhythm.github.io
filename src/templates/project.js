@@ -304,6 +304,35 @@ const ProjectTemplate = ({ data, location }) => {
         <meta name="image" content={image} />
         <meta property="og:image" content={image} />
         <meta name="twitter:image" content={image} />
+
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "${project.frontmatter.title}",
+            "description": "${project.frontmatter.description || ''}",
+            "url": "https://errhythm.me/projects/${project.fields.slug}",
+            "image": "${project.frontmatter.image}",
+            "datePublished": "${project.frontmatter.date}",
+            "author": {
+              "@type": "Person",
+              "name": "Ehsanur Rahman Rhythm",
+              "url": "https://errhythm.me"
+            },
+            "creator": {
+              "@type": "Person",
+              "name": "Ehsanur Rahman Rhythm",
+              "url": "https://errhythm.me"
+            },
+            "keywords": "${project.frontmatter.tech.join(', ')}",
+            "about": {
+              "@type": "Thing",
+              "name": "${project.frontmatter.title}"
+            }
+          }
+        `}
+        </script>
       </Helmet>
 
       <StyledProjectContainer>
