@@ -36,10 +36,6 @@ const StyledTagsContainer = styled.main`
       .subtitle {
         color: var(--slate);
         font-size: var(--fz-sm);
-
-        .tag {
-          margin-right: 10px;
-        }
       }
     }
   }
@@ -56,7 +52,7 @@ const TagTemplate = ({ pageContext, data, location }) => {
       <StyledTagsContainer>
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>
-          <Link to="/blog">All memories</Link>
+          <Link to="/blog">All blogs</Link>
         </span>
 
         <h1>
@@ -86,9 +82,12 @@ const TagTemplate = ({ pageContext, data, location }) => {
                   {tags &&
                     tags.length > 0 &&
                     tags.map((tag, i) => (
-                      <Link key={i} to={`/blog/tags/${kebabCase(tag)}/`} className="tag">
-                        #{tag}
-                      </Link>
+                      <React.Fragment key={i}>
+                        <Link to={`/blog/tags/${kebabCase(tag)}/`} className="tag">
+                          #{tag}
+                        </Link>
+                        {i < tags.length - 1 && <span>, </span>}
+                      </React.Fragment>
                     ))}
                 </p>
               </li>

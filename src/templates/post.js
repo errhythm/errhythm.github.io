@@ -20,9 +20,6 @@ const StyledPostContainer = styled.main`
 `;
 const StyledPostHeader = styled.header`
   margin-bottom: 50px;
-  .tag {
-    margin-right: 10px;
-  }
 `;
 const StyledPostContent = styled.div`
   margin-bottom: 100px;
@@ -61,11 +58,9 @@ const StyledPostContent = styled.div`
   figure {
     margin: 2em 0;
     position: relative;
-    width: 100%;
     max-width: 800px;
 
     img {
-      width: 100%;
       height: auto;
       object-fit: cover;
       border-radius: var(--border-radius);
@@ -130,7 +125,6 @@ const StyledFeaturedImage = styled.div`
   }
 
   img {
-    width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: var(--border-radius);
@@ -281,7 +275,7 @@ const PostTemplate = ({ data, location }) => {
       <StyledPostContainer>
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>
-          <Link to="/blog">All memories</Link>
+          <Link to="/blog">All blogs</Link>
         </span>
 
         <StyledPostHeader>
@@ -298,9 +292,12 @@ const PostTemplate = ({ data, location }) => {
             {tags &&
               tags.length > 0 &&
               tags.map((tag, i) => (
-                <Link key={i} to={`/blog/tags/${kebabCase(tag)}/`} className="tag">
-                  #{tag}
-                </Link>
+                <React.Fragment key={i}>
+                  <Link to={`/blog/tags/${kebabCase(tag)}/`} className="tag">
+                    #{tag}
+                  </Link>
+                  {i < tags.length - 1 && <span>, </span>}
+                </React.Fragment>
               ))}
           </p>
         </StyledPostHeader>

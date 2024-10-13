@@ -115,16 +115,24 @@ const StyledPost = styled.li`
     font-size: 17px;
   }
 
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
   .post__date {
     color: var(--light-slate);
     font-family: var(--font-mono);
     font-size: var(--fz-xxs);
     text-transform: uppercase;
+    margin-bottom: 5px;
   }
 
   ul.post__tags {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     flex-wrap: wrap;
     padding: 0;
     margin: 0;
@@ -135,10 +143,8 @@ const StyledPost = styled.li`
       font-family: var(--font-mono);
       font-size: var(--fz-xxs);
       line-height: 1.75;
-
-      &:not(:last-of-type) {
-        margin-right: 15px;
-      }
+      margin-right: 10px;
+      margin-bottom: 5px;
     }
   }
 `;
@@ -218,13 +224,14 @@ const blogPage = ({ location, data }) => {
                     <footer>
                       <span className="post__date">{formattedDate}</span>
                       <ul className="post__tags">
-                        {tags.map((tag, i) => (
+                        {tags.slice(0, 4).map((tag, i) => (
                           <li key={i}>
                             <Link to={`/blog/tags/${kebabCase(tag)}/`} className="inline-link">
                               #{tag}
                             </Link>
                           </li>
                         ))}
+                        {tags.length > 4 && <li>...</li>}
                       </ul>
                     </footer>
                   </div>
