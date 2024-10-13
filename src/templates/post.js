@@ -6,6 +6,8 @@ import { Helmet } from 'react-helmet';
 import { Layout } from '@components';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
 import styled, { createGlobalStyle } from 'styled-components';
+import { useViewCount, useLikeCount } from '../hooks/useFirebase';
+import { IconEye, IconHeart, IconHeartRegular } from '@components/icons';
 
 const GlobalStyle = createGlobalStyle`
   figure img, .gatsby-resp-image-wrapper {
@@ -157,10 +159,71 @@ const StyledFeaturedImage = styled.div`
   }
 `;
 
+const StyledPostMeta = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--light-navy);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+`;
+
+const MetaItem = styled.div`
+  display: flex;
+  align-items: center;
+  color: var(--light-slate);
+  font-size: var(--fz-md);
+  font-weight: 600;
+
+  span {
+    margin-top: 0.45rem;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+  }
+`;
+
+const LikeButton = styled.button`
+  ${({ theme }) => theme.mixins.flexCenter};
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: ${props => (props.liked ? 'var(--green)' : 'var(--light-slate)')};
+  font-size: var(--fz-md);
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--green);
+    transform: translateY(-2px);
+  }
+
+  span {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+  }
+
+  span {
+    display: inline-flex;
+    align-items: center;
+  }
+`;
+
 const PostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
   const { frontmatter, html } = post;
-  const { title, date, tags, image } = frontmatter;
+  const { title, date, tags, image, slug } = frontmatter;
   const [setElements, entries] = useIntersectionObserver({
     threshold: 0.25,
     rootMargin: '0px 0px -100px 0px',
@@ -230,6 +293,9 @@ const PostTemplate = ({ data, location }) => {
 
     generateToken();
   }, [title, tags, date]);
+
+  const viewCount = useViewCount('blog', slug);
+  const { likeCount, userLiked, handleLike } = useLikeCount('blog', slug);
 
   return (
     <Layout location={location}>
@@ -312,6 +378,21 @@ const PostTemplate = ({ data, location }) => {
           ref={contentRef}
           dangerouslySetInnerHTML={{ __html: processedContent }}
         />
+
+        <StyledPostMeta>
+          <MetaItem>
+            <IconEye />
+            <span>
+              {viewCount} {viewCount === 1 ? 'view' : 'views'}
+            </span>
+          </MetaItem>
+          <LikeButton onClick={handleLike} liked={userLiked}>
+            <span>
+              {userLiked ? <IconHeart /> : <IconHeartRegular />}
+              {likeCount} {likeCount === 1 ? 'like' : 'likes'}
+            </span>
+          </LikeButton>
+        </StyledPostMeta>
       </StyledPostContainer>
     </Layout>
   );
