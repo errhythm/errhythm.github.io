@@ -9,3 +9,8 @@ package-lock.json
 .DS_Store
 
 .vscode/
+
+# Environment variables
+.env
+.env.local
+.env.development
