@@ -33,7 +33,7 @@ const StyledProjectHeader = styled.header`
 `;
 
 const StyledProjectContent = styled.div`
-  margin-bottom: 100px;
+  margin-bottom: ${props => (props.hasTestimonial ? '0px' : '100px')};
   h1,
   h2,
   h3,
@@ -454,6 +454,7 @@ const ProjectTemplate = ({ data, location }) => {
         <StyledProjectContent
           ref={contentRef}
           dangerouslySetInnerHTML={{ __html: processedContent }}
+          hasTestimonial={!!testimonial}
         />
 
         {testimonial && (

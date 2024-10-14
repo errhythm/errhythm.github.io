@@ -6,7 +6,8 @@ const StyledTestimonial = styled.div`
   background-color: var(--light-navy);
   border-radius: 10px;
   padding: 25px;
-  margin-top: 50px;
+  margin-top: 20px;
+  margin-bottom: 50px;
   box-shadow: 0 10px 30px -15px var(--navy-shadow);
   transition: var(--transition);
   position: relative;

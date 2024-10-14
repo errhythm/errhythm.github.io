@@ -24,7 +24,7 @@ const StyledPostHeader = styled.header`
   margin-bottom: 50px;
 `;
 const StyledPostContent = styled.div`
-  margin-bottom: 100px;
+  margin-bottom: 40px;
   h1,
   h2,
   h3,
