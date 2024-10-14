@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Layout } from '@components';
-import { IconBookmark } from '@components/icons';
+import { IconBookmark, IconEye, IconHeart, IconTag } from '@components/icons';
+import { useViewCount, useLikeCount } from '../../hooks/useFirebase';
 
 const StyledMainContainer = styled.main`
   & > header {
@@ -61,7 +62,7 @@ const StyledPost = styled.li`
 
   .post__inner {
     ${({ theme }) => theme.mixins.boxShadow};
-    ${({ theme }) => theme.mixins.flexBetween};
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     position: relative;
@@ -70,23 +71,57 @@ const StyledPost = styled.li`
     border-radius: var(--border-radius);
     transition: var(--transition);
     background-color: var(--light-navy);
+  }
 
-    header,
-    a {
-      width: 100%;
-    }
+  .post__top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
   }
 
   .post__icon {
-    ${({ theme }) => theme.mixins.flexBetween};
+    ${({ theme }) => theme.mixins.flexCenter};
     color: var(--green);
-    margin-bottom: 30px;
-    margin-left: -5px;
+    flex-shrink: 0;
 
     svg {
       width: 40px;
       height: 40px;
     }
+  }
+
+  .post__stats {
+    display: flex;
+    align-items: center;
+
+    .stat {
+      display: flex;
+      align-items: center;
+      color: var(--light-slate);
+      font-size: var(--fz-sm);
+
+      &:first-of-type {
+        margin-right: 15px;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+      }
+
+      span {
+        margin-top: 5px; // Add this line to align text with icon
+      }
+    }
+  }
+
+  .post__content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .post__title {
@@ -113,12 +148,11 @@ const StyledPost = styled.li`
   .post__desc {
     color: var(--light-slate);
     font-size: 17px;
+    margin-bottom: 20px;
   }
 
   footer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    margin-top: auto;
     width: 100%;
   }
 
@@ -130,24 +164,27 @@ const StyledPost = styled.li`
     margin-bottom: 5px;
   }
 
-  ul.post__tags {
+  .post__tag {
     display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    align-items: center;
+    color: var(--green);
+    font-family: var(--font-mono);
+    font-size: var(--fz-xxs);
 
-    li {
-      color: var(--green);
-      font-family: var(--font-mono);
-      font-size: var(--fz-xxs);
-      line-height: 1.75;
-      margin-right: 10px;
-      margin-bottom: 5px;
+    svg {
+      width: 14px;
+      height: 14px;
+      margin-right: 5px;
     }
   }
 `;
+
+const truncateDescription = (description, maxLength = 160) => {
+  if (description.length <= maxLength) {
+    return description;
+  }
+  return `${description.slice(0, maxLength).trim()}...`;
+};
 
 const blogPage = ({ location, data }) => {
   const posts = data.allMarkdownRemark.edges;
@@ -208,31 +245,47 @@ const blogPage = ({ location, data }) => {
               const { frontmatter } = node;
               const { title, description, slug, date, tags } = frontmatter;
               const prefix = '/blog/';
-              const formattedDate = new Date(date).toLocaleDateString();
+              const formattedDate = new Date(date).toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+              });
+
+              const viewCount = useViewCount('blog', slug, false);
+              const { likeCount } = useLikeCount('blog', slug);
+
               return (
                 <StyledPost key={i}>
                   <div className="post__inner">
-                    <header>
+                    <div className="post__top">
                       <div className="post__icon">
                         <IconBookmark />
                       </div>
+                      <div className="post__stats">
+                        <span className="stat">
+                          <IconEye />
+                          <span>{viewCount}</span>
+                        </span>
+                        <span className="stat">
+                          <IconHeart />
+                          <span>{likeCount}</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="post__content">
                       <h5 className="post__title">
                         <Link to={`${prefix}${slug}`}>{title}</Link>
                       </h5>
-                      <p className="post__desc">{description}</p>
-                    </header>
+                      <p className="post__desc">{truncateDescription(description)}</p>
+                    </div>
                     <footer>
                       <span className="post__date">{formattedDate}</span>
-                      <ul className="post__tags">
-                        {tags.slice(0, 4).map((tag, i) => (
-                          <li key={i}>
-                            <Link to={`/blog/tags/${kebabCase(tag)}/`} className="inline-link">
-                              #{tag}
-                            </Link>
-                          </li>
-                        ))}
-                        {tags.length > 4 && <li>...</li>}
-                      </ul>
+                      {tags.length > 0 && (
+                        <Link to={`/blog/tags/${kebabCase(tags[0])}/`} className="post__tag">
+                          <IconTag />
+                          {tags[0]}
+                        </Link>
+                      )}
                     </footer>
                   </div>
                 </StyledPost>

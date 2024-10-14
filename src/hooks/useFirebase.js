@@ -20,7 +20,7 @@ const getUserId = () => {
   return userId;
 };
 
-export const useViewCount = (contentType, slug) => {
+export const useViewCount = (contentType, slug, shouldIncrement = true) => {
   const [viewCount, setViewCount] = useState(0);
   const userId = getUserId();
 
@@ -36,18 +36,20 @@ export const useViewCount = (contentType, slug) => {
       setViewCount(count);
     });
 
-    const updateViewCount = debounce(() => {
-      update(ref(database), {
-        [`${contentType}/${slug}/views`]: increment(1),
-      });
-    }, 5000); // Update every 5 seconds at most
+    if (shouldIncrement) {
+      const updateViewCount = debounce(() => {
+        update(ref(database), {
+          [`${contentType}/${slug}/views`]: increment(1),
+        });
+      }, 5000); // Update every 5 seconds at most
 
-    updateViewCount();
+      updateViewCount();
 
-    return () => {
-      updateViewCount.cancel();
-    };
-  }, [contentType, slug, userId]);
+      return () => {
+        updateViewCount.cancel();
+      };
+    }
+  }, [contentType, slug, userId, shouldIncrement]);
 
   return viewCount;
 };
@@ -60,7 +62,7 @@ export const useLikeCount = (contentType, slug) => {
   useEffect(() => {
     if (!userId) {
       return;
-    } // Don't proceed if userId is not available yet
+    }
 
     const likesRef = ref(database, `${contentType}/${slug}/likes`);
     const userLikeRef = ref(database, `users/${userId}/likes/${contentType}/${slug}`);
@@ -78,7 +80,7 @@ export const useLikeCount = (contentType, slug) => {
   const handleLike = async () => {
     if (!userId) {
       return;
-    } // Don't proceed if userId is not available
+    }
 
     const userLikeRef = ref(database, `users/${userId}/likes/${contentType}/${slug}`);
 

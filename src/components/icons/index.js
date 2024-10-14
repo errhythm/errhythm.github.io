@@ -19,3 +19,4 @@ export { default as IconEye } from './eye';
 export { default as IconHeart } from './heart';
 export { default as IconHeartRegular } from './heart-regular';
 export { default as IconOrcid } from './orcid';
+export { default as IconTag } from './tag';
