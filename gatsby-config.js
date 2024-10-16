@@ -180,7 +180,13 @@ module.exports = {
               {
                 allMarkdownRemark(
                   sort: { frontmatter: { date: DESC } },
-                  filter: { fileAbsolutePath: { regex: "/content/posts/" }, frontmatter: { draft: { ne: true } } }
+                  filter: {
+                    fileAbsolutePath: { regex: "/content/posts/" },
+                    frontmatter: {
+                      draft: { ne: true },
+                      slug: { ne: "dummy" }
+                    }
+                  }
                 ) {
                   edges {
                     node {
