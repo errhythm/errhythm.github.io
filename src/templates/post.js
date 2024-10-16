@@ -178,7 +178,7 @@ const MetaItem = styled.div`
   font-weight: 600;
 
   span {
-    margin-top: 0.45rem;
+    margin-top: 0.4rem;
   }
 
   svg {
@@ -220,10 +220,18 @@ const LikeButton = styled.button`
   }
 `;
 
+const calculateReadingTime = content => {
+  const wordsPerMinute = 200;
+  const wordCount = content.split(/\s+/g).length;
+  const readingTime = Math.ceil(wordCount / wordsPerMinute);
+  return readingTime;
+};
+
 const PostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
   const { frontmatter, html } = post;
   const { title, date, tags, image, slug } = frontmatter;
+  const readingTime = calculateReadingTime(html);
   const [setElements, entries] = useIntersectionObserver({
     threshold: 0.25,
     rootMargin: '0px 0px -100px 0px',
@@ -301,6 +309,7 @@ const PostTemplate = ({ data, location }) => {
     <Layout location={location}>
       <GlobalStyle />
       <Helmet title={title}>
+        <link rel="alternate" type="application/rss+xml" href="https://errhythm.me/rss.xml" />
         <meta name="image" content={imageUrl} />
         <meta property="og:image" content={imageUrl} />
         <meta name="twitter:image" content={imageUrl} />
@@ -354,6 +363,8 @@ const PostTemplate = ({ data, location }) => {
                 day: 'numeric',
               })}
             </time>
+            <span>&nbsp;&mdash;&nbsp;</span>
+            <span>{readingTime} min read</span>
             <span>&nbsp;&mdash;&nbsp;</span>
             {tags &&
               tags.length > 0 &&

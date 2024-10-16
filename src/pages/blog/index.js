@@ -193,6 +193,7 @@ const blogPage = ({ location, data }) => {
     <Layout location={location}>
       <Helmet>
         <title>Blog</title>
+        <link rel="alternate" type="application/rss+xml" href="https://errhythm.me/rss.xml" />
         <script type="application/ld+json">
           {`
       {

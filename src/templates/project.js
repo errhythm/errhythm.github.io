@@ -277,7 +277,7 @@ const MetaItem = styled.div`
   font-weight: 600;
 
   span {
-    margin-top: 0.45rem;
+    margin-top: 0.4rem;
   }
 
   svg {

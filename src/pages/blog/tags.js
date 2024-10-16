@@ -38,7 +38,9 @@ const TagsPage = ({
   location,
 }) => (
   <Layout location={location}>
-    <Helmet title="Tags" />
+    <Helmet title="Tags">
+      <link rel="alternate" type="application/rss+xml" href="https://errhythm.me/rss.xml" />
+    </Helmet>
 
     <StyledTagsContainer>
       <span className="breadcrumb">
