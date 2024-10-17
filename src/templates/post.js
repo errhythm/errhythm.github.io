@@ -242,23 +242,29 @@ const StyledModal = styled.div`
     position: relative;
     max-width: 90%;
     max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   img {
     max-width: 100%;
-    max-height: 90vh;
+    max-height: calc(90vh - 60px); // Adjust this value to leave space for the caption
     object-fit: contain;
   }
 
   .modal-caption {
-    position: absolute;
-    bottom: -30px;
-    left: 0;
-    right: 0;
+    width: 100%;
+    padding: 10px;
     text-align: center;
     color: var(--light-slate);
     font-style: italic;
     font-size: var(--fz-sm);
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    bottom: -60px; // Adjust this value to match the space left above
+    left: 0;
+    right: 0;
   }
 
   .close-button {
@@ -277,6 +283,23 @@ const StyledModal = styled.div`
 
     &:hover {
       opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .modal-content {
+      max-height: 80vh;
+    }
+
+    img {
+      max-height: calc(80vh - 80px); // Adjust for smaller screens
+    }
+
+    .modal-caption {
+      position: relative;
+      bottom: auto;
+      background-color: transparent;
+      padding: 10px 0;
     }
   }
 `;
