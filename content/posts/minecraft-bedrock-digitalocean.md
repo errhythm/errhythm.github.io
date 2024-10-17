@@ -4,7 +4,7 @@ description: A step by step guide on setting up a Minecraft Bedrock server on Di
 date: 2024-10-17
 draft: false
 slug: minecraft-bedrock-digitalocean
-image: '/images/minecraft-digitalocean-diamond.png'
+image: '/images/minecraft-digitalocean-diamond.jpg'
 tags:
   - Gaming
   - Minecraft
