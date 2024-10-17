@@ -27,8 +27,21 @@ const StyledProjectHeader = styled.header`
   }
   .project-links {
     display: flex;
-    height: 20px;
+    margin-top: 0.5rem;
     gap: 10px;
+  }
+
+  .project-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+  }
+
+  .project-links svg {
+    width: 100%;
+    height: 100%;
   }
 `;
 
