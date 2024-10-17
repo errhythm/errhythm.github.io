@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
@@ -166,6 +166,7 @@ const StyledProjectContent = styled.div`
       border-radius: var(--border-radius);
       box-shadow: 0 10px 30px -15px var(--navy-shadow);
       transition: var(--transition);
+      cursor: pointer;
 
       &[alt=''],
       &:not([alt]) {
@@ -314,6 +315,61 @@ const LikeButton = styled.button`
   }
 `;
 
+const StyledModal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  .modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+
+  .modal-caption {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: var(--light-slate);
+    font-style: italic;
+    font-size: var(--fz-sm);
+  }
+
+  .close-button {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+`;
+
 const ProjectTemplate = ({ data, location }) => {
   const project = data.markdownRemark;
   const { frontmatter, html } = project;
@@ -326,10 +382,37 @@ const ProjectTemplate = ({ data, location }) => {
   const contentRef = useRef(null);
   const imageRef = useRef(null);
 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+
+  const openModal = (imageSrc, caption) => {
+    setCurrentImage({ src: imageSrc, caption });
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setCurrentImage(null);
+  };
+
   useEffect(() => {
     if (contentRef.current && imageRef.current) {
-      const images = contentRef.current.querySelectorAll('figure img, .gatsby-resp-image-wrapper');
+      const images = contentRef.current.querySelectorAll(
+        'figure img, .gatsby-resp-image-wrapper img',
+      );
       setElements([imageRef.current, ...images]);
+
+      images.forEach(img => {
+        const figure = img.closest('figure');
+        const caption = figure ? figure.querySelector('figcaption')?.textContent : '';
+        img.addEventListener('click', () => openModal(img.src, caption));
+      });
+
+      return () => {
+        images.forEach(img => {
+          img.removeEventListener('click', () => openModal(img.src, ''));
+        });
+      };
     }
   }, [setElements]);
 
@@ -447,7 +530,20 @@ const ProjectTemplate = ({ data, location }) => {
 
         {image && (
           <StyledFeaturedImage>
-            <img src={image} alt={title} ref={imageRef} />
+            <img
+              src={image}
+              alt={title}
+              ref={imageRef}
+              onClick={() => openModal(image, title)}
+              style={{ cursor: 'pointer' }}
+              role="presentation"
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  openModal(image, title);
+                }
+              }}
+            />
           </StyledFeaturedImage>
         )}
 
@@ -482,6 +578,23 @@ const ProjectTemplate = ({ data, location }) => {
           </LikeButton>
         </StyledPostMeta>
       </StyledProjectContainer>
+
+      {modalIsOpen && (
+        <StyledModal onClick={closeModal}>
+          <div
+            className="modal-content"
+            role="button"
+            tabIndex={0}
+            onClick={e => e.stopPropagation()}
+            onKeyDown={e => e.stopPropagation()}>
+            <img src={currentImage.src} alt="Enlarged view" />
+            {currentImage.caption && <p className="modal-caption">{currentImage.caption}</p>}
+            <button className="close-button" onClick={closeModal}>
+              ×
+            </button>
+          </div>
+        </StyledModal>
+      )}
     </Layout>
   );
 };
