@@ -193,6 +193,8 @@ const StyledCardContainer = styled.div`
   }
 `;
 
+const getPublicationCountByType = (publications, type) =>
+  publications.filter(({ node }) => node.frontmatter.type === type).length;
 const PublicationsPage = ({ location, data }) => {
   const publications = data.allMarkdownRemark.edges;
   const publicationsType = publications.map(({ node }) => node.frontmatter.type);
@@ -268,7 +270,8 @@ const PublicationsPage = ({ location, data }) => {
           {uniqueTypes.map((type, typeIndex) => (
             <React.Fragment key={typeIndex}>
               <h3 style={{ marginBottom: '30px', marginTop: typeIndex === 0 ? '0' : '40px' }}>
-                {type === 'Thesis' ? 'Theses' : `${type}s`}
+                {type === 'Thesis' ? 'Theses' : `${type}s`} (
+                {getPublicationCountByType(publications, type)})
               </h3>
               <table>
                 <thead>
