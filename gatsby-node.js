@@ -36,6 +36,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           fieldValue
         }
       }
+      publicationsRemark: allMarkdownRemark(
+        filter: {
+          fileAbsolutePath: { regex: "/content/publications/" }
+          frontmatter: { show: { ne: false } }
+        }
+        sort: { frontmatter: { date: DESC } }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -102,6 +118,20 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   projects.forEach(({ node }) => {
     const slug = `/projects/${_.kebabCase(node.frontmatter.title)}`;
+    createPage({
+      path: slug,
+      component: projectTemplate,
+      context: {
+        slug: slug,
+      },
+    });
+  });
+
+  // Create publication detail pages
+  const publications = result.data.publicationsRemark.edges;
+
+  publications.forEach(({ node }) => {
+    const slug = `/publications/${_.kebabCase(node.frontmatter.title)}`;
     createPage({
       path: slug,
       component: projectTemplate,

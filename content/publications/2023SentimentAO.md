@@ -7,6 +7,7 @@ doi: '10.1109/ESCI56872.2023.10100214'
 url: ''
 github: 'https://github.com/errhythm/BDFoodAppSentiment'
 featured: true
+show: true
 authors:
   - name: 'Ehsanur Rahman Rhythm'
     url: 'https://errhythm.me'

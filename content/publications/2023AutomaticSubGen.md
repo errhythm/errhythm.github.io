@@ -6,6 +6,7 @@ conference: 'B.Sc, Brac University'
 doi: ''
 url: 'http://hdl.handle.net/10361/23554'
 featured: true
+show: true
 authors:
   - name: 'Ehsanur Rahman Rhythm'
     url: 'https://errhythm.me'
