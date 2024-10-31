@@ -260,7 +260,7 @@ const Publications = () => {
       allMarkdownRemark(
         filter: {
           fileAbsolutePath: { regex: "/content/publications/" }
-          frontmatter: { featured: { eq: true } }
+          frontmatter: { featured: { eq: true }, visible: { ne: false }, title: { ne: "Dummy" } }
         }
         sort: { frontmatter: { date: DESC } }
       ) {

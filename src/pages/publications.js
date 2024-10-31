@@ -461,7 +461,10 @@ export default PublicationsPage;
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/publications/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/publications/" }
+        frontmatter: { visible: { ne: false }, title: { ne: "Dummy" } }
+      }
       sort: { frontmatter: { date: DESC } }
     ) {
       edges {
