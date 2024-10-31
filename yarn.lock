@@ -74,10 +74,10 @@
     json5 "^2.2.3"
     semver "^6.3.1"
 
-"@babel/eslint-parser@^7.19.1", "@babel/eslint-parser@^7.25.8":
-  version "7.25.8"
-  resolved "https://registry.npmjs.org/@babel/eslint-parser/-/eslint-parser-7.25.8.tgz"
-  integrity sha512-Po3VLMN7fJtv0nsOjBDSbO1J71UhzShE9MuOSkWEV9IZQXzhZklYtzKZ8ZD/Ij3a0JBv1AG3Ny2L3jvAHQVOGg==
+"@babel/eslint-parser@^7.19.1", "@babel/eslint-parser@^7.25.9":
+  version "7.25.9"
+  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.25.9.tgz#603c68a63078796527bc9d0833f5e52dd5f9224c"
+  integrity sha512-5UXfgpK0j0Xr/xIdgdLEhOFxaDZ0bRPWJJchRpqOSur/3rZoPbqqki5mm0p4NE2cs28krBEiSM2MB7//afRSQQ==
   dependencies:
     "@nicolo-ribaudo/eslint-scope-5-internals" "5.1.1-v1"
     eslint-visitor-keys "^2.1.0"
@@ -1257,6 +1257,7 @@
     "@firebase/logger" "0.4.3"
     "@firebase/util" "1.10.1"
     tslib "^2.1.0"
+
 "@firebase/app-compat@0.2.45":
   version "0.2.45"
   resolved "https://registry.yarnpkg.com/@firebase/app-compat/-/app-compat-0.2.45.tgz#2541fa77eba61de9d3d437df76c28e21d7e66839"
@@ -5650,7 +5651,6 @@ eslint-plugin-react-hooks@^4.6.0:
   version "4.6.2"
   resolved "https://registry.npmjs.org/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.6.2.tgz"
   integrity sha512-QzliNJq4GinDBcD8gPB5v0wh6g8q3SUi6EFF0x8N/BL9PoVs0atuGc47ozMRyOWAKdwaZ5OnbOEa3WR+dSGKuQ==
-
 
 eslint-plugin-react@^7.32.2, eslint-plugin-react@^7.37.2:
   version "7.37.2"
