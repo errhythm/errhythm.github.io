@@ -408,6 +408,9 @@ const StyledModal = styled.div`
 
 const ProjectTemplate = ({ data, location }) => {
   const project = data.markdownRemark;
+  if (!project) {
+    return <div>Project not found</div>;
+  }
   const { frontmatter, html } = project;
   const { title, date, github, external, tech, image, testimonial } = frontmatter;
   const [setElements, entries] = useIntersectionObserver({
