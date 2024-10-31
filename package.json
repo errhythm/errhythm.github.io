@@ -33,7 +33,7 @@
   "dependencies": {
     "animejs": "^3.2.2",
     "babel-plugin-styled-components": "^2.1.4",
-    "firebase": "^10.14.1",
+    "firebase": "^11.0.1",
     "gatsby": "^5.13.7",
     "gatsby-adapter-netlify": "^1.1.7",
     "gatsby-plugin-feed": "^5.13.1",
