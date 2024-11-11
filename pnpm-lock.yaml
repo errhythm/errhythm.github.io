@@ -39,8 +39,8 @@ importers:
         specifier: ^6.13.3
         version: 6.13.3(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       gatsby-plugin-react-helmet:
-        specifier: ^6.13.1
-        version: 6.13.1(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-helmet@6.1.0(react@18.3.1))
+        specifier: ^6.14.0
+        version: 6.14.0(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-helmet@6.1.0(react@18.3.1))
       gatsby-plugin-robots-txt:
         specifier: ^1.8.0
         version: 1.8.0(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))
@@ -3855,8 +3855,8 @@ packages:
     peerDependencies:
       gatsby: ^5.0.0-next
 
-  gatsby-plugin-react-helmet@6.13.1:
-    resolution: {integrity: sha512-Fwgf2UDOo1LQgw1vUmGmDMK5hXVrIXDR92URzu4DylQWgyfycfQ3D9FdU2JZ8jB6F3OI6Yx6YHC7zL3OAL7iOw==}
+  gatsby-plugin-react-helmet@6.14.0:
+    resolution: {integrity: sha512-OAAYx3BBYJAUi420cUl08X7Ql3t0/0X3rbDkOp6lWKUGD/NZgAK/RMDbPLI4xK6WG6CE2WWda5lVOS+32mSspw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       gatsby: ^5.0.0-next
@@ -12399,7 +12399,7 @@ snapshots:
       - graphql
       - supports-color
 
-  gatsby-plugin-react-helmet@6.13.1(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-helmet@6.1.0(react@18.3.1)):
+  gatsby-plugin-react-helmet@6.14.0(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-helmet@6.1.0(react@18.3.1)):
     dependencies:
       '@babel/runtime': 7.25.6
       gatsby: 5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2)
