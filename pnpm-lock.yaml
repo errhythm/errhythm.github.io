@@ -36,8 +36,8 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(webpack@5.94.0)
       gatsby-plugin-offline:
-        specifier: ^6.13.3
-        version: 6.13.3(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^6.14.0
+        version: 6.14.0(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       gatsby-plugin-react-helmet:
         specifier: ^6.14.0
         version: 6.14.0(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-helmet@6.1.0(react@18.3.1))
@@ -3845,8 +3845,8 @@ packages:
     peerDependencies:
       gatsby: ^4.0.0 || ^5.0.0
 
-  gatsby-plugin-offline@6.13.3:
-    resolution: {integrity: sha512-muFxKkEtXEfa8UaoLurfR9EgvqNhmuvhB4Ri1LIzFiyjlfSmwyVZRJjkN0M0q5zjZy/u+PBzazX0k5CatLFI7A==}
+  gatsby-plugin-offline@6.14.0:
+    resolution: {integrity: sha512-uvQhwZ1HhPZoLJDYdZ+OTWsz/QRz3hNqF+QVhihPRZ9jjgXsPAqKGTgrWM0Btaf6DiNImz10PTo1/SRsp0UDgQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       gatsby: ^5.0.0-next
@@ -12389,12 +12389,12 @@ snapshots:
     transitivePeerDependencies:
       - webpack
 
-  gatsby-plugin-offline@6.13.3(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  gatsby-plugin-offline@6.14.0(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.25.6
       cheerio: 1.0.0-rc.12
       gatsby: 5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2)
-      gatsby-core-utils: 4.13.1
+      gatsby-core-utils: 4.14.0
       glob: 7.2.3
       idb-keyval: 3.2.0
       lodash: 4.17.21
