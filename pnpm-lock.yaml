@@ -21,8 +21,8 @@ importers:
         specifier: ^5.13.7
         version: 5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2)
       gatsby-adapter-netlify:
-        specifier: ^1.1.7
-        version: 1.1.7(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))
+        specifier: ^1.2.0
+        version: 1.2.0(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))
       gatsby-plugin-feed:
         specifier: ^5.13.1
         version: 5.13.1(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -3766,8 +3766,8 @@ packages:
   functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
 
-  gatsby-adapter-netlify@1.1.7:
-    resolution: {integrity: sha512-BuNb8DHHwXCuZ3UB6gQJKJTeBaz7rgCAEe3DutkD3AQstqmyEwUl/zKLZK4MH9DJouS+c6uUTqltsl0N9zJZpQ==}
+  gatsby-adapter-netlify@1.2.0:
+    resolution: {integrity: sha512-B7L9Z0HSr/z02lG0fRovtE4WcbgCbfDzwPyRNGjk4GE0cttuHQtibpd1kglekKdajm70wyT0imvV7IBAKajg9Q==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       gatsby: ^5.10.0-alpha
@@ -3779,6 +3779,10 @@ packages:
 
   gatsby-core-utils@4.13.1:
     resolution: {integrity: sha512-w7G6SsQr8T2q+AJ1MxvRNGocCt+wjc22MiRLj2Zi3Ijpjszbr818JxwI4+aPt8WOSHlKT5SYCHICnEvcYPm9gg==}
+    engines: {node: '>=18.0.0'}
+
+  gatsby-core-utils@4.14.0:
+    resolution: {integrity: sha512-h0v20gB213PmhKjioCJ93SrUb7Hihnqxd6X6Iur4u1eiWTUDsGeV9g1bkquiuDl2qovUnjj7mOoHdWiu/Ax/9Q==}
     engines: {node: '>=18.0.0'}
 
   gatsby-graphiql-explorer@3.13.1:
@@ -12181,17 +12185,17 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
-  gatsby-adapter-netlify@1.1.7(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2)):
+  gatsby-adapter-netlify@1.2.0(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2)):
     dependencies:
       '@babel/runtime': 7.25.6
       '@netlify/cache-utils': 5.1.6
       '@netlify/config': 20.19.0
       '@netlify/functions': 1.6.0
-      cookie: 0.5.0
+      cookie: 0.6.0
       fastq: 1.17.1
       fs-extra: 11.2.0
       gatsby: 5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2)
-      gatsby-core-utils: 4.13.1
+      gatsby-core-utils: 4.14.0
 
   gatsby-cli@5.13.3:
     dependencies:
@@ -12241,6 +12245,25 @@ snapshots:
       - supports-color
 
   gatsby-core-utils@4.13.1:
+    dependencies:
+      '@babel/runtime': 7.25.6
+      ci-info: 2.0.0
+      configstore: 5.0.1
+      fastq: 1.17.1
+      file-type: 16.5.4
+      fs-extra: 11.2.0
+      got: 11.8.6
+      hash-wasm: 4.11.0
+      import-from: 4.0.0
+      lmdb: 2.5.3
+      lock: 1.1.0
+      node-object-hash: 2.3.10
+      proper-lockfile: 4.1.2
+      resolve-from: 5.0.0
+      tmp: 0.2.3
+      xdg-basedir: 4.0.0
+
+  gatsby-core-utils@4.14.0:
     dependencies:
       '@babel/runtime': 7.25.6
       ci-info: 2.0.0
