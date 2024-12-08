@@ -34,6 +34,7 @@
     "animejs": "^3.2.2",
     "babel-plugin-styled-components": "^2.1.4",
     "firebase": "^11.0.1",
+    "framer-motion": "^11.13.1",
     "gatsby": "^5.13.7",
     "gatsby-adapter-netlify": "^1.2.0",
     "gatsby-plugin-feed": "^5.13.1",
