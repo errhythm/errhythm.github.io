@@ -52,7 +52,7 @@
     "gatsby-remark-prismjs": "^7.13.2",
     "gatsby-source-filesystem": "^5.14.0",
     "gatsby-transformer-remark": "^6.13.1",
-    "gatsby-transformer-sharp": "^5.13.1",
+    "gatsby-transformer-sharp": "^5.14.0",
     "isomorphic-dompurify": "^2.16.0",
     "lodash": "^4.17.21",
     "prismjs": "^1.29.0",
