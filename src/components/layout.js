@@ -12,7 +12,7 @@ const StyledContent = styled.div`
 
 const Layout = ({ children, location }) => {
   const isHome = location.pathname === '/';
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Sets target="_blank" rel="noopener noreferrer" on external links
   const handleExternalLinks = () => {
@@ -72,10 +72,10 @@ const Layout = ({ children, location }) => {
     const currentTime = new Date().getTime();
     const showLoaderThreshold = 1 * 60 * 60 * 1000; // 1 hour in milliseconds
 
-    if (!lastVisit || currentTime - parseInt(lastVisit) > showLoaderThreshold) {
-      setIsLoading(true);
-      localStorage.setItem('lastVisit', currentTime.toString());
+    if (lastVisit && currentTime - parseInt(lastVisit) <= showLoaderThreshold) {
+      setIsLoading(false);
     }
+    localStorage.setItem('lastVisit', currentTime.toString());
   }, []);
 
   return (
