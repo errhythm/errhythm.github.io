@@ -159,10 +159,13 @@ const About = () => {
             </p>
 
             <p>
-              Currently, I'm focused on enhancing digital experiences and delivering innovative
-              solutions at{' '}
-              <a href="https://www.rhystart.com/" target="_blank" rel="noreferrer">
-                RhyStart Technologies
+              Currently, I'm focused on enhancing digital experiences at{' '}
+              <a
+                href="https://deliveryhobe.com/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: '#ffe23d' }}>
+                DeliveryHobe
               </a>
               . My main goal is to build accessible, human-centered products that meet and exceed
               user expectations.
@@ -170,7 +173,7 @@ const About = () => {
 
             <p>
               In addition to my work in web development, I have also published research in the
-              fields of natural language processing (NLP) and data science. These {' '}
+              fields of natural language processing (NLP) and data science. These{' '}
               <a href="#publications">publications</a> reflect my commitment to advancing technology
               and contributing to the academic community.
             </p>
