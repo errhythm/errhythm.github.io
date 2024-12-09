@@ -60,8 +60,8 @@ importers:
         specifier: 0.0.4
         version: 0.0.4
       gatsby-remark-images:
-        specifier: ^7.13.2
-        version: 7.13.2(gatsby-plugin-sharp@5.14.0(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(graphql@16.9.0))(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))
+        specifier: ^7.14.0
+        version: 7.14.0(gatsby-plugin-sharp@5.13.1(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(graphql@16.9.0))(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))
       gatsby-remark-prismjs:
         specifier: ^7.13.2
         version: 7.13.2(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(prismjs@1.29.0)
@@ -3972,8 +3972,8 @@ packages:
   gatsby-remark-external-links@0.0.4:
     resolution: {integrity: sha512-JIKZguAGoGlzsJusfCb4JKM5E6JUEDbtlBkbErt7CdMnfBP+AldZeMQEQWK5xsJ5uXCyc4qqcBWR8vp0afFpOw==}
 
-  gatsby-remark-images@7.13.2:
-    resolution: {integrity: sha512-a2oke2akTElGqTKzsJjU1NK9itgBPrYAIOOQW2ZuLTtb5fulsZNTJa2Q3vhRHiKLodvXrte+Gxv7znjY21/dTA==}
+  gatsby-remark-images@7.14.0:
+    resolution: {integrity: sha512-P1FTQ5DEARWLh3AXXdGSjwAlA/mWWF7M5J/9szdTO6EmmF0+AnfvkIXAtNMtqGqXmbeSgriKvoXeIiyvIYeuRA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       gatsby: ^5.0.0-next
@@ -12642,7 +12642,7 @@ snapshots:
       chalk: 4.1.2
       cheerio: 1.0.0-rc.12
       gatsby: 5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2)
-      gatsby-core-utils: 4.13.1
+      gatsby-core-utils: 4.14.0
       gatsby-plugin-sharp: 5.14.0(gatsby@5.13.7(babel-eslint@10.1.0(eslint@8.57.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@4.26.1)(typescript@5.6.2))(graphql@16.9.0)
       is-relative-url: 3.0.0
       lodash: 4.17.21
