@@ -3,7 +3,11 @@ import { ref, onValue, increment, update, get } from 'firebase/database';
 import { database } from '../config/firebase';
 import { debounce } from 'lodash';
 
-const generateUserId = () => Math.random().toString(36).substr(2, 9);
+const generateUserId = () => {
+  const array = new Uint32Array(1);
+  window.crypto.getRandomValues(array);
+  return array[0].toString(36).substr(2, 9);
+};
 
 const getUserId = () => {
   const [userId, setUserId] = useState(null);
