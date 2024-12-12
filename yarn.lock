@@ -3745,7 +3745,7 @@ babel-preset-fbjs@^3.4.0:
     "@babel/plugin-transform-template-literals" "^7.0.0"
     babel-plugin-syntax-trailing-function-commas "^7.0.0-beta.0"
 
-babel-preset-gatsby@^3.13.2, babel-preset-gatsby@^3.14.0:
+babel-preset-gatsby@^3.14.0:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-3.14.0.tgz#17bb148e91c93735c056c8030c34f1477dfd2926"
   integrity sha512-yE/1gmohqy+Y/v8RYWMyJ1WLrACSkblS8LRcByeNqqBPrDAaG5T/bU1Lhc75BW8j9iLDOkLilun3fGZRu5nacA==
@@ -4535,6 +4535,11 @@ cookie@^0.5.0:
   version "0.5.0"
   resolved "https://registry.npmjs.org/cookie/-/cookie-0.5.0.tgz"
   integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
+
+cookie@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-1.0.2.tgz#27360701532116bd3f1f9416929d176afe1e4610"
+  integrity sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==
 
 cookie@~0.4.1:
   version "0.4.2"
@@ -6502,7 +6507,6 @@ gatsby-graphiql-explorer@^3.14.0:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/gatsby-graphiql-explorer/-/gatsby-graphiql-explorer-3.14.0.tgz#9a10f040ede72c104cf5af23561ba4fc01d43161"
   integrity sha512-t+PpMu+6GkCdyGDw8S4pd1FBZVwFdpn6Jb2BLZtNJ2z1hOSxHKGoZO1sW2mwZ8/H1VuiSPb2XtXwHYo5CcYgAg==
-
 
 gatsby-legacy-polyfills@^3.14.0:
   version "3.14.0"
