@@ -54,6 +54,16 @@ const Head = ({ title, description, image }) => {
 
       <link rel="canonical" href={seo.url} />
 
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1XJH4ERHH"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'G-Y1XJH4ERHH');
+      </script>
+
       <script type="text/javascript">
         {`
           (function(c,l,a,r,i,t,y){
