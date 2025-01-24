@@ -1,9 +1,9 @@
 ---
-date: '2024-12-01'
+date: '2024-11-01'
 title: 'Software Engineer'
 company: 'DeliveryHobe'
 location: 'Dhaka, BD'
-range: 'Dec 2024 - Present'
+range: 'Nov 2024 - Present'
 url: 'https://deliveryhobe.com/'
 ---
 

@@ -67,15 +67,22 @@ const Hero = () => {
     <>
       <p>
         I’m a software engineer specializing in creating dynamic and user-friendly web applications.
-        Currently, I’m enhancing digital experiences at{' '}
+        Currently, I'm enhancing digital experiences at{' '}
         <a
           href="https://deliveryhobe.com/"
           target="_blank"
           rel="noreferrer"
           style={{ color: '#ffe23d' }}>
           DeliveryHobe
+        </a>{' '}
+        and researching Machine Learning at{' '}
+        <a
+          href="https://www.bracu.ac.bd/"
+          target="_blank"
+          rel="noreferrer"
+          style={{ color: '#253494' }}>
+          Brac University
         </a>
-        .
       </p>
     </>
   );
