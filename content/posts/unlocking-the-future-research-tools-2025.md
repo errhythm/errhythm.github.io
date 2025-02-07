@@ -2,7 +2,7 @@
 title: 'Unlocking the Future: My Top Research Tools to Supercharge Your Work in 2025'
 description: 
 date: 2025-02-05
-draft: true
+draft: false
 slug: unlocking-the-future-research-tools-2025
 image: '/images/internet-archive-breach-bcrypt.jpg'
 tags:
@@ -27,9 +27,6 @@ A well-known tool in the academic community, Semantic Scholar uses AI to sift th
 ### QuillBot
 We all know about this one. QuillBot offers robust paraphrasing and summarization capabilities to refine your drafts and ensure your writing is clear and engaging. It provides several writing modes that let you adjust the tone and style of your text, making it an excellent companion during the revision process. It is a really helpful tool plus a friend who helped you always in your academic years. 
 
-### Overleaf
-Another tool we use all the time. 
-
 ## AI-Powered Research Assistants: Your New Brainstorming Buddies
 The rise of research assistants driven by artificial intelligence is among the most revolutionary developments in research technology. These tools are meant to assist you in compiling, evaluating, and synthesizing material from all across the web. Here are some really notable sites I use:
 
@@ -41,4 +38,11 @@ Elicit has been earning its reputation as a true “AI research assistant.” It
 
 ### Scholarcy
 This tool condenses lengthy research articles into bite-sized summaries and creates flashcards of key points. It even auto-generates reference lists, saving countless hours of manual work. But nowadays we can easily ask ChatGPT or Deepseek AI to summarize the research paper. 
+
+## Essential Reference Management: Zotero and Beyond
+Even in an era dominated by advanced AI tools, classic research tools remain indispensable. One such tool is Zotero—a free, open-source reference manager that every researcher should have in their toolkit. Zotero automatically captures citation information from your browser, organizes references into customizable collections, and integrates seamlessly with word processors to create citations and bibliographies in thousands of styles.
+
+From AI research assistants that serve as your personal analysts to powerful writing and data organization tools—and even classic reference managers like Zotero—the modern research toolkit is more dynamic and integrated than ever before.
+
+For me, these tools have not only boosted my productivity but also transformed how I approach complex research problems. Whether you’re in academia, industry, or simply passionate about exploring new ideas, I encourage you to experiment with these tools and see how they can help you unlock new insights. Feel free to ask me any questions or reach out to me for feedback at ehsanur.rahman@bracu.ac.bd
 
