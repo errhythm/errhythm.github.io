@@ -1,6 +1,6 @@
 ---
 title: 'Unlocking the Future: My Top Research Tools to Supercharge Your Work in 2025'
-description: 
+description: "I'm delighted to offer my personal roundup of research tools that are changing how I work—and might potentially improve your research process."
 date: 2025-02-03
 draft: false
 slug: unlocking-the-future-research-tools-2025
