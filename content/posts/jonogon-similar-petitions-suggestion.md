@@ -1,5 +1,5 @@
 ---
-title: 'Jonogon’s New Feature: Suggesting Similar Petitions for Stronger Impact'
+title: 'How I Implemented Similar Petitions Suggestions in Jonogon'
 description: Discover how I created the Similar Petitions Suggestion in Jonogon, its implementation, and how it’s fostering unity in Bangladesh’s grassroots movements.
 date: 2025-03-03
 draft: false
