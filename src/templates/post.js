@@ -11,7 +11,6 @@ import { IconEye, IconHeart, IconHeartRegular } from '@components/icons';
 
 const GlobalStyle = createGlobalStyle`
   figure img, .gatsby-resp-image-wrapper {
-    opacity: 0.01;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
