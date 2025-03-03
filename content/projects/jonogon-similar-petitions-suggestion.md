@@ -1,15 +1,17 @@
 ---
-title: 'How I Implemented Similar Petitions Suggestions in Jonogon'
-description: Discover how I created the Similar Petitions Suggestion in Jonogon, its implementation, and how it’s fostering unity in Bangladesh’s grassroots movements.
 date: 2025-03-03
-draft: false
-slug: jonogon-similar-petitions-suggestion
-tags:
-  - Jonogon
-  - Petition Platform
-  - Software Development
-  - Civic Tech
-  - Bangladesh
+title: 'How I Implemented the Similar Petitions Suggestions in Jonogon'
+github: 'https://github.com/jonogon/jonogon-mono/pull/123'
+external: 'https://jonogon.org'
+tech:
+  - JavaScript
+  - tRPC
+  - Lodash
+  - ReactJS
+company: 'Jonogon'
+showInProjects: true
+featured: false
+featuredSort: 4
 ---
 
 Imagine pouring your heart into drafting a petition for your country, only to find that someone else has already raised the same issue. It was clear: duplicate petitions in Jonogon could dilute the collective impact. So I started thinking of a solution which would warn users that same kind of petition already exists so they can check that out first and match their voice with them instead.
@@ -52,4 +54,4 @@ const debouncedSuggest = useCallback(
 
 In the frontend, I slotted right under the title field in our draft and create new petition pages—always watching, ready to pounce. To ensure the interface remained snappy and to avoid bombarding our servers with requests, I used `Lodash`’s debounce function. This way, the system waits a brief 300 milliseconds after typing stops before initiating the search. A slight delay, but one that ensured a smoother user experience.
 
-Next up? Maybe some `pg_trgm` wizardry or NLP vibes for Bengali flair. For now, it’s a win for the 2,500+ dreamers building this with me. Check out the official GitHub Repository of [Jonogon](https://github.com/jonogon/jonogon-mono), or vote in [Jonogon](https://jonogon.org/). Let’s keep making Bangladesh louder, together!
+Next up? Maybe some `pg_trgm` wizardry or NLP vibes for a more personalized suggestions. For now, it’s a win for the 2,500+ dreamers building this with me. Check out the official GitHub Repository of [Jonogon](https://github.com/jonogon/jonogon-mono), or vote in [Jonogon](https://jonogon.org/). Let’s keep making Bangladesh louder, together!
