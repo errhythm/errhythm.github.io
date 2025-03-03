@@ -414,11 +414,45 @@ const ProjectTemplate = ({ data, location }) => {
     rootMargin: '0px 0px -100px 0px',
   });
 
+  // eslint-disable-next-line no-unused-vars
+  const [imageUrl, setImageUrl] = useState('');
+
   const contentRef = useRef(null);
   const imageRef = useRef(null);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
+
+  useEffect(() => {
+    const generateToken = async () => {
+      if (title && tech && tech.length > 0 && date) {
+        const key = await crypto.subtle.importKey(
+          'raw',
+          new TextEncoder().encode('rhythm'),
+          { name: 'HMAC', hash: { name: 'SHA-256' } },
+          false,
+          ['sign'],
+        );
+
+        const token = Array.from(
+          new Uint8Array(
+            await crypto.subtle.sign(
+              'HMAC',
+              key,
+              new TextEncoder().encode(JSON.stringify({ title, tag: tech[0], date })),
+            ),
+          ),
+        )
+          .map(b => b.toString(16).padStart(2, '0'))
+          .join('');
+
+        const ogImageUrl = `https://oggy.rhystart.com/api/rhythm?title=${encodeURIComponent(title)}&tag=${encodeURIComponent(tech[0])}&date=${encodeURIComponent(date)}&token=${encodeURIComponent(token)}`;
+        setImageUrl(ogImageUrl);
+      }
+    };
+
+    generateToken();
+  }, [title, tech, date]);
 
   const openModal = (imageSrc, caption) => {
     setCurrentImage({ src: imageSrc, caption });
@@ -487,9 +521,9 @@ const ProjectTemplate = ({ data, location }) => {
     <Layout location={location}>
       <GlobalStyle />
       <Helmet title={title}>
-        <meta name="image" content={image} />
-        <meta property="og:image" content={image} />
-        <meta name="twitter:image" content={image} />
+        <meta name="image" content={imageUrl || image} />
+        <meta property="og:image" content={imageUrl || image} />
+        <meta name="twitter:image" content={imageUrl || image} />
 
         <script type="application/ld+json">
           {`
