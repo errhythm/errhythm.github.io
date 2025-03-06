@@ -3,7 +3,7 @@ date: '2022-06-21'
 title: 'Web Developer'
 company: 'RhyStart'
 location: 'Dhaka, BD'
-range: 'June 2022 - Present'
+range: 'June 2022 - Aug 2024'
 url: 'https://www.rhystart.com/'
 ---
 
