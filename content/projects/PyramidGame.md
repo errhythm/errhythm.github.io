@@ -94,7 +94,7 @@ This final version handles our edge cases much better. It ensures that:
 
 This distribution created a perfect pyramid shape while maintaining the dramatic tension that made the original K-drama so interesting. It's fascinating how something that seemed so simple at first required so much iteration to get right. But hey, isn't that just software development in a nutshell?
 
-<div class="tenor-gif-embed" data-postid="10387296048274213689" data-share-method="host" data-aspect-ratio="1.33155" data-width="100%"><a href="https://tenor.com/view/pyramid-game-wonyoung-jang-daah-baek-harin-baek-ha-rin-gif-10387296048274213689">Pyramid Game Wonyoung GIF</a>from <a href="https://tenor.com/search/pyramid+game-gifs">Pyramid Game GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+![Pyramid Game](https://c.tenor.com/kCcWuL40CzkAAAAd/tenor.gif)
 
 ## Wrapping Up
 
