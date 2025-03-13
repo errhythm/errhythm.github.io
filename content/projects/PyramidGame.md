@@ -20,6 +20,9 @@ You know how sometimes you're just chilling, watching K-dramas, and suddenly you
 
 Let me paint you a picture: There's this K-drama where students participate in this wild voting system that determines their social ranking. Think of it as a digital popularity contest, but with actual consequences. The rules caught my attention - each student gets to vote for others, can't vote for themselves (sorry, narcissists!), and ends up with a rank from A to F based on the votes they receive.
 
+
+![Pyramid Game Home Page](/images/projects/PyramidGame-HomePage.png)
+
 ## The Tech Stack: Because Every Project Needs a Solid Foundation
 
 After the initial excitement wore off (and the caffeine kicked in), I had to make some serious technical decisions. Here's what I went with:
@@ -90,6 +93,8 @@ This final version handles our edge cases much better. It ensures that:
 3. The F rank is reserved for those with zero votes
 
 4. The distribution feels fair regardless of the number of participants
+
+![Game Waiting Page](/images/projects/PyramidGame-WaitingPage.png)
 
 This distribution created a perfect pyramid shape while maintaining the dramatic tension that made the original K-drama so interesting. It's fascinating how something that seemed so simple at first required so much iteration to get right. But hey, isn't that just software development in a nutshell?
 
