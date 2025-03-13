@@ -30,6 +30,8 @@ After the initial excitement wore off (and the caffeine kicked in), I had to mak
 ### The Ranking Algorithm: Math Is Hard
 Remember in school when you thought "When will I ever use math in real life?" Well, past me, HERE'S YOUR ANSWER! Let me take you through this rollercoaster ride.
 
+![Game Waiting Page](/images/projects/PyramidGame-WaitingPage.png)
+
 My first attempt was beautifully naive. I thought I could just count votes and assign ranks based on simple thresholds:
 
 ```javascript
@@ -89,9 +91,10 @@ This final version handles our edge cases much better. It ensures that:
 
 4. The distribution feels fair regardless of the number of participants
 
-![Game Waiting Page](/images/projects/PyramidGame-WaitingPage.png)
 
 This distribution created a perfect pyramid shape while maintaining the dramatic tension that made the original K-drama so interesting. It's fascinating how something that seemed so simple at first required so much iteration to get right. But hey, isn't that just software development in a nutshell?
+
+![Pyramid Game](https://tenor.com/mxt5z6hAUn7.gif)
 
 ## Wrapping Up
 
@@ -102,3 +105,4 @@ What started as a "hey, I could build that!" moment turned into a deep dive into
 If you want to check out the game or maybe host your own social experiment, you can find it at https://pyramidgame.errhythm.me. Just remember: with great power comes great responsibility... and potentially some awkward social situations. 😉
 
 Got questions? Found a bug? Mail me at rhythm@duck.com or check this blog where I post about my coding adventures and maybe some occasional K-drama recommendations!*
+
