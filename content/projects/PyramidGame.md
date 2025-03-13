@@ -52,7 +52,7 @@ Looks clean, right? Well, it worked perfectly in my test case with 5 participant
 
 The pyramid wasn't really a pyramid anymore - it was more like a seesaw! Finally, after some serious head-scratching, I landed on the current algorithm. It's a two-phase approach that first assigns ranks based on vote percentages and then promotes ranks to fill gaps:
 
-```tsx
+```javascript
 // First pass: Assign initial ranks
     const initialRanks: { participantId: string; rank: Rank }[] = [];
 
