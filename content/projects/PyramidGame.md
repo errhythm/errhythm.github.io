@@ -17,22 +17,17 @@ featuredSort: 4
 You know how sometimes you're just chilling, watching K-dramas, and suddenly your developer brain goes "Hey, I could build that!"? Well, that's exactly what happened to me while watching "Pyramid Game." One minute I'm stress-eating snacks watching students navigate a complex social hierarchy, and the next thing I know, I'm opening VS Code at 2 AM. Classic developer moment, right?
 
 ## *The "Aha!" Moment*
-
 Let me paint you a picture: There's this K-drama where students participate in this wild voting system that determines their social ranking. Think of it as a digital popularity contest, but with actual consequences. The rules caught my attention - each student gets to vote for others, can't vote for themselves (sorry, narcissists!), and ends up with a rank from A to F based on the votes they receive.
-
 
 ![Pyramid Game Home Page](/images/projects/PyramidGame-HomePage.png)
 
 ## The Tech Stack: Because Every Project Needs a Solid Foundation
-
 After the initial excitement wore off (and the caffeine kicked in), I had to make some serious technical decisions. Here's what I went with:
 
 ![Tech Stack](/images/projects/PyramidGame-TechStack.png)
 
 ## The "Fun" Parts (Read: Challenges)
-
 ### The Ranking Algorithm: Math Is Hard
-
 Remember in school when you thought "When will I ever use math in real life?" Well, past me, HERE'S YOUR ANSWER! Let me take you through this rollercoaster ride.
 
 My first attempt was beautifully naive. I thought I could just count votes and assign ranks based on simple thresholds:
@@ -98,7 +93,7 @@ This final version handles our edge cases much better. It ensures that:
 
 This distribution created a perfect pyramid shape while maintaining the dramatic tension that made the original K-drama so interesting. It's fascinating how something that seemed so simple at first required so much iteration to get right. But hey, isn't that just software development in a nutshell?
 
-*## Wrapping Up*
+## Wrapping Up
 
 Building the Pyramid Game has been a wild ride - from late-night coding sessions fueled by ramyeon to the satisfaction of seeing people actually using it. It's amazing how a simple K-drama concept turned into a full-fledged web application that people can use to create their own social experiments (hopefully with less drama than the show).
 
@@ -106,4 +101,4 @@ What started as a "hey, I could build that!" moment turned into a deep dive into
 
 If you want to check out the game or maybe host your own social experiment, you can find it at https://pyramidgame.errhythm.me. Just remember: with great power comes great responsibility... and potentially some awkward social situations. 😉
 
-Got questions? Found a bug? Want to discuss the philosophical implications of digital social hierarchies? Mail me at rhythm@duck.com or check this blog where I post about my coding adventures and maybe some occasional K-drama recommendations!*
+Got questions? Found a bug? Mail me at rhythm@duck.com or check this blog where I post about my coding adventures and maybe some occasional K-drama recommendations!*
