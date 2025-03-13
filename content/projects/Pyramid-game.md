@@ -1,5 +1,5 @@
 ---
-date: 2025-13-03
+date: 2025-03-13
 title: 'How I Implemented the Similar Petitions Suggestions in Jonogon'
 github: 'https://github.com/errhythm/the-pyramid-game'
 external: 'https://pyramidgame.errhythm.me'
