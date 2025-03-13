@@ -1,6 +1,6 @@
 ---
 date: 2025-03-13
-title: 'How I Implemented the Similar Petitions Suggestions in Jonogon'
+title: 'From K-Drama to Code: My Journey Building The Pyramid Game'
 github: 'https://github.com/errhythm/the-pyramid-game'
 external: 'https://pyramidgame.errhythm.me'
 image: '/images/projects/PyramidGame-Main.png'
