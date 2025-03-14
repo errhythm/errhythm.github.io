@@ -52,7 +52,7 @@ Looks clean, right? Well, the reality hit when we had a game with 5 participants
 
 The pyramid wasn't really a pyramid anymore - it was more like a seesaw! I went to search for some logic again in the ranking system and I found a result of one vote in 1 episode of the Pyramid Game. It was like this:
 
-![Test Game Result](/images/projects/PyramidGame-ResultPage)
+![Test Game Result](/images/projects/PyramidGame-ResultPage.png)
 
 Finally, after some serious head-scratching, I landed on the current algorithm. It's a two-phase approach that first assigns ranks based on vote percentages and then promotes ranks to fill gaps:
 
