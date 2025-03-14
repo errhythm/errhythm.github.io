@@ -82,7 +82,8 @@ Finally, after some serious head-scratching, I landed on the current algorithm. 
     const ranksPresent = new Set(initialRanks.map(p => p.rank));
     
     const finalRanks = initialRanks.map(({ participantId, rank }) => {
-      if (rank === "F") return { participantId, rank }; // Don't promote F ranks
+      // Don't promote F ranks
+      if (rank === "F") return { participantId, rank }; 
 ```
 
 This final version handles our edge cases much better. It ensures that:
