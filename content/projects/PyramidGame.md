@@ -46,11 +46,15 @@ return 'F';
 };
 ```
 
-Looks clean, right? Well, it worked perfectly in my test case with 5 participants and 15 total votes. But then reality hit when we had a game with 10 participants and 50 votes. Suddenly, we had a situation where nobody got rank B or C, creating this weird gap in our pyramid. It looked something like this:
+Looks clean, right? Well, the reality hit when we had a game with 5 participants and 1 vote by each. Suddenly, we had a situation where nobody got rank B or C, creating this weird gap in our pyramid. It looked something like this:
 
 ![Test Game Result](/images/projects/PyramidGame-TestResult.png)
 
-The pyramid wasn't really a pyramid anymore - it was more like a seesaw! Finally, after some serious head-scratching, I landed on the current algorithm. It's a two-phase approach that first assigns ranks based on vote percentages and then promotes ranks to fill gaps:
+The pyramid wasn't really a pyramid anymore - it was more like a seesaw! I went to search for some logic again in the ranking system and I found a result of one vote in 1 episode of the Pyramid Game. It was like this:
+
+![Test Game Result](/images/projects/PyramidGame-ResultPage)
+
+Finally, after some serious head-scratching, I landed on the current algorithm. It's a two-phase approach that first assigns ranks based on vote percentages and then promotes ranks to fill gaps:
 
 ```javascript
 // First pass: Assign initial ranks
