@@ -327,11 +327,7 @@ const Featured = () => {
               external
               cta
               featuredMessage
-              featuredCover {
-                childImageSharp {
-                  gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
-                }
-              }
+              featuredCover
             }
             html
           }
@@ -367,10 +363,8 @@ const Featured = () => {
             const { external, title, tech, github, cta, featuredMessage, featuredCover } =
               frontmatter;
 
-            const featuredCoverImage = getImage(featuredCover);
-
-            // Use featuredCover if available, otherwise fall back to image
-            const displayImage = featuredCoverImage;
+            // Check if featuredCover is an external URL
+            const isExternalImage = featuredCover?.startsWith('http');
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -419,7 +413,13 @@ const Featured = () => {
 
                 <div className="project-image">
                   <a href={external ? external : github ? github : '#'}>
-                    <GatsbyImage image={getImage(displayImage)} alt={title} className="img" />
+                    {isExternalImage ? (
+                      <img src={featuredCover} alt={title} className="img" />
+                    ) : (
+                      featuredCover && (
+                        <GatsbyImage image={getImage(featuredCover)} alt={title} className="img" />
+                      )
+                    )}
                   </a>
                 </div>
               </StyledProject>
