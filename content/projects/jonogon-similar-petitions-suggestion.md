@@ -26,7 +26,7 @@ Fueled by the spirit of a student-led revolution—the Quota movement in Banglad
 
 The goal? Cut the clutter and amplify impact. When you’re typing your petition title, this feature whispers, “Hold up—check these out first.” Like I said previously, when you are typing like Bangladesh should enable cryptocurrency and there is already an existing petition titled, Legalize Paypal and Cryptocurrency in Bangladesh, we are suggesting up to three matching petitions—complete with titles, upvote/downvote counts, and a peek option—we’re helping users decide: join forces or forge ahead solo. It’s all about channeling that collective roar into a single, mighty bellow.
 
-![Similar Petitions Suggestions](/images/jonogon-suggestions.gif)
+![Similar Petitions Suggestions](https://cdn.errhythm.me/blog/jonogon-suggestions.gif)
 
 ## Under the Hood: The Evolution of the Feature
 

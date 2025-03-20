@@ -4,7 +4,7 @@ description: A step by step guide on setting up a Minecraft Bedrock server on Di
 date: 2024-10-17
 draft: false
 slug: minecraft-bedrock-digitalocean
-image: '/images/minecraft-digitalocean-diamond.jpg'
+image: 'https://cdn.errhythm.me/blog/minecraft-digitalocean-diamond.jpg'
 tags:
   - Gaming
   - Minecraft
@@ -38,19 +38,19 @@ I will be using a Digital Ocean Student's plan which includes $200 in credit ove
 
 After you have created an account, you can create a new Droplet. But at first, create a new project. I will name it "Minecraft Bedrock".
 
-![DigitalOcean Project](/images/Minecraft-DigitalOcean-Project.png)
+![DigitalOcean Project](https://cdn.errhythm.me/blog/Minecraft-DigitalOcean-Project.png)
 
 After that we have to select region I selected "Bangalore, India" because it's closest to me. It's recommended to select a region that's closest to you to avoid any network issues.
 
-![DigitalOcean Region](/images/Minecraft-DigitalOcean-Region.png)
+![DigitalOcean Region](https://cdn.errhythm.me/blog/Minecraft-DigitalOcean-Region.png)
 
 Now we have to select the Droplet image. We want to select Ubuntu 22.04 (LTS). There's also a Minecraft image in Marketplace, but that is for Minecraft Java Edition. We planned to play Minecraft Bedrock Edition, so we have to select Ubuntu 22.04 (LTS).
 
-![DigitalOcean Droplet Image](/images/Minecraft-DigitalOcean-OS.png)
+![DigitalOcean Droplet Image](https://cdn.errhythm.me/blog/Minecraft-DigitalOcean-OS.png)
 
 After that we have to select the size of the Droplet. I have selected Basic / 4 GB / 2 vCPUs. You can select more resources if you want to. But for a Minecraft Bedrock server, 2 GB of RAM is enough.
 
-![DigitalOcean Droplet Size](/images/Minecraft-DigitalOcean-Pricing.png)
+![DigitalOcean Droplet Size](https://cdn.errhythm.me/blog/Minecraft-DigitalOcean-Pricing.png)
 
 After that we have to select the authentication method. You can use either SSH keys or password. SSH keys are recommended because they are more secure. If you don't have any SSH keys, you can create a new one. In case if you do not know how to use it, you can use password.
 
@@ -60,7 +60,7 @@ Then we will add the hostname. You can use any name you want.
 
 Now we have to setup the server. We will login to the server using SSH with `root`. But at first, update the server after you login with `apt update && apt upgrade`. It is necessary to update the server so that it has the latest security patches and bug fixes.
 
-![Server Login](/images/Minecraft-DigitalOcean-CLI1.png)
+![Server Login](https://cdn.errhythm.me/blog/Minecraft-DigitalOcean-CLI1.png)
 
 Now we have to install `unzip` package so that we can unzip the Minecraft Bedrock server file which we will download later.
 
@@ -74,7 +74,7 @@ For security reasons, it is recommended to use a new user instead of root. So we
 adduser minecraft-admin
 ```
 
-![DigitalOcean User Create](/images/Minecraft-DigitalOcean-user-create.png)
+![DigitalOcean User Create](https://cdn.errhythm.me/blog/Minecraft-DigitalOcean-user-create.png)
 
 ### Installing the Minecraft Bedrock server
 
@@ -159,7 +159,7 @@ systemctl status bedrock.service
 
 If you see `active (running)` in the output, the server is running. If it is not, check the [Troubleshooting](#troubleshooting) section.
 
-![Minecraft Bedrock Server Status as service](/images/Minecraft-DigitalOcean-server-status.png)
+![Minecraft Bedrock Server Status as service](https://cdn.errhythm.me/blog/Minecraft-DigitalOcean-server-status.png)
 
 ### Troubleshooting
 

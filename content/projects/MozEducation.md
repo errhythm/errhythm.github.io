@@ -3,7 +3,7 @@ date: '2024-01-27'
 title: 'Moz Education - Education Consultancy Platform'
 github: ''
 external: 'https://www.mozeducation.com'
-image: '/images/projects/MozEducation.png'
+image: 'https://cdn.errhythm.me/projects/MozEducation.png'
 tech:
   - WordPress
   - PHP
@@ -14,7 +14,7 @@ company: 'RhyStart'
 showInProjects: false
 featured: true
 featuredSort: 1
-featuredCover: './images/MozEducation.png'
+featuredCover: 'https://cdn.errhythm.me/MozEducation.png'
 ---
 
 Moz Education approached me with a vision: to create an intuitive and visually appealing website that would serve as the cornerstone of their online learning platform. They aimed to offer a user-friendly experience where students could easily explore courses, access resources, and get all the necessary information to make informed educational decisions.
@@ -25,7 +25,7 @@ The course content was structured in a way that made it easy for students to nav
 
 Ensuring the site was fully responsive was critical. I tested the design across multiple devices and browsers to ensure a smooth and consistent experience for all users, whether they were accessing the site on a desktop, tablet, or smartphone. Various usability tests were conducted to identify and fix any navigation issues, ensuring that the site was intuitive and user-friendly.
 
-![Course page of Moz Education](/images/projects/MozEducation2.png)
+![Course page of Moz Education](https://cdn.errhythm.me/projects/MozEducation2.png)
 
 The Moz Education website now serves as a robust platform for students seeking quality education. The combination of a modern design, user-friendly navigation, and seamless Moodle integration has resulted in a website that not only looks great but also functions efficiently.
 
@@ -37,7 +37,7 @@ While WordPress offers built-in SEO-friendly features, balancing design elements
 
 WooCommerce, combined with multiple plugins, can lead to performance issues, particularly for a site offering numerous courses. I addressed this by integrating caching mechanisms like WP Rocket, optimizing databases, and using a content delivery network (CDN) to ensure fast page load times. Ensuring these optimizations did not affect the visual appeal required careful testing across various devices.
 
-![GTmetrix report of Moz Education](/images/projects/MozEducation3.png)
+![GTmetrix report of Moz Education](https://cdn.errhythm.me/projects/MozEducation3.png)
 
 ### Challenge: Responsive Design
 
@@ -47,7 +47,7 @@ Making the site fully responsive was crucial for students accessing it on variou
 
 WooCommerce is traditionally used for physical products, so customizing it for digital courses required additional functionality. I integrated specific plugins for course scheduling, digital downloads, and progress tracking to ensure students had an intuitive learning experience, while course administrators could easily manage content.
 
-![Final Website of Moz Education](/images/projects/MozEducation1.png)
+![Final Website of Moz Education](https://cdn.errhythm.me/projects/MozEducation1.png)
 
 The project was completed on time and within budget, and the Moz Education team has expressed their satisfaction with the final product.
 

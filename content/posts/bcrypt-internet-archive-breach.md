@@ -4,7 +4,7 @@ description: Discover why your password might still be secure despite the Intern
 date: 2024-10-13
 draft: false
 slug: internet-archive-breach-password-safety-bcrypt
-image: '/images/internet-archive-breach-bcrypt.jpg'
+image: 'https://cdn.errhythm.me/blog/internet-archive-breach-bcrypt.jpg'
 tags:
   - Cybersecurity
   - Password Security
@@ -41,7 +41,7 @@ Even if bcrypt provides great security, changing your password is still a good p
 
 Using a **password manager** is one crucial first step towards increasing your general security in view of the Internet Archive breach. All of your passwords are kept in an encrypted vault within a password manager, which only allows access with a master password. This guarantees that, without you having to remember all of them, every one of your accounts may have unique, sophisticated passwords. A password manager also guards against reusing passwords, a typical weakness that raises the danger of exposure should one service be hacked as it did in this attack.
 
-![Checking if my email was compromised in the Internet Archive breach. It was!](/images/haveibeenpwned-archive-org.png)
+![Checking if my email was compromised in the Internet Archive breach. It was!](https://cdn.errhythm.me/blog/haveibeenpwned-archive-org.png)
 
 ### Have I Been Pwned: Check if You’ve Been Compromised
 

@@ -3,7 +3,7 @@ date: '2024-05-05'
 title: 'Berj & Emilia Hovsepian: A Custom Wedding Website Design'
 github: ''
 external: 'https://wedding.hovsepian.se'
-image: '/images/projects/Hovsepian.png'
+image: 'https://cdn.errhythm.me/projects/Hovsepian.png'
 tech:
   - WordPress
   - PHP
@@ -13,7 +13,7 @@ company: 'RhyStart'
 showInProjects: true
 featured: false
 featuredSort: 3
-featuredCover: './images/Hovsepian.png'
+featuredCover: 'https://cdn.errhythm.me/projects/Hovsepian.png'
 testimonial:
   name: 'Berj Hovsepian'
   company: 'Subsonic ljudteknik AB'
@@ -24,7 +24,7 @@ testimonial:
 
 Berj Hovsepian wanted a wedding website that captured the elegance of a traditional wedding card, where guests could easily find event details and RSVP. The site was custom-built using WordPress and Elementor’s Hello theme, focusing on creating a minimalist, card-like design. The website also needed to be fully responsive and user-friendly across all devices, reflecting the couple's personal style while providing essential wedding information.
 
-![Main page](/images/projects/Hovsepian1.png)
+![Main page](https://cdn.errhythm.me/projects/Hovsepian1.png)
 
 ### Challenge: Wedding Card-Like Design
 
@@ -34,7 +34,7 @@ The first challenge was to translate the elegance of a physical wedding card int
 
 Ensuring the site was fully responsive on all devices was a critical challenge. Since guests would be accessing the site from various devices, the design needed to maintain its elegance and functionality across desktops, tablets, and smartphones. By utilizing Elementor’s Hello theme and custom CSS, I ensured that every element scaled properly and maintained the visual integrity of the design.
 
-![Responsive Design of the website](/images/projects/Hovsepian2.png)
+![Responsive Design of the website](https://cdn.errhythm.me/projects/Hovsepian2.png)
 
 ### Challenge: Creating the RSVP Form
 

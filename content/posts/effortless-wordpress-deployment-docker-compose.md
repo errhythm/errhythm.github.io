@@ -4,7 +4,7 @@ description: Learn how to streamline WordPress setup and management using Docker
 date: 2024-10-03
 draft: false
 slug: effortless-wordpress-deployment-docker-compose
-image: '/images/docker-wordpress.png'
+image: 'https://cdn.errhythm.me/blog/docker-wordpress.png'
 tags:
   - Wordpress
   - Docker
