@@ -10,7 +10,7 @@ company: 'Dummy'
 showInProjects: false
 featured: true
 featuredSort: 2
-featuredCover: './images/MozEducation.png'
+featuredCover: 'https://cdn.errhythm.me/projects/Facultypedia.png'
 featuredMessage: 'Dummy project'
 cta: 'dummy.com'
 ios: 'dummy.com'
