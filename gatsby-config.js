@@ -6,7 +6,7 @@ module.exports = {
     description:
       'Ehsanur Rahman Rhythm is a front-end developer skilled in React.js, Node.js, and TailwindCSS, passionate about building projects and learning new tech.',
     siteUrl: 'https://errhythm.me', // No trailing slash allowed!
-    image: '/og.png', // Path to your image you placed in the 'static' folder
+    image: 'https://cdn.errhythm.me/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@errhythm',
   },
   plugins: [
