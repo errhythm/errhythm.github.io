@@ -1,6 +1,6 @@
 ---
 date: '2025-03-28'
-title: 'From Your Desktop to Your Doorstep: Explore DeliveryHobe's New Website for Local Deliveries!'
+title: "From Your Desktop to Your Doorstep: Explore DeliveryHobe's New Website for Local Deliveries!"
 external: 'https://deliveryhobe.com'
 image: 'https://cdn.errhythm.me/projects/Facultypedia.png'
 tech:
