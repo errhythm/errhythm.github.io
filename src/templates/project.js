@@ -23,6 +23,13 @@ const StyledProjectHeader = styled.header`
   margin-bottom: 50px;
   .tag {
     margin-right: 10px;
+    display: inline-block;
+  }
+  .subtitle {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
   }
   .project-links {
     display: flex;

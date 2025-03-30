@@ -400,6 +400,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--font-mono);
     font-weight: 400;
     line-height: 1.5;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
     @media (max-width: 1080px) {
       font-size: var(--fz-sm);
     }
@@ -410,6 +414,10 @@ const GlobalStyle = createGlobalStyle`
     a {
       ${({ theme }) => theme.mixins.inlineLink};
       line-height: 1.5;
+    }
+
+    .tag {
+      display: inline-block;
     }
   }
 
