@@ -127,9 +127,12 @@ const StyledProject = styled.li`
 
   .project-title {
     color: var(--lightest-slate);
-    font-size: clamp(24px, 5vw, 28px);
+    font-size: clamp(20px, min(5vw, 28px), 28px);
     line-height: 1.2;
     word-wrap: break-word;
+    position: relative;
+    z-index: 10;
+    max-width: 100%;
 
     @media (min-width: 768px) {
       margin: 0 0 20px;
@@ -137,6 +140,7 @@ const StyledProject = styled.li`
 
     @media (max-width: 768px) {
       color: var(--white);
+      font-size: clamp(18px, min(4vw, 24px), 24px);
 
       a {
         position: static;
@@ -164,6 +168,11 @@ const StyledProject = styled.li`
     background-color: var(--light-navy);
     color: var(--light-slate);
     font-size: var(--fz-lg);
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     @media (max-width: 768px) {
       padding: 20px 0;
@@ -193,9 +202,11 @@ const StyledProject = styled.li`
     margin: 25px 0 10px;
     padding: 0;
     list-style: none;
+    align-items: center;
+    gap: 20px;
 
     li {
-      margin: 0 20px 5px 0;
+      margin: 0;
       color: var(--light-slate);
       font-family: var(--font-mono);
       font-size: var(--fz-xs);
@@ -204,9 +215,9 @@ const StyledProject = styled.li`
 
     @media (max-width: 768px) {
       margin: 10px 0;
+      gap: 10px;
 
       li {
-        margin: 0 10px 5px 0;
         color: var(--lightest-slate);
       }
     }
@@ -383,13 +394,17 @@ const Featured = () => {
                       }}
                     />
 
-                    {tech.length && (
-                      <ul className="project-tech-list">
-                        {tech.map((tech, i) => (
-                          <li key={i}>{tech}</li>
-                        ))}
-                      </ul>
-                    )}
+                    <div className="project-tech-list">
+                      <span
+                        style={{
+                          color: 'var(--light-slate)',
+                          fontFamily: 'var(--font-mono)',
+                          fontSize: 'var(--fz-xs)',
+                        }}>
+                        Tech Stack:
+                      </span>
+                      {tech.length && tech.map((tech, i) => <li key={i}>{tech}</li>)}
+                    </div>
 
                     <div className="project-links">
                       {cta && (

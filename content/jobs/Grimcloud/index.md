@@ -1,6 +1,6 @@
 ---
 date: '2021-06-14'
-title: 'Lead Engineer'
+title: 'Support Engineer'
 company: 'GrimCloud'
 location: 'Remote - Chennai, IN'
 range: 'Jun - December 2021'
