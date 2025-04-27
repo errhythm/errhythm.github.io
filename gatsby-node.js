@@ -48,14 +48,55 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // Create post detail pages
   const posts = result.data.postsRemark.edges;
 
+  // First, collect all posts by series for navigation
+  const seriesPosts = {};
+  posts.forEach(({ node }) => {
+    const { frontmatter } = node;
+    if (frontmatter.series) {
+      if (!seriesPosts[frontmatter.series]) {
+        seriesPosts[frontmatter.series] = [];
+      }
+      seriesPosts[frontmatter.series].push(node);
+    }
+  });
+
+  // Sort posts in each series by part number
+  Object.keys(seriesPosts).forEach(seriesName => {
+    seriesPosts[seriesName].sort((a, b) => a.frontmatter.part - b.frontmatter.part);
+  });
+
   posts.forEach(({ node }) => {
     const path = `/blog/${node.frontmatter.slug}`;
+    const { frontmatter } = node;
+    const { series, part } = frontmatter;
+
+    // Default context with just the slug
+    const context = {
+      slug: frontmatter.slug,
+    };
+
+    // If this post is part of a series, add series info to context
+    if (series && part) {
+      context.series = series;
+
+      // Find previous and next parts in the series
+      const seriesIndex = seriesPosts[series].findIndex(post => post.frontmatter.part === part);
+
+      // Previous part
+      if (seriesIndex > 0) {
+        context.seriesPartPrev = seriesPosts[series][seriesIndex - 1].frontmatter.part;
+      }
+
+      // Next part
+      if (seriesIndex < seriesPosts[series].length - 1) {
+        context.seriesPartNext = seriesPosts[series][seriesIndex + 1].frontmatter.part;
+      }
+    }
+
     createPage({
       path: path,
       component: postTemplate,
-      context: {
-        slug: node.frontmatter.slug,
-      },
+      context: context,
     });
   });
 
@@ -107,6 +148,34 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: projectTemplate,
       context: {
         slug: slug,
+      },
+    });
+  });
+
+  // Create series pages
+  const seriesTemplate = path.resolve('src/templates/series.js');
+  const seriesResult = await graphql(`
+    {
+      allMarkdownRemark(filter: { frontmatter: { series: { ne: null } } }) {
+        group(field: { frontmatter: { series: SELECT } }) {
+          fieldValue
+        }
+      }
+    }
+  `);
+
+  if (seriesResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query for series.`);
+    return;
+  }
+
+  const series = seriesResult.data.allMarkdownRemark.group;
+  series.forEach(serie => {
+    createPage({
+      path: `/blog/series/${_.kebabCase(serie.fieldValue)}/`,
+      component: seriesTemplate,
+      context: {
+        series: serie.fieldValue,
       },
     });
   });

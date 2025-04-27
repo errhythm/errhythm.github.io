@@ -180,6 +180,9 @@ const StyledPost = styled.li`
 `;
 
 const truncateDescription = (description, maxLength = 160) => {
+  if (!description) {
+    return '';
+  }
   if (description.length <= maxLength) {
     return description;
   }
@@ -277,7 +280,9 @@ const blogPage = ({ location, data }) => {
                       <h5 className="post__title">
                         <Link to={`${prefix}${slug}`}>{title}</Link>
                       </h5>
-                      <p className="post__desc">{truncateDescription(description)}</p>
+                      {description && (
+                        <p className="post__desc">{truncateDescription(description)}</p>
+                      )}
                     </div>
                     <footer>
                       <span className="post__date">{formattedDate}</span>

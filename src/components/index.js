@@ -16,3 +16,4 @@ export { default as Projects } from './sections/projects';
 export { default as Publications } from './sections/publications';
 export { default as Contact } from './sections/contact';
 export { default as Testimonial } from './testimonial';
+export { default as SeriesNavigation } from './SeriesNavigation';

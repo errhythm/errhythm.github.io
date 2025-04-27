@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { Layout } from '@components';
+import { Layout, SeriesNavigation } from '@components';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
 import styled, { createGlobalStyle } from 'styled-components';
 import { useViewCount, useLikeCount } from '../hooks/useFirebase';
@@ -310,10 +310,35 @@ const calculateReadingTime = content => {
   return readingTime;
 };
 
+const StyledSeriesBadge = styled.div`
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--green-tint);
+  border-radius: var(--border-radius);
+  padding: 8px 12px;
+  margin-bottom: 20px;
+
+  .series-name {
+    font-weight: 600;
+    color: var(--green);
+    margin-right: 10px;
+  }
+
+  .part-number {
+    font-family: var(--font-mono);
+    font-size: var(--fz-xxs);
+    background-color: var(--green);
+    color: var(--navy);
+    padding: 2px 6px;
+    border-radius: 8px;
+  }
+`;
+
 const PostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark;
-  const { frontmatter, html } = post;
-  const { title, date, tags, image, slug } = frontmatter;
+  const { markdownRemark } = data;
+  const { frontmatter, html } = markdownRemark;
+  const { title, date, tags, featuredImage, slug, series, part } = frontmatter;
+  const { publicURL } = featuredImage ? featuredImage : { publicURL: '' };
   const readingTime = calculateReadingTime(html);
   const [setElements, entries] = useIntersectionObserver({
     threshold: 0.25,
@@ -413,8 +438,27 @@ const PostTemplate = ({ data, location }) => {
     generateToken();
   }, [title, tags, date]);
 
-  const viewCount = useViewCount('blog', slug);
+  const viewCount = useViewCount('blog', slug, true);
   const { likeCount, userLiked, handleLike } = useLikeCount('blog', slug);
+  const featuredImageRef = useRef(null);
+
+  // Format series data for the SeriesNavigation component if this post is part of a series
+  const [seriesPosts, setSeriesPosts] = useState([]);
+
+  useEffect(() => {
+    // If this post is part of a series and we have data from the broader series
+    if (series && data.allSeriesPosts && data.allSeriesPosts.edges) {
+      const posts = data.allSeriesPosts.edges.map(({ node }) => ({
+        title: node.frontmatter.title,
+        slug: node.frontmatter.slug,
+        part: node.frontmatter.part,
+      }));
+
+      // Sort posts by part number
+      posts.sort((a, b) => a.part - b.part);
+      setSeriesPosts(posts);
+    }
+  }, [series, data.allSeriesPosts]);
 
   return (
     <Layout location={location}>
@@ -432,19 +476,19 @@ const PostTemplate = ({ data, location }) => {
         "@type": "BlogPosting",
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://errhythm.me/blog/${post.frontmatter.slug}"
+          "@id": "https://errhythm.me/blog/${slug}"
         },
-        "headline": "${post.frontmatter.title}",
-        "description": "${post.frontmatter.description}",
-        "image": "${post.frontmatter.image}",
+        "headline": "${title}",
+        "description": "${frontmatter.description}",
+        "image": "${publicURL}",
         "author": {
           "@type": "Person",
           "name": "Ehsanur Rahman Rhythm",
           "url": "https://errhythm.me"
         },
-        "datePublished": "${post.frontmatter.date}",
-        "dateModified": "${post.frontmatter.date}",
-        "keywords": "${post.frontmatter.tags.join(', ')}",
+        "datePublished": "${date}",
+        "dateModified": "${date}",
+        "keywords": "${tags.join(', ')}",
         "publisher": {
           "@type": "Organization",
           "name": "Ehsanur Rahman Rhythm",
@@ -462,10 +506,23 @@ const PostTemplate = ({ data, location }) => {
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>
           <Link to="/blog">All blogs</Link>
+          {series && (
+            <>
+              <span className="arrow">&larr;</span>
+              <Link to={`/blog/series/${kebabCase(series)}/`}>{series}</Link>
+            </>
+          )}
         </span>
 
+        {series && part && (
+          <StyledSeriesBadge>
+            <span className="series-name">Series: {series}</span>
+            <span className="part-number">Part {part}</span>
+          </StyledSeriesBadge>
+        )}
+
         <StyledPostHeader>
-          <h1 className="medium-heading">{title}</h1>
+          <h1 itemProp="headline">{title}</h1>
           <p className="subtitle">
             <time>
               {new Date(date).toLocaleDateString('en-US', {
@@ -490,22 +547,9 @@ const PostTemplate = ({ data, location }) => {
           </p>
         </StyledPostHeader>
 
-        {image && (
-          <StyledFeaturedImage>
-            <img
-              src={image}
-              alt={title}
-              ref={imageRef}
-              onClick={() => openModal(image, title)}
-              style={{ cursor: 'pointer' }}
-              role="presentation"
-              onKeyDown={e => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  openModal(image, title);
-                }
-              }}
-            />
+        {featuredImage && (
+          <StyledFeaturedImage ref={featuredImageRef}>
+            <img src={publicURL} alt={title} style={{ cursor: 'pointer' }} role="presentation" />
           </StyledFeaturedImage>
         )}
 
@@ -528,6 +572,16 @@ const PostTemplate = ({ data, location }) => {
             </span>
           </LikeButton>
         </StyledPostMeta>
+
+        {series && part && seriesPosts.length > 0 && (
+          <SeriesNavigation
+            seriesName={series}
+            seriesPosts={seriesPosts}
+            currentPart={part}
+            prevPost={data.prevPost}
+            nextPost={data.nextPost}
+          />
+        )}
       </StyledPostContainer>
 
       {modalIsOpen && (
@@ -558,7 +612,12 @@ PostTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query ($slug: String!) {
+  query BlogPostBySlug(
+    $slug: String!
+    $series: String
+    $seriesPartPrev: Int
+    $seriesPartNext: Int
+  ) {
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
@@ -568,6 +627,43 @@ export const pageQuery = graphql`
         image
         slug
         tags
+        series
+        part
+        featuredImage {
+          publicURL
+        }
+      }
+    }
+    prevPost: markdownRemark(
+      frontmatter: { series: { eq: $series }, part: { eq: $seriesPartPrev } }
+    ) {
+      frontmatter {
+        slug
+        part
+        title
+      }
+    }
+    nextPost: markdownRemark(
+      frontmatter: { series: { eq: $series }, part: { eq: $seriesPartNext } }
+    ) {
+      frontmatter {
+        slug
+        part
+        title
+      }
+    }
+    allSeriesPosts: allMarkdownRemark(
+      filter: { frontmatter: { series: { eq: $series } } }
+      sort: { frontmatter: { part: ASC } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            slug
+            part
+          }
+        }
       }
     }
   }
