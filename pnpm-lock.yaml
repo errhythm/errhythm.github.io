@@ -151,7 +151,7 @@ importers:
         specifier: ^15.2.10
         version: 15.5.2
       prettier:
-        specifier: ^3.3.3
+        specifier: ^3.5.3
         version: 3.5.3
 
 packages:
