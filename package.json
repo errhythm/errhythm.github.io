@@ -34,6 +34,7 @@
     "animejs": "^3.2.2",
     "babel-plugin-styled-components": "^2.1.4",
     "cookie": "^1.0.2",
+    "core-js": "^3.0.0",
     "firebase": "^11.0.2",
     "framer-motion": "^11.13.1",
     "gatsby": "^5.14.0",
@@ -73,6 +74,7 @@
     "@eslint/js": "^9.28.0",
     "@upstatement/eslint-config": "^3.0.0",
     "@upstatement/prettier-config": "^1.1.0",
+    "babel-eslint": "^10.1.0",
     "babel-preset-gatsby": "^3.14.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
@@ -81,7 +83,8 @@
     "gatsby-remark-code-titles": "^1.1.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.0",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
   },
   "pnpm": {
     "supportedArchitectures": {
