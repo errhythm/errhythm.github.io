@@ -159,23 +159,40 @@ const About = () => {
             </p>
 
             <p>
-              Currently, I'm focused on enhancing digital experiences at{' '}
+              Currently, I'm working at{' '}
+              <a
+                href="https://ifreturns.com/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: '#54b58f' }}>
+                iF returns
+              </a>{' '}
+              🇪🇸 and{' '}
               <a
                 href="https://deliveryhobe.com/"
                 target="_blank"
                 rel="noreferrer"
                 style={{ color: '#ffe23d' }}>
                 DeliveryHobe
-              </a>
-              . My main goal is to build accessible, human-centered products that meet and exceed
+              </a>{' '}
+              🇧🇩 . My main goal is to build accessible, human-centered products that meet and exceed
               user expectations.
             </p>
 
             <p>
               In addition to my work in web development, I have also published research in the
-              fields of natural language processing (NLP) and data science. These{' '}
-              <a href="#publications">publications</a> reflect my commitment to advancing technology
-              and contributing to the academic community.
+              fields of natural language processing (NLP) and data science. I worked as a Research
+              Assistant at{' '}
+              <a
+                href="https://bracu.ac.bd/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: '#253494' }}>
+                Brac University
+              </a>
+              , researching machine learning-based accessibility systems for visually impaired
+              individuals on campus. These <a href="#publications">publications</a> reflect my
+              commitment to advancing technology and contributing to the academic community.
             </p>
 
             <p>Here are a few technologies I've been working with recently:</p>
