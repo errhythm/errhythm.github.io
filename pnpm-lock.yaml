@@ -115,7 +115,7 @@ importers:
         specifier: ^7.26.0
         version: 7.27.1
       '@babel/eslint-parser':
-        specifier: ^7.25.9
+        specifier: ^7.27.1
         version: 7.27.1(@babel/core@7.27.1)(eslint@8.57.1)
       '@babel/preset-react':
         specifier: ^7.27.1
