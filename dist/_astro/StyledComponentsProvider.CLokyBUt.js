@@ -1,1 +1,0 @@
-import{j as t,o as r}from"./styled-components.browser.esm.BThGyL2P.js";import"./index.Zy2U5G9J.js";import{t as s,G as e}from"./GlobalStyle.DsIwpyBO.js";const l=({children:o})=>t.jsxs(r,{theme:s,children:[t.jsx(e,{}),o]});export{l as default};

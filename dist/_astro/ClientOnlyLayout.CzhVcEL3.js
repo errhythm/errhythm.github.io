@@ -1,0 +1,1 @@
+import{j as s,o,t as l,G as e,N as r,S as x,E as j,F as n}from"./nav.DZHgoNL-.js";import"./index.DClyAtOV.js";const p=({isHome:a=!1,children:t})=>s.jsxs(o,{theme:l,children:[s.jsx(e,{}),s.jsx(r,{isHome:a}),s.jsx(x,{isHome:a}),s.jsx(j,{isHome:a}),t,s.jsx(n,{})]});export{p as default};
