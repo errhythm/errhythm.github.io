@@ -1,4 +1,4 @@
-import{d as n,j as e}from"./styled-components.browser.esm.BpgcTWLY.js";import{r as o}from"./index.Zy2U5G9J.js";import{a,e as i}from"./config.Cy-9V-kn.js";import{s}from"./sr.CL7AsJzO.js";import{u as l}from"./usePrefersReducedMotion.DntroRNe.js";const m=n.section`
+import{d as n,j as e}from"./styled-components.browser.esm.BThGyL2P.js";import{r as o}from"./index.Zy2U5G9J.js";import{a,e as i}from"./config.Cy-9V-kn.js";import{s}from"./sr.CL7AsJzO.js";import{u as l}from"./usePrefersReducedMotion.DntroRNe.js";const m=n.section`
   max-width: 600px;
   margin: 0 auto 100px;
   text-align: center;

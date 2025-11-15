@@ -1,11 +1,4 @@
-import { c as createComponent, r as renderComponent, a as renderTemplate, F as Fragment, u as unescapeHTML, m as maybeRenderHead } from '../chunks/astro/server_KmD42DKJ.mjs';
-import { l as lt, F as Fonts, f as ft, o as ot, $ as $$BaseLayout } from '../chunks/BaseLayout_4boyFQ7E.mjs';
-import { jsxs, jsx } from 'react/jsx-runtime';
-import 'react';
-import { L as Loader, N as Nav, S as Social, E as Email, H as Hero, A as About, J as Jobs, a as Education, b as Featured, P as Projects, c as Publications, C as Contact, F as Footer } from '../chunks/nav_DXOWMPp6.mjs';
-export { renderers } from '../renderers.mjs';
-
-const button = lt`
+import{l as o,f as c}from"./styled-components.browser.esm.BThGyL2P.js";const p=o`
   color: var(--green);
   background-color: transparent;
   border: 1px solid var(--green);
@@ -26,22 +19,15 @@ const button = lt`
   &:after {
     display: none !important;
   }
-`;
-
-const mixins = {
-  flexCenter: lt`
+`,m={flexCenter:o`
     display: flex;
     justify-content: center;
     align-items: center;
-  `,
-
-  flexBetween: lt`
+  `,flexBetween:o`
     display: flex;
     justify-content: space-between;
     align-items: center;
-  `,
-
-  link: lt`
+  `,link:o`
     display: inline-block;
     text-decoration: none;
     text-decoration-skip-ink: auto;
@@ -54,9 +40,7 @@ const mixins = {
       color: var(--green);
       outline: 0;
     }
-  `,
-
-  inlineLink: lt`
+  `,inlineLink:o`
     display: inline-block;
     position: relative;
     color: var(--green);
@@ -87,11 +71,7 @@ const mixins = {
         transition: var(--transition);
       }
     }
-  `,
-
-  button,
-
-  smallButton: lt`
+  `,button:p,smallButton:o`
     color: var(--green);
     background-color: transparent;
     border: 1px solid var(--green);
@@ -112,9 +92,7 @@ const mixins = {
     &:after {
       display: none !important;
     }
-  `,
-
-  bigButton: lt`
+  `,bigButton:o`
     color: var(--green);
     background-color: transparent;
     border: 1px solid var(--green);
@@ -135,9 +113,7 @@ const mixins = {
     &:after {
       display: none !important;
     }
-  `,
-
-  boxShadow: lt`
+  `,boxShadow:o`
     box-shadow: 0 10px 30px -15px var(--navy-shadow);
     transition: var(--transition);
 
@@ -145,9 +121,7 @@ const mixins = {
     &:focus-visible {
       box-shadow: 0 20px 30px -15px var(--navy-shadow);
     }
-  `,
-
-  fancyList: lt`
+  `,fancyList:o`
     padding: 0;
     margin: 0;
     list-style: none;
@@ -163,32 +137,22 @@ const mixins = {
         color: var(--green);
       }
     }
-  `,
-
-  resetList: lt`
+  `,resetList:o`
     list-style: none;
     padding: 0;
     margin: 0;
-  `,
-};
-
-const theme = {
-  bp: {
-    mobileS: `max-width: 330px`,
-    mobileM: `max-width: 400px`,
-    mobileL: `max-width: 480px`,
-    tabletS: `max-width: 600px`,
-    tabletL: `max-width: 768px`,
-    desktopXS: `max-width: 900px`,
-    desktopS: `max-width: 1080px`,
-    desktopM: `max-width: 1200px`,
-    desktopL: `max-width: 1400px`,
-  },
-
-  mixins,
-};
-
-const variables = lt`
+  `},E={bp:{mobileS:"max-width: 330px",mobileM:"max-width: 400px",mobileL:"max-width: 480px",tabletS:"max-width: 600px",tabletL:"max-width: 768px",desktopXS:"max-width: 900px",desktopS:"max-width: 1080px",desktopM:"max-width: 1200px",desktopL:"max-width: 1400px"},mixins:m},h="/_astro/Calibre-Regular.-1hlrhWf.woff",b="/_astro/Calibre-Regular.BF8rtuU2.woff2",x="/_astro/Calibre-Medium.CLLEtnc8.woff",u="/_astro/Calibre-Medium.Dr3uPw4d.woff2",v="/_astro/Calibre-Semibold.4458Tx-4.woff",y="/_astro/Calibre-Semibold.ctWswtER.woff2",w="/_astro/Calibre-RegularItalic.CjzLnpHV.woff",k="/_astro/Calibre-RegularItalic.iX0Te0iB.woff2",z="/_astro/Calibre-MediumItalic.BO9nraGd.woff",S="/_astro/Calibre-MediumItalic.bP60ilMe.woff2",M="/_astro/Calibre-SemiboldItalic.27xyafhv.woff",C="/_astro/Calibre-SemiboldItalic.bSpOXIzM.woff2",F="/_astro/SFMono-Regular.pHQ7OiT5.woff",$="/_astro/SFMono-Regular.CefSygqP.woff2",W="/_astro/SFMono-Semibold.GntYHmax.woff",I="/_astro/SFMono-Semibold.Cbwo1XB1.woff2",R="/_astro/SFMono-RegularItalic.D-2lWrQW.woff",_="/_astro/SFMono-RegularItalic.Bqi1mbuH.woff2",L="/_astro/SFMono-SemiboldItalic.DwkXiFFS.woff",j="/_astro/SFMono-SemiboldItalic.dYysnNTL.woff2",B={400:[h,b],500:[x,u],600:[v,y]},H={400:[w,k],500:[z,S],600:[M,C]},P={400:[F,$],600:[W,I]},Y={400:[R,_],600:[L,j]},l={name:"Calibre",normal:B,italic:H},s={name:"SF Mono",normal:P,italic:Y},a=(t,i="normal")=>{let r="";for(const[d,n]of Object.entries(t[i])){const g=n[0],f=n[1];r+=`
+      @font-face {
+        font-family: '${t.name}';
+        src: url(${f}) format('woff2'),
+            url(${g}) format('woff');
+        font-weight: ${d};
+        font-style: ${i};
+        font-display: swap;
+      }
+    `}return r},N=a(l),O=a(l,"italic"),T=a(s),G=a(s,"italic"),X=o`
+  ${N+O+T+G}
+`,q=o`
   :root {
     --dark-navy: #020c1b;
     --navy: #0a192f;
@@ -236,11 +200,7 @@ const variables = lt`
     --ham-after-active: bottom 0.1s ease-out,
       transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
   }
-`;
-
-// https://reactcommunity.org/react-transition-group/css-transition
-
-const TransitionStyles = lt`
+`,A=o`
   /* Fade up */
   .fadeup-enter {
     opacity: 0.01;
@@ -282,31 +242,14 @@ const TransitionStyles = lt`
     opacity: 0;
     transition: opacity 300ms var(--easing);
   }
-`;
-
-const prismColors = {
-  bg: `#112340`,
-  lineHighlight: `#1d2d50`,
-  blue: `#5ccfe6`,
-  purple: `#c3a6ff`,
-  green: `#bae67e`,
-  yellow: `#ffd580`,
-  orange: `#ffae57`,
-  red: `#ef6b73`,
-  grey: `#a2aabc`,
-  comment: `#8695b799`,
-};
-
-// https://www.gatsbyjs.org/packages/gatsby-remark-prismjs
-
-const PrismStyles = lt`
+`,e={bg:"#112340",lineHighlight:"#1d2d50",blue:"#5ccfe6",purple:"#c3a6ff",green:"#bae67e",yellow:"#ffd580",orange:"#ffae57",red:"#ef6b73",grey:"#a2aabc",comment:"#8695b799"},D=o`
   /**
   * Add back the container background-color, border-radius, padding, margin
   * and overflow that we removed from <pre>.
   */
   .gatsby-highlight {
-    background-color: ${prismColors.bg};
-    color: ${prismColors.grey};
+    background-color: ${e.bg};
+    color: ${e.grey};
     border-radius: var(--border-radius);
     margin: 2em 0;
     padding: 1.25em;
@@ -351,11 +294,11 @@ const PrismStyles = lt`
     padding: 1em 1.5em;
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
-    background-color: ${prismColors.bg};
-    color: ${prismColors.grey};
+    background-color: ${e.bg};
+    color: ${e.grey};
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
-    border-bottom: 1px solid ${prismColors.lineHighlight};
+    border-bottom: 1px solid ${e.lineHighlight};
 
     & + .gatsby-highlight {
       margin-top: 0;
@@ -367,7 +310,7 @@ const PrismStyles = lt`
   /* Line highlighting */
   .gatsby-highlight-code-line {
     display: block;
-    background-color: ${prismColors.lineHighlight};
+    background-color: ${e.lineHighlight};
     border-left: 2px solid var(--green);
     padding-left: calc(1em + 2px);
     padding-right: 1em;
@@ -449,32 +392,32 @@ const PrismStyles = lt`
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: ${prismColors.comment};
+    color: ${e.comment};
   }
   .token.punctuation {
-    color: ${prismColors.grey};
+    color: ${e.grey};
   }
   .token.namespace,
   .token.deleted {
-    color: ${prismColors.red};
+    color: ${e.red};
   }
   .token.function-name,
   .token.function,
   .token.class-name,
   .token.constant,
   .token.symbol {
-    color: ${prismColors.yellow};
+    color: ${e.yellow};
   }
   .token.attr-name,
   .token.operator,
   .token.rule {
-    color: ${prismColors.orange};
+    color: ${e.orange};
   }
   .token.keyword,
   .token.boolean,
   .token.number,
   .token.property {
-    color: ${prismColors.purple};
+    color: ${e.purple};
   }
   .token.tag,
   .token.selector,
@@ -483,7 +426,7 @@ const PrismStyles = lt`
   .token.builtin,
   .token.entity,
   .token.url {
-    color: ${prismColors.blue};
+    color: ${e.blue};
   }
   .token.string,
   .token.char,
@@ -491,7 +434,7 @@ const PrismStyles = lt`
   .token.regex,
   .token.variable,
   .token.inserted {
-    color: ${prismColors.green};
+    color: ${e.green};
   }
   .token.important,
   .token.bold {
@@ -506,11 +449,9 @@ const PrismStyles = lt`
   .namespace {
     opacity: 0.7;
   }
-`;
-
-const GlobalStyle = ft`
-  ${Fonts};
-  ${variables};
+`,J=c`
+  ${X};
+  ${q};
 
   html {
     box-sizing: border-box;
@@ -766,7 +707,7 @@ const GlobalStyle = ft`
     }
 
     &.inline-link {
-      ${({ theme }) => theme.mixins.inlineLink};
+      ${({theme:t})=>t.mixins.inlineLink};
     }
   }
 
@@ -800,7 +741,7 @@ const GlobalStyle = ft`
     }
 
     & > a {
-      ${({ theme }) => theme.mixins.inlineLink};
+      ${({theme:t})=>t.mixins.inlineLink};
     }
 
     & > code {
@@ -862,7 +803,7 @@ const GlobalStyle = ft`
   }
 
   .skip-to-content {
-    ${({ theme }) => theme.mixins.button};
+    ${({theme:t})=>t.mixins.button};
     position: absolute;
     top: auto;
     left: -999px;
@@ -916,7 +857,7 @@ const GlobalStyle = ft`
     }
 
     a {
-      ${({ theme }) => theme.mixins.inlineLink};
+      ${({theme:t})=>t.mixins.inlineLink};
       line-height: 1.5;
     }
 
@@ -938,7 +879,7 @@ const GlobalStyle = ft`
     }
 
     a {
-      ${({ theme }) => theme.mixins.inlineLink};
+      ${({theme:t})=>t.mixins.inlineLink};
       font-family: var(--font-mono);
       font-size: var(--fz-sm);
       font-weight: 600;
@@ -963,114 +904,7 @@ const GlobalStyle = ft`
     transition: background 0.3s ease;
   }
 
-  ${TransitionStyles};
+  ${A};
 
-  ${PrismStyles};
-`;
-
-const StyledComponentsProvider = ({ children }) => {
-  return /* @__PURE__ */ jsxs(ot, { theme, children: [
-    /* @__PURE__ */ jsx(GlobalStyle, {}),
-    children
-  ] });
-};
-
-var __freeze = Object.freeze;
-var __defProp = Object.defineProperty;
-var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
-var _a;
-const $$Index = createComponent(($$result, $$props, $$slots) => {
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ehsanur Rahman Rhythm",
-    "url": "https://errhythm.me",
-    "description": "Ehsanur Rahman Rhythm is a Software Developer and Product Engineer based in Dhaka, Bangladesh. He specializes in building robust web applications and holds degrees in Computer Science and Software Engineering.",
-    "image": "https://errhythm.me/path/to/your/professional-photo.jpg",
-    "gender": {
-      "@type": "GenderType",
-      "name": "Male"
-    },
-    "jobTitle": [
-      "Software Developer",
-      "Product Engineer"
-    ],
-    "worksFor": [
-      {
-        "@type": "Organization",
-        "name": "iF returns",
-        "url": "https://ifreturns.com"
-      },
-      {
-        "@type": "Organization",
-        "name": "DeliveryHobe",
-        "url": "https://deliveryhobe.com"
-      }
-    ],
-    "hasOccupation": {
-      "@type": "Occupation",
-      "name": "Software Developer",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://en.wikipedia.org/wiki/Software_developer"
-      }
-    },
-    "hasCredential": [
-      {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "Master's Degree",
-        "about": "Software Engineering",
-        "recognizedBy": {
-          "@type": "EducationalOrganization",
-          "name": "University of Dhaka",
-          "url": "https://www.du.ac.bd/"
-        }
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "Bachelor's Degree",
-        "about": "Computer Science",
-        "recognizedBy": {
-          "@type": "EducationalOrganization",
-          "name": "Brac University",
-          "url": "https://www.bracu.ac.bd/"
-        }
-      }
-    ],
-    "alumniOf": [
-      { "@type": "EducationalOrganization", "name": "University of Dhaka", "url": "https://www.du.ac.bd/" },
-      { "@type": "EducationalOrganization", "name": "Brac University", "url": "https://www.bracu.ac.bd/" },
-      { "@type": "Organization", "name": "RhyStart Technologies" }
-    ],
-    "homeLocation": { "@type": "City", "name": "Dhaka" },
-    "nationality": { "@type": "Country", "name": "Bangladesh" },
-    "knowsAbout": [
-      { "@type": "Thing", "name": "Software Development", "sameAs": "https://en.wikipedia.org/wiki/Software_development" },
-      { "@type": "Thing", "name": "Product Engineering", "sameAs": "https://en.wikipedia.org/wiki/Product_engineering" },
-      { "@type": "Thing", "name": "Software Engineering", "sameAs": "https://en.wikipedia.org/wiki/Software_engineering" },
-      { "@type": "Thing", "name": "Computer Science", "sameAs": "https://en.wikipedia.org/wiki/Computer_science" },
-      { "@type": "Thing", "name": "Web Development", "sameAs": "https://en.wikipedia.org/wiki/Web_development" }
-    ],
-    "sameAs": [
-      "https://github.com/errhythm",
-      "https://twitter.com/errhythm",
-      "https://www.linkedin.com/in/errhythm",
-      "https://orcid.org/0000-0002-4641-508X"
-    ]
-  };
-  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "isHome": true }, { "default": ($$result2) => renderTemplate`  ${renderComponent($$result2, "StyledComponentsProvider", StyledComponentsProvider, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/StyledComponentsProvider", "client:component-export": "default" }, { "default": ($$result3) => renderTemplate` ${renderComponent($$result3, "Loader", Loader, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/loader", "client:component-export": "default" })} ${renderComponent($$result3, "Nav", Nav, { "client:load": true, "isHome": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/nav", "client:component-export": "default" })} ${renderComponent($$result3, "Social", Social, { "client:load": true, "isHome": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/social", "client:component-export": "default" })} ${renderComponent($$result3, "Email", Email, { "client:load": true, "isHome": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/email", "client:component-export": "default" })} ${maybeRenderHead()}<main class="fillHeight" style="counter-reset: section;"> ${renderComponent($$result3, "Hero", Hero, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/sections/hero", "client:component-export": "default" })} ${renderComponent($$result3, "About", About, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/sections/about", "client:component-export": "default" })} ${renderComponent($$result3, "Jobs", Jobs, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/sections/jobs", "client:component-export": "default" })} ${renderComponent($$result3, "Education", Education, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/sections/education", "client:component-export": "default" })} ${renderComponent($$result3, "Featured", Featured, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/sections/featured", "client:component-export": "default" })} ${renderComponent($$result3, "Projects", Projects, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/sections/projects", "client:component-export": "default" })} ${renderComponent($$result3, "Publications", Publications, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/sections/publications", "client:component-export": "default" })} ${renderComponent($$result3, "Contact", Contact, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/sections/contact", "client:component-export": "default" })} </main> ${renderComponent($$result3, "Footer", Footer, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/user/errhythm.github.io/src/components/footer", "client:component-export": "default" })} ` })} `, "head": ($$result2) => renderTemplate`${renderComponent($$result2, "Fragment", Fragment, { "slot": "head" }, { "default": ($$result3) => renderTemplate(_a || (_a = __template([' <script type="application/ld+json">', "<\/script> "])), unescapeHTML(JSON.stringify(schemaData))) })}` })}`;
-}, "/home/user/errhythm.github.io/src/pages/index.astro", void 0);
-
-const $$file = "/home/user/errhythm.github.io/src/pages/index.astro";
-const $$url = "";
-
-const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  default: $$Index,
-  file: $$file,
-  url: $$url
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const page = () => _page;
-
-export { page };
+  ${D};
+`;export{J as G,E as t};

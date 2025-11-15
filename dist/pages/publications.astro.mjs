@@ -1,6 +1,7 @@
 import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_KmD42DKJ.mjs';
 import { g as getCollection } from '../chunks/_astro_content_BrlYtSmm.mjs';
-import { $ as $$BaseLayout, N as Nav, S as Social, E as Email, F as Footer } from '../chunks/nav_ew7bo7No.mjs';
+import { $ as $$BaseLayout } from '../chunks/BaseLayout_4boyFQ7E.mjs';
+import { N as Nav, S as Social, E as Email, F as Footer } from '../chunks/nav_DXOWMPp6.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Publications = createComponent(async ($$result, $$props, $$slots) => {

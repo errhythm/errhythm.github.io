@@ -1,4 +1,4 @@
-import{d as i,j as e}from"./styled-components.browser.esm.BpgcTWLY.js";import"./index.Zy2U5G9J.js";import{I as l}from"./filled-star.CVRkkLQo.js";import{s as a}from"./config.Cy-9V-kn.js";const h=i.footer`
+import{d as i,j as e}from"./styled-components.browser.esm.BThGyL2P.js";import"./index.Zy2U5G9J.js";import{I as l}from"./filled-star.NNGVvYJa.js";import{s as a}from"./config.Cy-9V-kn.js";const h=i.footer`
   ${({theme:t})=>t.mixins.flexCenter};
   flex-direction: column;
   height: auto;

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import StyledComponentsProvider from '../components/StyledComponentsProvider';
 import Hero from '../components/sections/hero';
 import About from '../components/sections/about';
 import Jobs from '../components/sections/jobs';
@@ -99,21 +100,23 @@ const schemaData = {
     <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
   </Fragment>
 
-  <Loader client:load />
-  <Nav client:load isHome={true} />
-  <Social client:load isHome={true} />
-  <Email client:load isHome={true} />
+  <StyledComponentsProvider client:load>
+    <Loader client:load />
+    <Nav client:load isHome={true} />
+    <Social client:load isHome={true} />
+    <Email client:load isHome={true} />
 
-  <main class="fillHeight" style="counter-reset: section;">
-    <Hero client:load />
-    <About client:load />
-    <Jobs client:load />
-    <Education client:load />
-    <Featured client:load />
-    <Projects client:load />
-    <Publications client:load />
-    <Contact client:load />
-  </main>
+    <main class="fillHeight" style="counter-reset: section;">
+      <Hero client:load />
+      <About client:load />
+      <Jobs client:load />
+      <Education client:load />
+      <Featured client:load />
+      <Projects client:load />
+      <Publications client:load />
+      <Contact client:load />
+    </main>
 
-  <Footer client:load />
+    <Footer client:load />
+  </StyledComponentsProvider>
 </BaseLayout>
