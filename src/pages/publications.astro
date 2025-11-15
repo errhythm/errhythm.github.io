@@ -1,10 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Nav from '../components/nav';
-import Social from '../components/social';
-import Email from '../components/email';
-import Footer from '../components/footer';
+import ClientOnlyLayout from '../components/ClientOnlyLayout';
 
 const title = 'Publications';
 const description = 'Academic publications and research work.';
@@ -16,50 +13,52 @@ publications.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <BaseLayout title={title} description={description}>
-  <Nav client:load isHome={false} />
-  <Social client:load isHome={false} />
-  <Email client:load isHome={false} />
+  <ClientOnlyLayout client:only="react" isHome={false}>
+    <main>
+      <header style="max-width: 900px; margin-bottom: 60px;">
+        <h1 class="big-heading">Publications</h1>
+        <p class="subtitle" style="color: var(--slate); margin: 10px 0 0; font-size: var(--fz-lg);">
+          Academic publications and research work
+        </p>
+      </header>
 
-  <main>
-    <header style="max-width: 900px; margin-bottom: 60px;">
-      <h1 class="big-heading">Publications</h1>
-      <p class="subtitle" style="color: var(--slate); margin: 10px 0 0; font-size: var(--fz-lg);">
-        Academic publications and research work
-      </p>
-    </header>
+      <div style="max-width: 900px;">
+        {
+          publications.map((pub, index) => (
+            <article style="margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--lightest-navy);">
+              <h3 style="color: var(--lightest-slate); margin-bottom: 10px; font-size: var(--fz-xxl);">
+                {pub.data.url ? (
+                  <a
+                    href={pub.data.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style="color: var(--lightest-slate);">
+                    {pub.data.title}
+                  </a>
+                ) : (
+                  pub.data.title
+                )}
+              </h3>
 
-    <div style="max-width: 900px;">
-      {publications.map((pub, index) => (
-        <article style="margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--lightest-navy);">
-          <h3 style="color: var(--lightest-slate); margin-bottom: 10px; font-size: var(--fz-xxl);">
-            {pub.data.url ? (
-              <a href={pub.data.url} target="_blank" rel="noopener noreferrer" style="color: var(--lightest-slate);">
-                {pub.data.title}
-              </a>
-            ) : (
-              pub.data.title
-            )}
-          </h3>
+              {pub.data.authors && (
+                <p style="color: var(--slate); font-size: var(--fz-md); margin-bottom: 8px;">
+                  {pub.data.authors.join(', ')}
+                </p>
+              )}
 
-          {pub.data.authors && (
-            <p style="color: var(--slate); font-size: var(--fz-md); margin-bottom: 8px;">
-              {pub.data.authors.join(', ')}
-            </p>
-          )}
+              {pub.data.venue && (
+                <p style="color: var(--green); font-family: var(--font-mono); font-size: var(--fz-sm); margin-bottom: 8px;">
+                  {pub.data.venue}
+                </p>
+              )}
 
-          {pub.data.venue && (
-            <p style="color: var(--green); font-family: var(--font-mono); font-size: var(--fz-sm); margin-bottom: 8px;">
-              {pub.data.venue}
-            </p>
-          )}
-
-          <time style="color: var(--light-slate); font-size: var(--fz-sm);">
-            {pub.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
-          </time>
-        </article>
-      ))}
-    </div>
-  </main>
-
-  <Footer client:load />
+              <time style="color: var(--light-slate); font-size: var(--fz-sm);">
+                {pub.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+              </time>
+            </article>
+          ))
+        }
+      </div>
+    </main>
+  </ClientOnlyLayout>
 </BaseLayout>
