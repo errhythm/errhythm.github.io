@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // https://github.com/rafgraph/spa-github-pages
+    (function(l) {
+      if (l.search[1] === '/' ) {
+        var decoded = l.search.slice(1).split('&').map(function(s) { 
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
+</head>
+<body>
+  <script>
+    const pathSegmentsToKeep = 0; // Change to 1 if your site is in a subfolder like username.github.io/repo-name
+    
+    const loc = window.location;
+    const pathname = loc.pathname.split('/').filter(p => p);
+    const redirectUrl = loc.protocol + '//' + loc.hostname + (loc.port ? ':' + loc.port : '') + 
+      '/' + pathname.slice(0, pathSegmentsToKeep).join('/') + '/?/' + 
+      pathname.slice(pathSegmentsToKeep).join('/') + 
+      (loc.search ? '&' + loc.search.slice(1).replace(/&/g, '~and~') : '') + 
+      loc.hash;
+    
+    window.location.replace(redirectUrl);
+  </script>
+</body>
+</html> 

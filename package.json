@@ -1,6 +1,6 @@
 {
   "name": "v2",
-  "description": "Personal Website V2",
+  "description": "Personal Website V2 - Migrated to AstroJS",
   "version": "2.0.0",
   "author": "Brittany Chiang <brittany.chiang@gmail.com>, Ehsanur Rahman Rhythm <errhythm.me@gmail.com>",
   "repository": {
@@ -8,60 +8,45 @@
     "url": "https://github.com/bchiang7/v4"
   },
   "keywords": [
-    "gatsby"
+    "astro",
+    "portfolio",
+    "personal-website"
   ],
   "license": "MIT",
   "browserslist": "> 0.25%, not dead",
+  "type": "module",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,astro,json,md}\"",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,css,json,md}": [
+    "*.{js,css,json,md,astro}": [
       "prettier --write"
     ],
-    "*.js": [
+    "*.{js,jsx,ts,tsx,astro}": [
       "eslint --fix"
     ]
   },
   "dependencies": {
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/mdx": "^4.0.0",
+    "astro": "^5.0.5",
     "animejs": "^3.2.2",
-    "babel-plugin-styled-components": "^2.1.4",
-    "cookie": "^1.0.2",
-    "core-js": "^3.0.0",
     "firebase": "^11.0.2",
     "framer-motion": "^11.13.1",
-    "gatsby": "^5.14.0",
-    "gatsby-adapter-netlify": "^1.2.0",
-    "gatsby-plugin-feed": "^5.14.0",
-    "gatsby-plugin-image": "^3.14.0",
-    "gatsby-plugin-manifest": "^5.14.0",
-    "gatsby-plugin-netlify": "^5.1.1",
-    "gatsby-plugin-offline": "^6.14.0",
-    "gatsby-plugin-react-helmet": "^6.14.0",
-    "gatsby-plugin-robots-txt": "^1.8.0",
-    "gatsby-plugin-sharp": "^5.14.0",
-    "gatsby-plugin-sitemap": "^6.14.0",
-    "gatsby-plugin-styled-components": "^6.14.0",
-    "gatsby-remark-external-links": "0.0.4",
-    "gatsby-remark-images": "^7.14.0",
-    "gatsby-remark-prismjs": "^7.13.2",
-    "gatsby-source-filesystem": "^5.14.0",
-    "gatsby-transformer-remark": "^6.14.0",
-    "gatsby-transformer-sharp": "^5.14.0",
     "isomorphic-dompurify": "^2.25.0",
     "lodash": "^4.17.21",
     "prismjs": "^1.30.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-helmet": "^6.1.0",
     "react-transition-group": "^4.4.5",
     "scrollreveal": "^4.0.9",
     "styled-components": "^6.1.13"
@@ -75,25 +60,15 @@
     "@upstatement/eslint-config": "^3.0.0",
     "@upstatement/prettier-config": "^1.1.0",
     "babel-eslint": "^10.1.0",
-    "babel-preset-gatsby": "^3.14.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
-    "gatsby-remark-code-titles": "^1.1.0",
+    "eslint-plugin-astro": "^1.2.4",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
     "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.8.3"
-  },
-  "pnpm": {
-    "supportedArchitectures": {
-      "libc": [
-        "musl"
-      ]
-    },
-    "overrides": {
-      "sharp": "0.33.3"
-    }
   }
 }

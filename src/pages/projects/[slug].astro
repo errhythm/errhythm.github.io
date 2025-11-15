@@ -1,0 +1,231 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/nav';
+import Social from '../../components/social';
+import Email from '../../components/email';
+import Footer from '../../components/footer';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.slug || project.data.title.toLowerCase().replace(/\s+/g, '-') },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+
+const formattedDate = project.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={project.data.title}
+  description={`Project: ${project.data.title}`}
+  image={project.data.image || project.data.featuredCover}
+>
+  <Nav client:load isHome={false} />
+  <Social client:load isHome={false} />
+  <Email client:load isHome={false} />
+
+  <main>
+    <article>
+      <!-- Breadcrumb -->
+      <nav style="margin-bottom: 30px;">
+        <a href="/projects" style="color: var(--green); font-family: var(--font-mono); font-size: var(--fz-sm);">
+          ← Back to Projects
+        </a>
+      </nav>
+
+      <!-- Header -->
+      <header style="margin-bottom: 50px;">
+        <h1 class="big-heading" style="margin-bottom: 20px;">
+          {project.data.title}
+        </h1>
+
+        {project.data.company && (
+          <p style="color: var(--green); font-family: var(--font-mono); font-size: var(--fz-lg); margin-bottom: 20px;">
+            {project.data.company}
+          </p>
+        )}
+
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+          <time style="color: var(--light-slate); font-family: var(--font-mono); font-size: var(--fz-sm);">
+            {formattedDate}
+          </time>
+          {project.data.tech && project.data.tech.length > 0 && (
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              {project.data.tech.map(tech => (
+                <span style="color: var(--green); font-family: var(--font-mono); font-size: var(--fz-xs); padding: 5px 10px; background-color: var(--green-tint); border-radius: var(--border-radius);">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- Project Links -->
+        {(project.data.github || project.data.external) && (
+          <div style="display: flex; gap: 15px; margin-top: 20px;">
+            {project.data.github && (
+              <a
+                href={project.data.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border: 1px solid var(--green); border-radius: var(--border-radius); color: var(--green); font-family: var(--font-mono); font-size: var(--fz-sm); text-decoration: none; transition: var(--transition);"
+              >
+                GitHub →
+              </a>
+            )}
+            {project.data.external && (
+              <a
+                href={project.data.external}
+                target="_blank"
+                rel="noopener noreferrer"
+                style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; background-color: var(--green); border-radius: var(--border-radius); color: var(--navy); font-family: var(--font-mono); font-size: var(--fz-sm); text-decoration: none; font-weight: 600; transition: var(--transition);"
+              >
+                View Project →
+              </a>
+            )}
+          </div>
+        )}
+      </header>
+
+      <!-- Featured Image -->
+      {(project.data.image || project.data.featuredCover) && (
+        <div style="margin-bottom: 50px;">
+          <img
+            src={project.data.image || project.data.featuredCover}
+            alt={project.data.title}
+            style="width: 100%; height: auto; border-radius: var(--border-radius);"
+          />
+        </div>
+      )}
+
+      <!-- Content -->
+      <div class="project-content" style="max-width: 800px;">
+        <Content />
+      </div>
+
+      <!-- Testimonial -->
+      {project.data.testimonial && (
+        <div style="margin-top: 60px; padding: 30px; background-color: var(--light-navy); border-left: 3px solid var(--green); border-radius: var(--border-radius);">
+          <h3 style="color: var(--lightest-slate); margin-bottom: 20px;">Testimonial</h3>
+          <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+            {project.data.testimonial.image && (
+              <img
+                src={project.data.testimonial.image}
+                alt={project.data.testimonial.name}
+                style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;"
+              />
+            )}
+            <div>
+              <p style="color: var(--lightest-slate); font-weight: 600; margin-bottom: 5px;">
+                {project.data.testimonial.name}
+              </p>
+              <p style="color: var(--slate); font-size: var(--fz-sm);">
+                {project.data.testimonial.company}
+              </p>
+              {project.data.testimonial.rating && (
+                <div style="color: var(--green); margin-top: 5px;">
+                  {'★'.repeat(project.data.testimonial.rating)}{'☆'.repeat(5 - project.data.testimonial.rating)}
+                </div>
+              )}
+            </div>
+          </div>
+          <p style="color: var(--slate); font-style: italic; line-height: 1.6;">
+            "{project.data.testimonial.content}"
+          </p>
+        </div>
+      )}
+    </article>
+  </main>
+
+  <Footer client:load />
+
+  <style>
+    .project-content {
+      line-height: 1.8;
+    }
+
+    .project-content :global(h2) {
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: var(--lightest-slate);
+      font-size: var(--fz-xxl);
+    }
+
+    .project-content :global(h3) {
+      margin-top: 30px;
+      margin-bottom: 15px;
+      color: var(--lightest-slate);
+      font-size: var(--fz-xl);
+    }
+
+    .project-content :global(p) {
+      margin-bottom: 20px;
+      color: var(--slate);
+    }
+
+    .project-content :global(a) {
+      color: var(--green);
+      text-decoration: none;
+      border-bottom: 1px solid var(--green);
+      transition: var(--transition);
+    }
+
+    .project-content :global(a:hover) {
+      border-bottom-color: transparent;
+    }
+
+    .project-content :global(ul),
+    .project-content :global(ol) {
+      margin-bottom: 20px;
+      padding-left: 30px;
+    }
+
+    .project-content :global(li) {
+      margin-bottom: 10px;
+      color: var(--slate);
+    }
+
+    .project-content :global(img) {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--border-radius);
+      margin: 20px 0;
+    }
+
+    .project-content :global(table) {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .project-content :global(th),
+    .project-content :global(td) {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--lightest-navy);
+    }
+
+    .project-content :global(th) {
+      color: var(--lightest-slate);
+      font-weight: 600;
+    }
+
+    .project-content :global(td) {
+      color: var(--slate);
+    }
+  </style>
+</BaseLayout>

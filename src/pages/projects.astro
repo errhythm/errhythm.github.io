@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/nav';
+import Social from '../components/social';
+import Email from '../components/email';
+import Footer from '../components/footer';
+
+const title = 'Projects Archive';
+const description = 'A collection of projects I\'ve worked on.';
+
+const projects = await getCollection('projects', ({ data }) => {
+  return data.showInProjects !== false;
+});
+
+// Sort by date
+projects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title={title} description={description}>
+  <Nav client:load isHome={false} />
+  <Social client:load isHome={false} />
+  <Email client:load isHome={false} />
+
+  <main>
+    <header style="max-width: 900px; margin-bottom: 60px;">
+      <h1 class="big-heading">Projects Archive</h1>
+      <p class="subtitle" style="color: var(--slate); margin: 10px 0 0; font-size: var(--fz-lg);">
+        A big list of things I've worked on
+      </p>
+    </header>
+
+    <table style="width: 100%; border-collapse: collapse; font-size: var(--fz-md);">
+      <thead>
+        <tr style="border-bottom: 1px solid var(--lightest-navy);">
+          <th style="padding: 10px; text-align: left; color: var(--lightest-slate);">Year</th>
+          <th style="padding: 10px; text-align: left; color: var(--lightest-slate);">Title</th>
+          <th style="padding: 10px; text-align: left; color: var(--lightest-slate); display: none;" class="hide-on-mobile">Company</th>
+          <th style="padding: 10px; text-align: left; color: var(--lightest-slate); display: none;" class="hide-on-mobile">Built with</th>
+          <th style="padding: 10px; text-align: left; color: var(--lightest-slate);">Links</th>
+        </tr>
+      </thead>
+      <tbody>
+        {projects.map(project => {
+          const year = project.data.date.getFullYear();
+          const slug = project.slug || project.data.title.toLowerCase().replace(/\s+/g, '-');
+
+          return (
+            <tr style="border-bottom: 1px solid var(--lightest-navy); transition: var(--transition);">
+              <td style="padding: 15px 10px; color: var(--green); font-family: var(--font-mono); font-size: var(--fz-sm);">
+                {year}
+              </td>
+              <td style="padding: 15px 10px;">
+                <a href={`/projects/${slug}`} style="color: var(--lightest-slate); font-weight: 600;">
+                  {project.data.title}
+                </a>
+              </td>
+              <td style="padding: 15px 10px; color: var(--light-slate); font-size: var(--fz-sm); display: none;" class="hide-on-mobile">
+                {project.data.company || '—'}
+              </td>
+              <td style="padding: 15px 10px; display: none;" class="hide-on-mobile">
+                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                  {project.data.tech?.slice(0, 3).map(item => (
+                    <span style="color: var(--slate); font-family: var(--font-mono); font-size: var(--fz-xs);">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </td>
+              <td style="padding: 15px 10px;">
+                <div style="display: flex; gap: 15px; align-items: center;">
+                  {project.data.github && (
+                    <a href={project.data.github} target="_blank" rel="noopener noreferrer" style="color: var(--light-slate);">
+                      GitHub
+                    </a>
+                  )}
+                  {project.data.external && (
+                    <a href={project.data.external} target="_blank" rel="noopener noreferrer" style="color: var(--light-slate);">
+                      External
+                    </a>
+                  )}
+                </div>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </main>
+
+  <Footer client:load />
+
+  <style>
+    @media (max-width: 768px) {
+      .hide-on-mobile {
+        display: none !important;
+      }
+    }
+  </style>
+</BaseLayout>

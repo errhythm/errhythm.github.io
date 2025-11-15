@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/nav';
+import Social from '../components/social';
+import Email from '../components/email';
+import Footer from '../components/footer';
+
+const title = '404: Not Found';
+const description = 'The page you are looking for does not exist.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Nav client:load isHome={false} />
+  <Social client:load isHome={false} />
+  <Email client:load isHome={false} />
+
+  <main>
+    <section style="text-align: center; padding: 100px 0;">
+      <h1 class="big-heading" style="font-size: clamp(100px, 25vw, 200px);">404</h1>
+      <h2 style="font-size: clamp(30px, 5vw, 50px); color: var(--green);">
+        Page Not Found
+      </h2>
+      <p style="margin-top: 20px;">
+        <a href="/" class="inline-link">Go Home</a>
+      </p>
+    </section>
+  </main>
+
+  <Footer client:load />
+</BaseLayout>
