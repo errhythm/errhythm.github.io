@@ -18,10 +18,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/generate-data.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,astro,json,md}\"",
+    "generate-data": "node scripts/generate-data.mjs",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
@@ -34,11 +35,11 @@
     ]
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.0.0",
     "@astrojs/react": "^3.6.2",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/mdx": "^4.0.0",
-    "astro": "^5.0.5",
     "animejs": "^3.2.2",
+    "astro": "^5.0.5",
     "firebase": "^11.0.2",
     "framer-motion": "^11.13.1",
     "isomorphic-dompurify": "^2.25.0",
@@ -62,11 +63,14 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-astro": "^1.2.4",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-astro": "^1.2.4",
+    "glob": "^11.0.3",
+    "gray-matter": "^4.0.3",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
+    "marked": "^17.0.0",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.8.3"

@@ -164,36 +164,20 @@ const StyledTabPanel = styled.div`
 `;
 
 const Education = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      education: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/education/" } }
-        sort: { frontmatter: { date: DESC } }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              degree
-              company
-              location
-              range
-              url
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
-
-  const educationData = data.education.edges;
-
+  // Import static data generated from content collections
+  const [educationData, setEducationData] = useState([]);
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
   const tabs = useRef([]);
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  // Load education data from generated JSON
+  useEffect(() => {
+    import('../../data/content.json').then(module => {
+      setEducationData(module.default.education || []);
+    });
+  }, []);
 
   useEffect(() => {
     if (prefersReducedMotion) {

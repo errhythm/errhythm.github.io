@@ -317,38 +317,20 @@ const StyledProject = styled.li`
 `;
 
 const Featured = () => {
-  const data = useStaticQuery(graphql`
-    {
-      featured: allMarkdownRemark(
-        filter: {
-          fileAbsolutePath: { regex: "/content/projects/" }
-          frontmatter: { featured: { eq: true }, title: { ne: "Dummy" } }
-        }
-        sort: [{ frontmatter: { featuredSort: ASC } }, { frontmatter: { date: ASC } }]
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              image
-              tech
-              github
-              external
-              cta
-              featuredMessage
-              featuredCover
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
-
-  const featuredProjects = data.featured.edges.filter(({ node }) => node);
+  // Import static data generated from content collections
+  const [featuredProjects, setFeaturedProjects] = useState([]);
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  // Load featured projects data from generated JSON
+  useEffect(() => {
+    import('../../data/content.json').then(module => {
+      const projects = module.default.featuredProjects || [];
+      // Filter out "Dummy" project
+      setFeaturedProjects(projects.filter(({ node }) => node && node.frontmatter.title !== 'Dummy'));
+    });
+  }, []);
 
   useEffect(() => {
     if (prefersReducedMotion) {

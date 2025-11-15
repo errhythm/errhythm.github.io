@@ -164,35 +164,20 @@ const StyledTabPanel = styled.div`
 `;
 
 const Jobs = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      jobs: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
-        sort: { frontmatter: { date: DESC } }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              company
-              location
-              range
-              url
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
-
-  const jobsData = data.jobs.edges;
-
+  // Import static data generated from content collections
+  const [jobsData, setJobsData] = useState([]);
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
   const tabs = useRef([]);
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  // Load jobs data from generated JSON
+  useEffect(() => {
+    import('../../data/content.json').then(module => {
+      setJobsData(module.default.jobs || []);
+    });
+  }, []);
 
   useEffect(() => {
     if (prefersReducedMotion) {

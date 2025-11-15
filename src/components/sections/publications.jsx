@@ -254,38 +254,8 @@ const StyledCardContainer = styled.div`
 `;
 
 const Publications = () => {
-  const data = useStaticQuery(graphql`
-    {
-      allMarkdownRemark(
-        filter: {
-          fileAbsolutePath: { regex: "/content/publications/" }
-          frontmatter: { featured: { eq: true }, visible: { ne: false }, title: { ne: "Dummy" } }
-        }
-        sort: { frontmatter: { date: DESC } }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              date
-              title
-              conference
-              doi
-              url
-              github
-              authors {
-                name
-                url
-                affiliation
-                email
-              }
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
-
+  // Import static data generated from content collections
+  const [allPublications, setAllPublications] = useState([]);
   const [showMore, setShowMore] = useState(false);
   const revealTitle = useRef(null);
   const revealTable = useRef(null);
@@ -294,8 +264,23 @@ const Publications = () => {
   const [expandedAbstracts, setExpandedAbstracts] = useState([]);
   const isMobile = useMediaQuery('(max-width: 768px)');
 
+  // Load publications data from generated JSON
+  useEffect(() => {
+    import('../../data/content.json').then(module => {
+      const pubs = module.default.publications || [];
+      // Filter to show only publications with featured: true, visible !== false, and title !== "Dummy"
+      const filtered = pubs.filter(({ node }) =>
+        node &&
+        node.frontmatter.featured === true &&
+        node.frontmatter.visible !== false &&
+        node.frontmatter.title !== 'Dummy'
+      );
+      setAllPublications(filtered);
+    });
+  }, []);
+
   const GRID_LIMIT = 4;
-  const publications = data.allMarkdownRemark.edges;
+  const publications = allPublications;
   const firstThree = publications.slice(0, GRID_LIMIT);
   const publicationsToShow = showMore ? publications : firstThree;
 

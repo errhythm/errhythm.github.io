@@ -166,35 +166,27 @@ const StyledProject = styled.li`
 `;
 
 const Projects = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      projects: allMarkdownRemark(
-        filter: {
-          fileAbsolutePath: { regex: "/content/projects/" }
-          frontmatter: { showInProjects: { ne: false }, title: { ne: "Dummy" } }
-        }
-        sort: { frontmatter: { date: DESC } }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              tech
-              github
-              external
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
-
+  // Import static data generated from content collections
+  const [allProjects, setAllProjects] = useState([]);
   const [showMore, setShowMore] = useState(false);
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  // Load projects data from generated JSON
+  useEffect(() => {
+    import('../../data/content.json').then(module => {
+      const projects = module.default.projects || [];
+      // Filter to show only projects with showInProjects !== false and title !== "Dummy"
+      const filtered = projects.filter(({ node }) =>
+        node &&
+        node.frontmatter.showInProjects !== false &&
+        node.frontmatter.title !== 'Dummy'
+      );
+      setAllProjects(filtered);
+    });
+  }, []);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -207,7 +199,7 @@ const Projects = () => {
   }, []);
 
   const GRID_LIMIT = 6;
-  const projects = data.projects.edges.filter(({ node }) => node);
+  const projects = allProjects;
   const firstSix = projects.slice(0, GRID_LIMIT);
   const projectsToShow = showMore ? projects : firstSix;
 
